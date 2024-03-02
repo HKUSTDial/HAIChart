@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>ChartPilot</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='all.min.css') }}">
+		<style>
+			/* Custom styles */
+			.navbar-dark .navbar-brand {
+				color: #030F2B!important;
+			}
+
+			.navbar-dark .navbar-nav .nav-link {
+				color: rgba(255, 255, 255, 0.7);
+			}
+
+			.navbar-dark .navbar-nav .nav-link:hover {
+				color: rgba(255, 255, 255, 1);
+			}
+
+			.btn-primary {
+				background-color: #ffffff;
+				border-color: #e8e8ea;
+				color: #000000;
+			}
+
+			.btn-primary:hover {
+				background-color: #f9f9f9;
+				border-color: #e80000;
+				color: #000000;
+			}
+
+			.custom-border {
+				border: 1px solid #efefef;
+				border-radius: 8px;
+			}
+
+			.sidebar {
+				height: 100vh;
+			}
+
+			.main-content {
+				height: calc(100vh - 56px);
+				/* Subtract the height of the navigation bar */
+			}
+			
+			.constraint-btn {
+			    background-color: #ffffff; /* Light grey background for the button */
+			    color: #22282e; /* Dark grey color for the text */
+			    padding: 5px 12px; /* Increased padding for better touch */
+			    border-radius: 5px; /* Rounded corners for the button */
+			    font-size: 16px; /* Increased font size for better readability */
+				font-weight: 500;
+			    cursor: pointer;
+			    display: inline-flex;
+			    align-items: center;
+			    border: 1px solid #e8e8e8;
+			    box-shadow: 0 1px 1px rgb(162 136 136 / 10%);
+			    transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+			    margin-right: 10px; /* Space between buttons */
+			    margin-bottom: 10px; /* Space below the button */
+			}
+			
+			.constraint-btn i {
+			    color: #f33a4c; /* Light red color for the close icon */
+			    cursor: pointer;
+			    margin-left: 8px; /* Space between text and close icon */
+			}
+			
+			.constraint-btn:hover {
+			    background-color: #eaeff3; /* Slightly darker shade on hover */
+			    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for depth */
+			}
+			
+			h4 {
+				font-size: 20px;
+				font-weight: bold;
+				margin-bottom: 15px;
+				color: #333333;
+			}
+			
+			
+			.custom-badge {
+			    background-color: #FFEB3B ; /* Bootstrap's info color, or choose your own */
+			    font-size: 1em; /* Larger font size for better readability */
+				font-weight: 500;
+				color: #211d1d;
+				padding: 4px 5px 8px 5px; 
+			    text-align: center;
+				display: inline-block; 
+			}
+			
+			.recommendation-item {
+			    font-size: 1em; /* Slightly larger font size for the whole item */
+				border: 1px solid #ddd; /* Light grey border */
+				padding: 10px;
+				border-radius: 5px;
+				transition: background-color 0.3s;
+			}
+			
+			.clickable:hover {
+			    background-color: #f8f9fa; /* Slight background color change on hover */
+			    cursor: pointer;
+			}
+			
+			.fas.fa-lightbulb {
+			    /*color: #fbe737;  Gold color for the bulb icon */
+				color: #f9e323;
+			}
+			
+
+		</style>
+	</head>
+	<body>
+		<!-- Navigation bar -->
+		<nav class="navbar navbar-expand-lg navbar-dark" style="padding: 2em;background-color: #393b3e;">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<!-- <a class="nav-link" href="#">Login</a> -->
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+        <div class="row">
+            <!-- Side panel -->
+            <div class="col-md-2 sidebar" style="background-color: #ffffff;padding: 1px;">
+                <div class="p-3 custom-border" style="background-color: white; margin: 7px;">
+                    <h4><i class="fas fa-database"></i> Dataset</h4>
+                    <hr>
+                    <div class="d-flex justify-content-center mb-3">
+                        <input type="file" id="fileInput" accept=".csv" style="display: none;" />
+                        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click();">Select Dataset</button>
+                    </div>
+                    <hr>
+                    <div id="dataset-info">
+                        <!-- Display dataset name and column information here -->
+                    </div>
+                </div>
+
+				<!-- History of clicked recommendations -->
+				<div class="p-3" style="background-color: white; margin: 7px;">
+					
+					<!-- <hr>
+					<div id="history-list" style="max-height: 200px; overflow-y: auto;">
+					</div> -->
+				</div>
+            </div>
+
+            <!-- Main content -->
+			<div class="col-md-7" style="padding: 1px;">
+				<!-- Current Constraints -->
+				<div id="current-constraints" class="p-3 custom-border" style="margin: 7px; display: none;">
+				    <h4>Current Constraints</h4>
+				    <br>
+				    <div id="constraints-list" class="d-flex flex-wrap">
+				        <!-- Example constraints as buttons -->
+				        <div class="constraint-btn mr-2 mb-2">
+				            passengers (y-axis) <i class="fas fa-times ml-2"></i>
+				        </div>
+				        <div class="constraint-btn mr-2 mb-2">
+				            destcity (x-axis) <i class="fas fa-times ml-2"></i>
+				        </div>
+				        <!-- More constraints can be added here -->
+				    </div>
+				</div>
+
+				
+				
+				<!-- Visualization Results -->
+				<div id="visualization-results" class="p-3 custom-border" style="display: none; margin: 7px; border-radius: 10px; border: 0.5px solid #efefef; background-color: #ffffff; overflow-y: hidden; overflow-x: hidden;">
+				    <h4 style="margin-bottom: 10px;">Visualization Results</h4>
+				    <br>
+				    <div id="visualization" style="padding: 15px;">
+						
+						<!-- Placeholder for visualization result -->
+						<iframe id="visualization-iframe" src="" width="100%" height="1000px" style="border: none; display: block;"></iframe>
+					</div>
+				</div>
+
+				<!-- Loading indicator -->
+				<div id="loading-indicator" style="display: none; align-items: center; justify-content: center; height: 50%;">
+					<div class="spinner-border text-primary" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+
+			</div>
+			
+			<!-- Right panel - Next Recommendation -->
+			<div id="next-action-recommendation" class="col-md-3" style="padding: 1px;display: none;">
+			    <div class="p-3 custom-border" style="background-color: white; margin: 7px;">
+			        <h4>Next-Action Recommendation</h4>
+			        <br>
+			        <ul id="recommendation-list" class="list-unstyled">
+			            <!-- Example Recommendations with Badges for keywords -->
+			            <li class="mb-2 recommendation-item clickable">
+			                <i class="fas fa-lightbulb mr-2"></i> 
+							Explore <span class="badge custom-badge">departure delay</span> over categories or time.
+							<!-- View the statistical details of the <span class="badge custom-badge">passengers</span>. -->
+			            </li>
+			            <li class="mb-2 recommendation-item clickable">
+			                <i class="fas fa-lightbulb mr-2"></i> 
+							Compare <span class="badge custom-badge">#-Passengers</span> to different destinations.
+							<!-- Examine the count information for <span class="badge custom-badge">depdelay</span>. -->
+			            </li>
+			            <li class="mb-2 recommendation-item clickable">
+			                <i class="fas fa-lightbulb mr-2"></i> Investigate the status of the <span class="badge custom-badge">arrive delay</span>.
+			            </li>
+			            <li class="mb-2 recommendation-item clickable">
+			                <i class="fas fa-lightbulb mr-2"></i> Break down the data by <span class="badge custom-badge">carrier</span>.
+			            </li>
+						<li class="mb-2 recommendation-item clickable">
+						    <i class="fas fa-lightbulb mr-2"></i> Summarize data using <span class="badge custom-badge">average</span> function.
+						</li>
+						<li class="mb-2 recommendation-item clickable">
+						    <i class="fas fa-lightbulb mr-2"></i> Summarize data using <span class="badge custom-badge">sum</span> function.
+						</li>
+						<li class="mb-2 recommendation-item clickable">
+						    <i class="fas fa-lightbulb mr-2"></i> Discover patterns with a <span class="badge custom-badge">scatter</span> plot.
+						</li>
+						<li class="mb-2 recommendation-item clickable">
+						    <i class="fas fa-lightbulb mr-2"></i> Explore distributions with a <span class="badge custom-badge">bar</span> chart.
+						</li>
+						<li class="mb-2 recommendation-item clickable">
+						    <i class="fas fa-lightbulb mr-2"></i> View proportions in a <span class="badge custom-badge">pie</span> chart.
+						</li>
+			            <!-- More recommendations can be added here -->
+			        </ul>
+			    </div>
+			</div>
+
+        </div>
+    </div>
+
+		<script src="{{ url_for('static', filename='jquery-3.5.1.slim.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='popper.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='vega@5') }}"></script>
+		<script src="{{ url_for('static', filename='vega-lite@5') }}"></script>
+		<script src="{{ url_for('static', filename='vega-embed@6') }}"></script>
+		<script>
+			
+
+			function showLoadingIndicator() {
+                document.getElementById('loading-indicator').style.display = 'flex'; // Show the loading indicator
+                document.getElementById('visualization-iframe').style.display = 'none'; // Hide the iframe at the same time
+            }
+
+            function hideLoadingIndicator() {
+                document.getElementById('loading-indicator').style.display = 'none'; // Hide the loading indicator
+                document.getElementById('visualization-iframe').style.display = 'block'; // Show the iframe
+            }
+
+			function determineType(value) {
+			    // Check if the value can be converted to a number
+			    if (!isNaN(value) && !isNaN(parseFloat(value))) {
+			        return 'Numeric';
+			    }
+			    // Check if the value can be converted to a date
+			    else if (new Date(value).toString() !== 'Invalid Date') {
+			        return 'Time';
+			    } else {
+			        return 'Text';
+			    }
+			}
+
+			var selectedDatasetName = ""; // Global variable to store the name of the selected dataset
+			
+			
+
+			// Function to update the Next-Action Recommendation list
+            function updateRecommendations(recommendations) {
+                var recommendationList = document.getElementById('recommendation-list');
+                recommendationList.innerHTML = ''; // Clear the current list
+
+                recommendations.forEach(function(rec) {
+                    var key = rec[0];  // Guidance keyword
+                    var text = rec[1]; // Suggestion text
+
+                    // Create list item
+                    var listItem = document.createElement('li');
+                    listItem.setAttribute('data-key', key); // Set the keyword
+                    listItem.className = 'mb-2 recommendation-item clickable';
+
+                    // Process the suggestion text to wrap specific formatted text in <span>
+                    var processedText = text.replace(/'([^']+)'/g, "<span class='badge custom-badge'>$1</span>");
+
+                    // Set the content of the list item
+                    listItem.innerHTML = '<i class="fas fa-lightbulb mr-2"></i> ' + processedText;
+
+                    // Add the list item to the list
+                    recommendationList.appendChild(listItem);
+                });
+            }
+
+
+			document.getElementById('fileInput').addEventListener('change', function (e) {
+				var file = e.target.files[0];
+				if (!file) return;
+				
+				showLoadingIndicator(); // Show the loading indicator before the file is selected and uploading begins
+
+				// Save the file and update the visualization results
+				// Create a FormData object and add the file
+				var formData = new FormData();
+				formData.append('file', file);
+
+				// Use the fetch API to send the file to the Flask backend
+				fetch('/upload-dataset', {
+					method: 'POST',
+					body: formData
+				})
+				.then(response => response.json())
+				.then(data => {
+					document.getElementById('visualization-results').style.display = 'block';
+					document.getElementById('next-action-recommendation').style.display = 'block';
+					
+					updateConstraintsDisplay(data.constraints); // Update the display of current constraints
+					// Update the Visualization Results area
+					var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
+					visualizationIframe.src = data.visualization; // Update the iframe's src attribute to point to the generated HTML file
+
+					// Update the Next-Action Recommendation list
+					updateRecommendations(data.recommendations);
+					hideLoadingIndicator(); // Hide the loading indicator after processing is complete
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					hideLoadingIndicator(); // Hide the loading indicator after processing is complete
+				});
+			});
+
+
+			    var reader = new FileReader();
+			    reader.onload = function (e) {
+			        var content = e.target.result;
+			
+			        var rows = content.split("\n");
+			        if (rows.length === 0) {
+			            alert("The selected file does not contain valid data.");
+			            return;
+			        }
+			
+			        var headers = rows[0].split(",");
+			        var firstDataRow = rows[1].split(",");
+			
+			        var columnsList = document.createElement('ul');
+			        columnsList.className = 'list-group';
+			
+			        headers.forEach(function(header, index) {
+			            var listItem = document.createElement('li');
+			            listItem.className = 'list-group-item';
+			
+			            var type = determineType(firstDataRow[index].trim());
+			            var icon = document.createElement('i');
+			
+			            if (type === 'Numeric') {
+			                icon.className = 'fas fa-chart-bar mr-2';
+			            } else if (type === 'Text') {
+			                icon.className = 'fas fa-font mr-2';
+			            } else if (type === 'Time') {
+			                icon.className = 'fas fa-clock mr-2';
+			            }
+			
+			            listItem.appendChild(icon);
+			            listItem.appendChild(document.createTextNode(header.trim()));
+			            columnsList.appendChild(listItem);
+			        });
+			
+			        var datasetInfoDiv = document.getElementById('dataset-info');
+			        datasetInfoDiv.innerHTML = '<strong>Filename:</strong> ' + file.name + '<br><br>';
+			        datasetInfoDiv.appendChild(columnsList);
+			    };
+			    reader.readAsText(file);
+			});
+			
+			// When the user clicks on an item in the Next-Action Recommendation
+			document.getElementById('recommendation-list').addEventListener('click', function(e) {
+				if (e.target && e.target.closest('li.recommendation-item')) {
+					var key = e.target.closest('li.recommendation-item').getAttribute('data-key'); // Get the keyword of the clicked item
+					
+					showLoadingIndicator(); // Show the loading indicator before file selection begins and uploading starts
+
+					// Send the keyword to the backend
+					fetch('/update-constraints', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ key: key }) // Send the keyword
+					})
+					.then(response => response.json())
+					.then(data => {
+						updateConstraintsDisplay(data.constraints); // Update the display of current constraints
+
+						// Update the Visualization Results area
+						var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
+						visualizationIframe.src = data.visualization; // Update the iframe's src attribute to point to the generated HTML file
+						
+						updateRecommendations(data.recommendations); // Update the Next-Action Recommendation list
+						hideLoadingIndicator(); // Hide the loading indicator after processing is complete
+					})
+					.catch(error => {
+						console.error('Error:', error);
+					});
+				}
+			});
+
+
+
+			// When the user clicks the delete icon in Current Constraints
+			document.getElementById('constraints-list').addEventListener('click', function(e) {
+				// Previously, it was deleted only when the red cross was clicked, but now it has been changed to delete upon any click
+				// if (e.target && e.target.matches('i.fa-times')) {
+				// Check if a constraint button or its child element was clicked
+				let target = e.target;
+				while (target && !target.matches('.constraint-btn')) {
+					target = target.parentNode;
+				}
+				if (target) {
+					var dataKey = target.getAttribute('data-key'); // Get the original key
+					var [constraintKey, constraintValue] = dataKey.split('_'); // Split data-key into key and value
+					showLoadingIndicator(); // Show the loading indicator before file selection begins and uploading starts
+					// Send the delete request to the backend
+					fetch('/remove-constraint', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ key: constraintKey, value: constraintValue }) // Send the original key and value
+					})
+					.then(response => response.json())
+					.then(data => {
+						updateConstraintsDisplay(data.constraints); // Update the display of current constraints
+						// Update the Visualization Results area
+						var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
+						visualizationIframe.src = data.visualization; // Update the iframe's src attribute to point to the generated HTML file
+						
+						updateRecommendations(data.recommendations); // Update the Next-Action Recommendation list
+						hideLoadingIndicator(); // Hide the loading indicator after processing is complete
+					})
+					.catch(error => {
+						console.error('Error:', error);
+					});
+				}
+			});
+
+			const constraintMappings = {
+				'[T]': 'chart_type',
+				'[X]': 'x-axis',
+				'[Y]': 'y-axis',
+				'[AggFunction]': 'agg_function',
+				'[G]': 'group',
+				'[B]': 'bin',
+			};
+
+
+			// Function to update the display of current constraints
+			function updateConstraintsDisplay(constraints) {
+				var constraintsDiv = document.getElementById('current-constraints');
+				var constraintsListDiv = document.getElementById('constraints-list');
+				constraintsListDiv.innerHTML = ''; // Clear the current constraint list
+
+				var hasConstraints = false; // Mark whether there are constraints
+				// alert(constraints)
+				for (var key in constraints) {
+					// alert(constraints[key].length)
+					if (constraints[key].length > 0) { // Check if there are constraint values
+						hasConstraints = true; // If there are constraint values, set the marker to true
+						var userFriendlyKey = constraintMappings[key] || key; // Get user-friendly text or use the original key by default
+
+						constraints[key].forEach(function(value) {
+							var constraintDiv = document.createElement('div');
+							constraintDiv.className = 'constraint-btn mr-2 mb-2';
+							constraintDiv.innerText = value + ' (' + userFriendlyKey + ')'; // Display the value and user-friendly text
+							constraintDiv.setAttribute('data-key', key + "_" + value); // Set the original key as a data attribute
+
+							var removeIcon = document.createElement('i');
+							removeIcon.className = 'fas fa-times ml-2';
+							constraintDiv.appendChild(removeIcon);
+							constraintsListDiv.appendChild(constraintDiv);
+						});
+					}
+				}
+				
+				// If there are no constraints, you can choose to hide the entire constraint list container
+				if (!hasConstraints) {
+					constraintsDiv.style.display = 'none';
+				} else {
+					constraintsDiv.style.display = 'block'; // Or any other display method you choose
+				}
+			}
+
+		</script>
+	</body>
+</html>
