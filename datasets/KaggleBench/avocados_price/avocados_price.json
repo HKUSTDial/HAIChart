@@ -1,0 +1,407 @@
+{
+    "charts": [
+        {
+            "describe": "averageprice of diferent year and type",
+            "id": "avocados_price_1_extracted.json_id_1",
+            "rank": 1,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "averageprice of diferent year month and type",
+            "id": "avocados_price_1_extracted.json_id_2",
+            "rank": 2,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year-month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "total volumn of diferent year and type",
+            "id": "avocados_price_1_extracted.json_id_3",
+            "rank": 3,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year-month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Total Volume",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "avg volume by month",
+            "id": "avocados_price_1_extracted.json_id_4",
+            "rank": 4,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Total Volume",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "avg price by month",
+            "id": "avocados_price_1_extracted.json_id_5",
+            "rank": 5,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "avg price by year",
+            "id": "avocados_price_3_extracted.json_id_1",
+            "rank": 6,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year-month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "bags scatter plot",
+            "id": "avocados_price_4_extracted.json_id_1",
+            "rank": 7,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Total Bags",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Small Bags",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "total volumes scatter plot",
+            "id": "avocados_price_4_extracted.json_id_2",
+            "rank": 8,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Total Volume",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Small Bags",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "averageprice of diferent month and type",
+            "id": "avocados_price_5_extracted.json_id_1",
+            "rank": 9,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "average price of diferent month and year",
+            "id": "avocados_price_5_extracted.json_id_2",
+            "rank": 10,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Total Volume of diferent year",
+            "id": "avocados_price_5_extracted.json_id_3",
+            "rank": 11,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Total Volume",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "average price of diferent year",
+            "id": "avocados_price_5_extracted.json_id_4",
+            "rank": 12,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "average price vs Total volume of different type",
+            "id": "avocados_price_5_extracted.json_id_5",
+            "rank": 13,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Total Volume",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "avg price by region",
+            "id": "avocados_price_5_extracted.json_id_6",
+            "rank": 14,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "region",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "avg volume by region",
+            "id": "avocados_price_5_extracted.json_id_7",
+            "rank": 15,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "region",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Total Volume",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "avg price by date",
+            "id": "avocados_price_6_extracted.json_id_1",
+            "rank": 16,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "avg price by year and type",
+            "id": "avocados_price_6_extracted.json_id_2",
+            "rank": 17,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "avg price by region",
+            "id": "avocados_price_6_extracted.json_id_3",
+            "rank": 18,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "region",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "AveragePrice",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "avg volume by year",
+            "id": "avocados_price_6_extracted.json_id_4",
+            "rank": 19,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Total Volume",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "avg volume by region",
+            "id": "avocados_price_6_extracted.json_id_5",
+            "rank": 20,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "region",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Total Volume",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        }
+    ]
+}

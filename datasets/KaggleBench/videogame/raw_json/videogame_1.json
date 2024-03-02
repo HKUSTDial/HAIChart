@@ -1,0 +1,128 @@
+{
+    "url": "https://www.kaggle.com/arthurtok/the-console-wars-ps-vs-xbox-vs-wii",
+    "votes": 133,
+    "rank": 1,
+    "charts": [
+        {
+            "describe": "Correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "critic score by user score",
+            "chart": "scatter",
+            "x": {
+                "attr": "Critic_Score",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "User_Score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "critic score by Critic_Count",
+            "chart": "scatter",
+            "x": {
+                "attr": "Critic_Score",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Critic_Count",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "global yearly sales of the 7th gen consoles",
+            "chart": "bar",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Platform",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "global sales of the 7th gen consoles per rating type",
+            "chart": "bar",
+            "x": {
+                "attr": "Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Platform",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "global sales of the 7th gen consoles per Genre",
+            "chart": "bar",
+            "x": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Platform",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Pie Chart of Global Sales of different platform",
+            "chart": "pie",
+            "x": {
+                "attr": "Platform",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Pie Chart of User_Count of different platform",
+            "chart": "pie",
+            "x": {
+                "attr": "Platform",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "User_Count",
+                "trans": "sum",
+                "calcus": "percentage"
+            }
+        }
+    ]
+}

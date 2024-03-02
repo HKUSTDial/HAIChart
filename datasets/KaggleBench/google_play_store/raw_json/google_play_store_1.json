@@ -1,0 +1,269 @@
+{
+    "url": "https://www.kaggle.com/lava18/all-that-you-need-to-know-about-the-android-market",
+    "votes": 319,
+    "rank": 1,
+    "charts": [
+        {
+            "describe": "scattermatrix",
+            "chart": "scattermatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "which category has the higheset share",
+            "chart": "pie",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "app rating histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Rating",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "app rating histogram by category",
+            "chart": "facethistogram",
+            "x": {
+                "attr": "Rating",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "app rating violinplot by category",
+            "chart": "violinplot",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "app rating violinplot by category",
+            "chart": "violinplot",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "size vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Size",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "size vs rating by category",
+            "chart": "scatter",
+            "x": {
+                "attr": "Size",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "price vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Price",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "stripplot of price by category",
+            "chart": "stripplot",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Price",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "nestedpie by category, type",
+            "chart": "nestedpie",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "out": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "boxplot of downloads by type",
+            "chart": "boxplot",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "log"
+            }
+        },
+        {
+            "describe": "size vs rating by type",
+            "chart": "scatter",
+            "x": {
+                "attr": "Size",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "reviews vs inistalls",
+            "chart": "scatter",
+            "x": {
+                "attr": "Reviews",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "count by category and sentiment",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "Sentiment",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "sentiment polarity by type",
+            "chart": "boxplot",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Sentiment_Polarity",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "wordcloud of reviews",
+            "chart": "wordcloud",
+            "x": {
+                "attr": "Translated_Review",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Translated_Review",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

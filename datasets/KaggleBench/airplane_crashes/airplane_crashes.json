@@ -1,0 +1,414 @@
+{
+    "charts": [
+        {
+            "describe": "Number of accidents of different operators",
+            "id": "airplane_crashes_1_extracted.json_id_1",
+            "rank": 1,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Operator",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Operator",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Proportion of accidents of different operators",
+            "id": "airplane_crashes_1_extracted.json_id_2",
+            "rank": 2,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Operator",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Operator",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "Number of fatalities of different operators",
+            "id": "airplane_crashes_1_extracted.json_id_3",
+            "rank": 3,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Operator",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Proportion of fatalities of different operators",
+            "id": "airplane_crashes_1_extracted.json_id_4",
+            "rank": 4,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Operator",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "Fatalities per accident(average) of different operators",
+            "id": "airplane_crashes_1_extracted.json_id_5",
+            "rank": 5,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Operator",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Predicting fatalities given accidents of different operators",
+            "id": "airplane_crashes_1_extracted.json_id_6",
+            "rank": 6,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Fatalities",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "groupby": {
+                    "attr": "Operator",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of accidents of different types",
+            "id": "airplane_crashes_1_extracted.json_id_7",
+            "rank": 7,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Type",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Proportion of accidents of different types",
+            "id": "airplane_crashes_1_extracted.json_id_8",
+            "rank": 8,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Type",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "Number of fatalities of different types",
+            "id": "airplane_crashes_1_extracted.json_id_9",
+            "rank": 9,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Proportion of fatalities of different types",
+            "id": "airplane_crashes_1_extracted.json_id_10",
+            "rank": 10,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "Number of fatalities per accident(average) of different types",
+            "id": "airplane_crashes_1_extracted.json_id_11",
+            "rank": 11,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of fatalities of different years",
+            "id": "airplane_crashes_1_extracted.json_id_12-airplane_crashes_2_extracted.json_id_6",
+            "rank": 12,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of accidents of different years",
+            "id": "airplane_crashes_1_extracted.json_id_13",
+            "rank": 13,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of fatalities of different years of different operators",
+            "id": "airplane_crashes_1_extracted.json_id_14",
+            "rank": 14,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Operator",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Number of accidents of different years of different operators",
+            "id": "airplane_crashes_1_extracted.json_id_15",
+            "rank": 15,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Date",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Operator",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Number of fatalities of different countries",
+            "id": "airplane_crashes_1_extracted.json_id_16",
+            "rank": 16,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Location",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Proportion of fatalities of different countries",
+            "id": "airplane_crashes_1_extracted.json_id_17",
+            "rank": 17,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Location",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Fatalities",
+                    "trans": "sum",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "Number of accidents of different years",
+            "id": "airplane_crashes_2_extracted.json_id_1",
+            "rank": 18,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of accidents of different months",
+            "id": "airplane_crashes_2_extracted.json_id_2",
+            "rank": 19,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of accidents of different weeks",
+            "id": "airplane_crashes_2_extracted.json_id_3",
+            "rank": 20,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "week",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of accidents of different weeks",
+            "id": "airplane_crashes_2_extracted.json_id_4",
+            "rank": 21,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "hour",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of people aboard of years",
+            "id": "airplane_crashes_2_extracted.json_id_5",
+            "rank": 22,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Aboard",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        }
+    ]
+}

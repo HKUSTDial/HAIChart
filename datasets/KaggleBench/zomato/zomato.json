@@ -1,0 +1,958 @@
+{
+    "charts": [
+        {
+            "describe": "top restarurant chains",
+            "id": "zomato_1_extracted.json_id_1-zomato_3_extracted.json_id_13-zomato_4_extracted.json_id_2-zomato_6_extracted.json_id_12",
+            "rank": 1,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "name",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "accept online orders or not",
+            "id": "zomato_1_extracted.json_id_2-zomato_4_extracted.json_id_10-zomato_5_extracted.json_id_8",
+            "rank": 2,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "online_order",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "book_table or not",
+            "id": "zomato_1_extracted.json_id_3-zomato_4_extracted.json_id_11-zomato_5_extracted.json_id_9",
+            "rank": 3,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "book_table",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "rating distribution",
+            "id": "zomato_1_extracted.json_id_4-zomato_5_extracted.json_id_1",
+            "rank": 4,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "bin",
+                    "bins": 20
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "cost vs rating",
+            "id": "zomato_1_extracted.json_id_5-zomato_5_extracted.json_id_6",
+            "rank": 5,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "top rest_type",
+            "id": "zomato_1_extracted.json_id_6-zomato_2_extracted.json_id_2-zomato_4_extracted.json_id_1-zomato_6_extracted.json_id_6",
+            "rank": 6,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rest_type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rest_type",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "top location",
+            "id": "zomato_1_extracted.json_id_7-zomato_3_extracted.json_id_8-zomato_4_extracted.json_id_9-zomato_6_extracted.json_id_11",
+            "rank": 7,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "location",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "location",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "top location",
+            "id": "zomato_1_extracted.json_id_8",
+            "rank": 8,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "location",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "location",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "cuisines",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "top cuisines",
+            "id": "zomato_1_extracted.json_id_9-zomato_4_extracted.json_id_3",
+            "rank": 9,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "cuisines",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "cuisines",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "top restaurants of different type",
+            "id": "zomato_1_extracted.json_id_10",
+            "rank": 10,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rest_type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rest_type",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "name",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "localised count",
+            "id": "zomato_2_extracted.json_id_1-zomato_3_extracted.json_id_10-zomato_6_extracted.json_id_4",
+            "rank": 11,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "listed_in(city)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "listed_in(city)",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "online_order count",
+            "id": "zomato_2_extracted.json_id_3-zomato_3_extracted.json_id_1-zomato_6_extracted.json_id_1",
+            "rank": 12,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "online_order",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "rate and online_order count",
+            "id": "zomato_2_extracted.json_id_4-zomato_5_extracted.json_id_16",
+            "rank": 13,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "online_order",
+                    "trans": "count",
+                    "calcus": "percentage"
+                },
+                "color": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "book_table count",
+            "id": "zomato_2_extracted.json_id_5-zomato_3_extracted.json_id_3-zomato_6_extracted.json_id_2",
+            "rank": 14,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "book_table",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "rate and book_table count",
+            "id": "zomato_2_extracted.json_id_6-zomato_5_extracted.json_id_17",
+            "rank": 15,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "book_table",
+                    "trans": "count",
+                    "calcus": "percentage"
+                },
+                "color": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "top listed_in(type)",
+            "id": "zomato_2_extracted.json_id_7-zomato_3_extracted.json_id_9",
+            "rank": 16,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "listed_in(type)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "listed_in(type)",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "accept online orders or not",
+            "id": "zomato_3_extracted.json_id_2",
+            "rank": 17,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "online_order",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "listed_in(type)",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "book_table or not",
+            "id": "zomato_3_extracted.json_id_4",
+            "rank": 18,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "book_table",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "listed_in(type)",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "rate count",
+            "id": "zomato_3_extracted.json_id_5",
+            "rank": 19,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "rate count",
+            "id": "zomato_3_extracted.json_id_6",
+            "rank": 20,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "rate count",
+            "id": "zomato_3_extracted.json_id_7",
+            "rank": 21,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "approx_cost(for two people) count",
+            "id": "zomato_3_extracted.json_id_11-zomato_6_extracted.json_id_10",
+            "rank": 22,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "cuisines count",
+            "id": "zomato_3_extracted.json_id_12",
+            "rank": 23,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "cuisines",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "cuisines",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "top listed_in(type)",
+            "id": "zomato_4_extracted.json_id_4-zomato_6_extracted.json_id_8",
+            "rank": 24,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "listed_in(type)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "listed_in(type)",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "rate count",
+            "id": "zomato_4_extracted.json_id_5",
+            "rank": 25,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "votes vs rate",
+            "id": "zomato_4_extracted.json_id_6-zomato_4_extracted.json_id_7",
+            "rank": 26,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "votes",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "cost vs rating",
+            "id": "zomato_4_extracted.json_id_8-zomato_5_extracted.json_id_5",
+            "rank": 27,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "number of res of different rate by online order",
+            "id": "zomato_4_extracted.json_id_12",
+            "rank": 28,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "online_order",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "number of res of different rate by book_table",
+            "id": "zomato_4_extracted.json_id_13",
+            "rank": 29,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "book_table",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "top voted location",
+            "id": "zomato_4_extracted.json_id_14",
+            "rank": 30,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "location",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "votes",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "top voted listed_in(type)",
+            "id": "zomato_4_extracted.json_id_15",
+            "rank": 31,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "listed_in(type)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "votes",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "mean rate",
+            "id": "zomato_5_extracted.json_id_2",
+            "rank": 32,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "mean approx_cost(for two people)",
+            "id": "zomato_5_extracted.json_id_3",
+            "rank": 33,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "mean rate",
+            "id": "zomato_5_extracted.json_id_4",
+            "rank": 34,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "cost vs rating",
+            "id": "zomato_5_extracted.json_id_7",
+            "rank": 35,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "online orders and votes",
+            "id": "zomato_5_extracted.json_id_10",
+            "rank": 36,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "votes",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "online orders and cost",
+            "id": "zomato_5_extracted.json_id_11",
+            "rank": 37,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "online orders and rate",
+            "id": "zomato_5_extracted.json_id_12",
+            "rank": 38,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "online_order",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "book_table and votes",
+            "id": "zomato_5_extracted.json_id_13",
+            "rank": 39,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "votes",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "book_table and cost",
+            "id": "zomato_5_extracted.json_id_14",
+            "rank": 40,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "book_table and rate",
+            "id": "zomato_5_extracted.json_id_15",
+            "rank": 41,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "listed_in(type) and cost",
+            "id": "zomato_5_extracted.json_id_18",
+            "rank": 42,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "listed_in(type)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "listed_in(type) and rate",
+            "id": "zomato_5_extracted.json_id_19",
+            "rank": 43,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "listed_in(type)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "listed_in(city) and cost",
+            "id": "zomato_5_extracted.json_id_20",
+            "rank": 44,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "listed_in(city)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "approx_cost(for two people)",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "listed_in(city) and rate",
+            "id": "zomato_5_extracted.json_id_21",
+            "rank": 45,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "listed_in(city)",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "rate count",
+            "id": "zomato_6_extracted.json_id_3",
+            "rank": 46,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "book_table",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "book_table",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "rate and listed_in(city)",
+            "id": "zomato_6_extracted.json_id_5",
+            "rank": 47,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "listed_in(city)",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "rate and rest_type",
+            "id": "zomato_6_extracted.json_id_7",
+            "rank": 48,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "rest_type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "rate and listed_in(type)",
+            "id": "zomato_6_extracted.json_id_9",
+            "rank": 49,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "rate",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "rate",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "listed_in(type)",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        }
+    ]
+}

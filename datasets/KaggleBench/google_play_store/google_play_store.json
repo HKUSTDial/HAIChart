@@ -1,0 +1,627 @@
+{
+    "charts": [
+        {
+            "describe": "which category has the higheset share",
+            "id": "google_play_store_1_extracted.json_id_1",
+            "rank": 1,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Category",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "size vs rating",
+            "id": "google_play_store_1_extracted.json_id_2-google_play_store_2_extracted.json_id_3-google_play_store_4_extracted.json_id_3-google_play_store_4_extracted.json_id_10",
+            "rank": 2,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Size",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "size vs rating by category",
+            "id": "google_play_store_1_extracted.json_id_3",
+            "rank": 3,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Size",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "price vs rating",
+            "id": "google_play_store_1_extracted.json_id_4-google_play_store_2_extracted.json_id_6",
+            "rank": 4,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Price",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "size vs rating by type",
+            "id": "google_play_store_1_extracted.json_id_5",
+            "rank": 5,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Size",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "reviews vs inistalls",
+            "id": "google_play_store_1_extracted.json_id_6",
+            "rank": 6,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Reviews",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Installs",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "which category has the higheset share",
+            "id": "google_play_store_2_extracted.json_id_1-google_play_store_4_extracted.json_id_1-google_play_store_5_extracted.json_id_1-google_play_store_6_extracted.json_id_1-google_play_store_7_extracted.json_id_3-google_play_store_8_extracted.json_id_4-google_play_store_9_extracted.json_id_1",
+            "rank": 7,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Category",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "reviews vs rating",
+            "id": "google_play_store_2_extracted.json_id_2-google_play_store_4_extracted.json_id_8",
+            "rank": 8,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Reviews",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "installs vs rating",
+            "id": "google_play_store_2_extracted.json_id_4-google_play_store_8_extracted.json_id_8",
+            "rank": 9,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Installs",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count by type",
+            "id": "google_play_store_2_extracted.json_id_5-google_play_store_3_extracted.json_id_2",
+            "rank": 10,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Type",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "which category has the higheset installs",
+            "id": "google_play_store_3_extracted.json_id_1-google_play_store_5_extracted.json_id_2-google_play_store_9_extracted.json_id_2",
+            "rank": 11,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Installs",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count by category, type",
+            "id": "google_play_store_3_extracted.json_id_3-google_play_store_3_extracted.json_id_4",
+            "rank": 12,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Category",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "total installs by Content Rating",
+            "id": "google_play_store_3_extracted.json_id_5-google_play_store_5_extracted.json_id_3",
+            "rank": 13,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Content Rating",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Installs",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "total installs by Genres",
+            "id": "google_play_store_3_extracted.json_id_6",
+            "rank": 14,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genres",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Installs",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "total installs by Genres, Type",
+            "id": "google_play_store_3_extracted.json_id_7",
+            "rank": 15,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genres",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Installs",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "count by Last Updated",
+            "id": "google_play_store_3_extracted.json_id_8",
+            "rank": 16,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Last Updated",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Last Updated",
+                    "trans": "raw",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "total installs by Android Ver",
+            "id": "google_play_store_3_extracted.json_id_9",
+            "rank": 17,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Android Ver",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Installs",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "mean rating by category",
+            "id": "google_play_store_4_extracted.json_id_2",
+            "rank": 18,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count by type",
+            "id": "google_play_store_4_extracted.json_id_4-google_play_store_7_extracted.json_id_1-google_play_store_8_extracted.json_id_1",
+            "rank": 19,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Type",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "sum reviews by Category",
+            "id": "google_play_store_4_extracted.json_id_5",
+            "rank": 20,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Reviews",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count by Genres",
+            "id": "google_play_store_4_extracted.json_id_6-google_play_store_6_extracted.json_id_3-google_play_store_7_extracted.json_id_4-google_play_store_9_extracted.json_id_4",
+            "rank": 21,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genres",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Genres",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count by type",
+            "id": "google_play_store_4_extracted.json_id_7",
+            "rank": 22,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Type",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "reviews vs rating",
+            "id": "google_play_store_4_extracted.json_id_9",
+            "rank": 23,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Reviews",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "count by Content Rating",
+            "id": "google_play_store_5_extracted.json_id_4-google_play_store_6_extracted.json_id_2-google_play_store_7_extracted.json_id_2-google_play_store_8_extracted.json_id_6",
+            "rank": 24,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Content Rating",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Content Rating",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "total installs by Type",
+            "id": "google_play_store_5_extracted.json_id_5",
+            "rank": 25,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Installs",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count by Android Ver",
+            "id": "google_play_store_6_extracted.json_id_4",
+            "rank": 26,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Android Ver",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Android Ver",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "mean rating by type",
+            "id": "google_play_store_8_extracted.json_id_2",
+            "rank": 27,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count by Content Rating",
+            "id": "google_play_store_8_extracted.json_id_3",
+            "rank": 28,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Content Rating",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean rating by Category,type",
+            "id": "google_play_store_8_extracted.json_id_5",
+            "rank": 29,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean rating by Content Rating",
+            "id": "google_play_store_8_extracted.json_id_7",
+            "rank": 30,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Content Rating",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "mean rating by Android Ver",
+            "id": "google_play_store_8_extracted.json_id_9",
+            "rank": 31,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Android Ver",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Rating",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "which category,type has the higheset installs",
+            "id": "google_play_store_9_extracted.json_id_3",
+            "rank": 32,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Installs",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Type",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "count by Genres, category",
+            "id": "google_play_store_9_extracted.json_id_5",
+            "rank": 33,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genres",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Genres",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Category",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        }
+    ]
+}

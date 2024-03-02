@@ -1,0 +1,124 @@
+{
+    "url": "https://www.kaggle.com/ruslankl/airplane-crashes-data-visualization",
+    "votes": 88,
+    "rank": 2,
+    "charts": [
+        {
+            "describe": "Number of accidents of different years",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Date",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of accidents of different months",
+            "chart": "bar",
+            "x": {
+                "attr": "Date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Date",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of accidents of different weeks",
+            "chart": "bar",
+            "x": {
+                "attr": "Date",
+                "trans": "week",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Date",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of accidents of different weeks",
+            "chart": "bar",
+            "x": {
+                "attr": "Date",
+                "trans": "hour",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Date",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of accidents of military or passenger",
+            "chart": "pie",
+            "x": {
+                "attr": "isMilitary",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Date",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Number of accidents of years of military or passenger",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Date",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "isMilitary",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Number of people aboard of years",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Aboard",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of fatalities of years",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

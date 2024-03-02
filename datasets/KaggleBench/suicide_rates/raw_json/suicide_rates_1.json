@@ -1,0 +1,219 @@
+{
+    "url": "https://www.kaggle.com/tavoosi/suicide-data-full-interactive-dashboard",
+    "votes": 294,
+    "rank": 1,
+    "charts": [
+        {
+            "describe": "worldwide suicides of different years",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "worldwide suicides by gender of different years",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "worldwide suicides by age of different years",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "worldwide suicides by gender",
+            "chart": "pie",
+            "x": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "worldwide suicides by age",
+            "chart": "pie",
+            "x": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "suicides by continent and gender",
+            "chart": "bar",
+            "x": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by continent and age",
+            "chart": "bar",
+            "x": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by continent",
+            "chart": "map",
+            "x": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides by continent",
+            "chart": "pie",
+            "x": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "suicides by country",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides by country and gender",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by country and age",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by country",
+            "chart": "map",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

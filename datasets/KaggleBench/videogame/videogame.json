@@ -1,0 +1,913 @@
+{
+    "charts": [
+        {
+            "describe": "critic score by user score",
+            "id": "videogame_1_extracted.json_id_1-videogame_3_extracted.json_id_6-videogame_4_extracted.json_id_4",
+            "rank": 1,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Critic_Score",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "User_Score",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "critic score by Critic_Count",
+            "id": "videogame_1_extracted.json_id_2",
+            "rank": 2,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Critic_Score",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Critic_Count",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "global yearly sales of the 7th gen consoles",
+            "id": "videogame_1_extracted.json_id_3",
+            "rank": 3,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Platform",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "global sales of the 7th gen consoles per rating type",
+            "id": "videogame_1_extracted.json_id_4",
+            "rank": 4,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Rating",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Platform",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "global sales of the 7th gen consoles per Genre",
+            "id": "videogame_1_extracted.json_id_5",
+            "rank": 5,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Platform",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Pie Chart of Global Sales of different platform",
+            "id": "videogame_1_extracted.json_id_6-videogame_4_extracted.json_id_15",
+            "rank": 6,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "Platform",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "Pie Chart of User_Count of different platform",
+            "id": "videogame_1_extracted.json_id_7",
+            "rank": 7,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "Platform",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "User_Count",
+                    "trans": "sum",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "most popular games",
+            "id": "videogame_2_extracted.json_id_1",
+            "rank": 8,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "NA_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "most popular games",
+            "id": "videogame_2_extracted.json_id_2",
+            "rank": 9,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "EU_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "most popular games",
+            "id": "videogame_2_extracted.json_id_3",
+            "rank": 10,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "JP_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "most popular games",
+            "id": "videogame_2_extracted.json_id_4",
+            "rank": 11,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Other_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "most popular games",
+            "id": "videogame_2_extracted.json_id_5-videogame_3_extracted.json_id_26-videogame_4_extracted.json_id_14",
+            "rank": 12,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Name",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "id": "videogame_2_extracted.json_id_6",
+            "rank": 13,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "NA_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "id": "videogame_2_extracted.json_id_7",
+            "rank": 14,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "EU_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "id": "videogame_2_extracted.json_id_8",
+            "rank": 15,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "JP_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "id": "videogame_2_extracted.json_id_9",
+            "rank": 16,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Other_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "id": "videogame_2_extracted.json_id_10-videogame_3_extracted.json_id_2",
+            "rank": 17,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "global sales per year by genre",
+            "id": "videogame_2_extracted.json_id_11",
+            "rank": 18,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                },
+                "color": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "number of releases",
+            "id": "videogame_3_extracted.json_id_1",
+            "rank": 19,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Year_of_Release",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "global sales per year by genre",
+            "id": "videogame_3_extracted.json_id_3",
+            "rank": 20,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "genre total sales",
+            "id": "videogame_3_extracted.json_id_4-videogame_4_extracted.json_id_1",
+            "rank": 21,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "global sales per year by Rating",
+            "id": "videogame_3_extracted.json_id_5",
+            "rank": 22,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Rating",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "na_sales vs global_salse",
+            "id": "videogame_3_extracted.json_id_7",
+            "rank": 23,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Global_Sales",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "NA_Sales",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "EU_Sales vs global_salse",
+            "id": "videogame_3_extracted.json_id_8",
+            "rank": 24,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Global_Sales",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "EU_Sales",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "JP_Sales vs global_salse",
+            "id": "videogame_3_extracted.json_id_9",
+            "rank": 25,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Global_Sales",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "JP_Sales",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Other_Sales vs global_salse",
+            "id": "videogame_3_extracted.json_id_10",
+            "rank": 26,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Global_Sales",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Other_Sales",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "yearly sales by platform",
+            "id": "videogame_3_extracted.json_id_11",
+            "rank": 27,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Platform",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "total sales of different publishers",
+            "id": "videogame_3_extracted.json_id_12",
+            "rank": 28,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "total games of different publishers",
+            "id": "videogame_3_extracted.json_id_13",
+            "rank": 29,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Publisher",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "mean sales of different publishers of differen year",
+            "id": "videogame_3_extracted.json_id_14",
+            "rank": 30,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean sales of different publishers",
+            "id": "videogame_3_extracted.json_id_15",
+            "rank": 31,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "publisher and Global_Sales",
+            "id": "videogame_3_extracted.json_id_16-videogame_4_extracted.json_id_8",
+            "rank": 32,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "publisher and na sales",
+            "id": "videogame_3_extracted.json_id_17-videogame_4_extracted.json_id_9",
+            "rank": 33,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "NA_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "publisher and EU_Sales",
+            "id": "videogame_3_extracted.json_id_18-videogame_4_extracted.json_id_10",
+            "rank": 34,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "EU_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "publisher and JP_Sales",
+            "id": "videogame_3_extracted.json_id_19-videogame_4_extracted.json_id_11",
+            "rank": 35,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "JP_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "publisher and Other_Sales",
+            "id": "videogame_3_extracted.json_id_20-videogame_4_extracted.json_id_12",
+            "rank": 36,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Other_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Genre and Global_Sales",
+            "id": "videogame_3_extracted.json_id_21",
+            "rank": 37,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Genre and na sales",
+            "id": "videogame_3_extracted.json_id_22",
+            "rank": 38,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "NA_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Genre and EU_Sales",
+            "id": "videogame_3_extracted.json_id_23",
+            "rank": 39,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "EU_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Genre and JP_Sales",
+            "id": "videogame_3_extracted.json_id_24",
+            "rank": 40,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "JP_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Genre and Other_Sales",
+            "id": "videogame_3_extracted.json_id_25",
+            "rank": 41,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Other_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "Critic_Count by Critic_Score",
+            "id": "videogame_4_extracted.json_id_2",
+            "rank": 42,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Critic_Count",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "Critic_Score",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "User_Count by user score",
+            "id": "videogame_4_extracted.json_id_3",
+            "rank": 43,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "User_Count",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "User_Score",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "na_sales vs global_salse",
+            "id": "videogame_4_extracted.json_id_5",
+            "rank": 44,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Global_Sales",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "NA_Sales",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "EU_Sales vs global_salse",
+            "id": "videogame_4_extracted.json_id_6",
+            "rank": 45,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "Global_Sales",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "EU_Sales",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "yearly releases by genre",
+            "id": "videogame_4_extracted.json_id_7",
+            "rank": 46,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Year_of_Release",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Genre",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "total sales of different publishers of differen year",
+            "id": "videogame_4_extracted.json_id_13",
+            "rank": 47,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Publisher",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "global sales of different year and rating",
+            "id": "videogame_4_extracted.json_id_16",
+            "rank": 48,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "Year_of_Release",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "Rating",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        }
+    ]
+}

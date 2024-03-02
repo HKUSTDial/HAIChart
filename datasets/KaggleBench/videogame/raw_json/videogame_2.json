@@ -1,0 +1,271 @@
+{
+    "url": "https://www.kaggle.com/ash316/plotly-made-easy-very-easy",
+    "votes": 48,
+    "rank": 2,
+    "charts": [
+        {
+            "describe": "most popular games",
+            "chart": "bar",
+            "x": {
+                "attr": "Name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "NA_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "most popular games",
+            "chart": "bar",
+            "x": {
+                "attr": "Name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "EU_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "most popular games",
+            "chart": "bar",
+            "x": {
+                "attr": "Name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "JP_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "most popular games",
+            "chart": "bar",
+            "x": {
+                "attr": "Name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Other_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "most popular games",
+            "chart": "bar",
+            "x": {
+                "attr": "Name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "most popular games",
+            "chart": "bar-m",
+            "x": {
+                "attr": "Name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": [
+                {
+                    "attr": "NA_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                },
+                {
+                    "attr": "EU_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                },
+                {
+                    "attr": "JP_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                },
+                {
+                    "attr": "Other_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                },
+                {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "groupby": true
+                }
+            ]
+        },
+        {
+            "describe": "critic score distribution",
+            "chart": "histogram",
+            "x": {
+                "attr": "Critic_Score",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Critic_Score",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "NA_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "EU_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "JP_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Other_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "yearly sales by region",
+            "chart": "line-m",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": [
+                {
+                    "attr": "NA_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                {
+                    "attr": "EU_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                {
+                    "attr": "JP_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                {
+                    "attr": "Other_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                {
+                    "attr": "Global_Sales",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            ]
+        },
+        {
+            "describe": "global sales per year by genre",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "groupby": true
+            },
+            "color": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "publisher games by year",
+            "chart": "heatmap",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "color": {
+                "attr": "Year_of_Release",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

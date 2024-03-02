@@ -1,0 +1,17 @@
+{
+    "Name": "object",
+    "Platform": "object",
+    "Year_of_Release": "object",
+    "Genre": "object",
+    "Publisher": "object",
+    "NA_Sales": "float32",
+    "EU_Sales": "float32",
+    "JP_Sales": "float32",
+    "Other_Sales": "float32",
+    "Global_Sales": "float32",
+    "User_Count": "float32",
+    "Rating": "object",
+    "Critic_Score": "float32",
+    "Critic_Count": "float32",
+    "User_Score": "float32"
+}

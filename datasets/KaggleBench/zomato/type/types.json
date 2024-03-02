@@ -1,0 +1,13 @@
+{
+    "name": "object",
+    "online_order": "object",
+    "book_table": "object",
+    "rate": "object",
+    "votes": "float32",
+    "location": "object",
+    "rest_type": "object",
+    "cuisines": "object",
+    "approx_cost(for two people)": "float32",
+    "listed_in(type)": "object",
+    "listed_in(city)": "object"
+}

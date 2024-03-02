@@ -1,0 +1,13 @@
+{
+    "Category": "object",
+    "Rating": "float32",
+    "Reviews": "float32",
+    "Size": "float32",
+    "Installs": "float32",
+    "Type": "object",
+    "Price": "float32",
+    "Content Rating": "object",
+    "Genres": "object",
+    "Last Updated": "object",
+    "Android Ver": "object"
+}

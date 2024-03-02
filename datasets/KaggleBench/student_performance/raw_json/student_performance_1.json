@@ -1,0 +1,172 @@
+{
+    "url": "https://www.kaggle.com/spscientist/student-performance-in-exams",
+    "votes": 143,
+    "rank": 1,
+    "charts": [
+        {
+            "describe": "math score distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "math score",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "pass status by parental level of education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Math_PassStatus=math score > 40",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "reading score distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "reading score",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "reading score",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "pass status by parental level of education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Reading_PassStatus=reading score > 40",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "writing score distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "writing score",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "pass status by parental level of education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Writing_PassStatus=writing score>40",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "all pass statu by parental level of education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "OverAll_PassStatus=writing math reading > 40",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "average score distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "Total_Marks=math+reading+writing",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Total_Marks=math+reading+writing",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Grade distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Grade distribution by parental education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "raw",
+                "groupby": true
+            }
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "date": "object",
+    "state": "object",
+    "city_or_county": "object",
+    "n_killed": "float32",
+    "n_injured": "float32",
+    "n_guns_involved": "float32"
+}

@@ -1,0 +1,261 @@
+{
+    "url": "https://www.kaggle.com/hindamosh/funny-banglore-restaurants-analysis",
+    "votes": 27,
+    "rank": 4,
+    "charts": [
+        {
+            "describe": "dish liked count",
+            "chart": "wourdcount",
+            "x": {
+                "attr": "dish_liked",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "dish_liked",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top rest_type",
+            "chart": "bar",
+            "x": {
+                "attr": "rest_type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rest_type",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top restarurant chains",
+            "chart": "bar",
+            "x": {
+                "attr": "name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "name",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top cuisines",
+            "chart": "bar",
+            "x": {
+                "attr": "cuisines",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "cuisines",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top menu_item",
+            "chart": "wordcount",
+            "x": {
+                "attr": "menu_item",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "menu_item",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top listed_in(type)",
+            "chart": "bar",
+            "x": {
+                "attr": "listed_in(type)",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "listed_in(type)",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "rate count",
+            "chart": "bar",
+            "x": {
+                "attr": "rate",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rate",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "votes vs rate",
+            "chart": "scatter",
+            "x": {
+                "attr": "rate",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "votes",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "votes vs rate",
+            "chart": "scatter",
+            "x": {
+                "attr": "rate",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "votes",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "cost vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "rate",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "approx_cost(for two people)",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "location count",
+            "chart": "bar",
+            "x": {
+                "attr": "location",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "location",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "accept online orders or not",
+            "chart": "pie",
+            "x": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "online_order",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "book_table or not",
+            "chart": "pie",
+            "x": {
+                "attr": "book_table",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "book_table",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "number of res of different rate by online order",
+            "chart": "line",
+            "x": {
+                "attr": "rate",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rate",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "online_order",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "number of res of different rate by book_table",
+            "chart": "line",
+            "x": {
+                "attr": "rate",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rate",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "book_table",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top voted location",
+            "chart": "bar",
+            "x": {
+                "attr": "location",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "votes",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top voted listed_in(type)",
+            "chart": "bar",
+            "x": {
+                "attr": "listed_in(type)",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "votes",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

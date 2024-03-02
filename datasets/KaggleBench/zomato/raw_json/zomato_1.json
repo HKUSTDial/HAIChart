@@ -1,0 +1,269 @@
+{
+    "url": "https://www.kaggle.com/shahules/zomato-complete-eda-and-lstm-model",
+    "votes": 124,
+    "rank": 1,
+    "charts": [
+        {
+            "describe": "top restarurant chains",
+            "chart": "bar",
+            "x": {
+                "attr": "name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "name",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "accept online orders or not",
+            "chart": "pie",
+            "x": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "online_order",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "book_table or not",
+            "chart": "pie",
+            "x": {
+                "attr": "book_table",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "book_table",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "rating distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "rate",
+                "trans": "bin",
+                "bins": 20
+            },
+            "y": {
+                "attr": "rate",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "cost vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "rate",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "approx_cost(for two people)",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "approx_cost(for two people) distribution",
+            "chart": "histogram",
+            "x": {
+                "attr": "approx_cost(for two people)",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "approx_cost(for two people)",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "boxplots of votes",
+            "chart": "boxplot",
+            "x": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "votes",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "top rest_type",
+            "chart": "bar",
+            "x": {
+                "attr": "rest_type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rest_type",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "boxplots of approx_cost(for two people)",
+            "chart": "boxplot",
+            "x": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "approx_cost(for two people)",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "top location",
+            "chart": "bar",
+            "x": {
+                "attr": "location",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "location",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top location",
+            "chart": "bar",
+            "x": {
+                "attr": "location",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "location",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "cuisines",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "heatmap of location",
+            "chart": "heatmap",
+            "x": {
+                "attr": "lat",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "lon",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "lat",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top cuisines",
+            "chart": "bar",
+            "x": {
+                "attr": "cuisines",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "cuisines",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top restaurants of different type",
+            "chart": "bar",
+            "x": {
+                "attr": "rest_type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rest_type",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "name",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "wordcloud of dish_liked",
+            "chart": "wordcloud",
+            "x": {
+                "attr": "dish_liked",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "dish_liked",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "col": {
+                "attr": "rest_type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "wordcloud of review",
+            "chart": "wordcloud",
+            "x": {
+                "attr": "review",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "review",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "col": {
+                "attr": "name",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "rating distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rating",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

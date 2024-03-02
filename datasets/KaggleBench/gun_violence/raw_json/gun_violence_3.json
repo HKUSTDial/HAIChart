@@ -1,0 +1,300 @@
+{
+    "url": "https://www.kaggle.com/codename007/dangerous-places-in-usa-2013-2018",
+    "votes": 95,
+    "rank": 3,
+    "charts": [
+        {
+            "describe": "Number of incidents of different states",
+            "chart": "bar",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "state",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of incidents of different cities",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "city_or_county",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of guns used",
+            "chart": "pie",
+            "x": {
+                "attr": "n_guns_involved",
+                "trans": "bin"
+            },
+            "y": {
+                "attr": "n_guns_involved",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Number of killed of different states",
+            "chart": "bar",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of injured of different states",
+            "chart": "bar",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of killed of different cities",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of injured of different cities",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Word count of incident_characteristics",
+            "chart": "wordcloud",
+            "x": {
+                "attr": "incident_characteristics",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "incident_characteristics",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Wordcloud of location description",
+            "chart": "wordcloud",
+            "x": {
+                "attr": "location_description",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "location_description",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of killed incidents by weekday",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "weekday",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of injured incidents by weekday",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "weekday",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of victims incidents by weekday",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "weekday",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured+n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of killed incidents by month",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of injured incidents by month",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of victims incidents by month",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured+n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of killed incidents by year",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of injured incidents by year",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of victims incidents by year",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured+n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Total number of killed by date",
+            "chart": "line",
+            "x": {
+                "attr": "date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Total number of injured by date",
+            "chart": "line",
+            "x": {
+                "attr": "date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Total number of victims by date",
+            "chart": "line",
+            "x": {
+                "attr": "date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured+n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

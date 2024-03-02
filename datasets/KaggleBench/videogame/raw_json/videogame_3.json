@@ -1,0 +1,507 @@
+{
+    "url": "https://www.kaggle.com/ash316/plotly-made-easy-very-easy",
+    "votes": 33,
+    "rank": 3,
+    "charts": [
+        {
+            "describe": "Correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "scattermatrix of smoker",
+            "chart": "scattermatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "number of releases",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Year_of_Release",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "global sales per year",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "global sales per year by genre",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "genre total sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "global sales per year by Rating",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Rating",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "critic score by user score",
+            "chart": "scatter",
+            "x": {
+                "attr": "Critic_Score",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "User_Score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "na_sales vs global_salse",
+            "chart": "scatter",
+            "x": {
+                "attr": "Global_Sales",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "NA_Sales",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "EU_Sales vs global_salse",
+            "chart": "scatter",
+            "x": {
+                "attr": "Global_Sales",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "EU_Sales",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "JP_Sales vs global_salse",
+            "chart": "scatter",
+            "x": {
+                "attr": "Global_Sales",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "JP_Sales",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "Other_Sales vs global_salse",
+            "chart": "scatter",
+            "x": {
+                "attr": "Global_Sales",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Other_Sales",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "Other_Sales vs global_salse",
+            "chart": "regplot",
+            "x": {
+                "attr": "Global_Sales",
+                "trans": "raw"
+            },
+            "y": [
+                {
+                    "attr": "NA_Sales",
+                    "trans": "raw"
+                },
+                {
+                    "attr": "EU_Sales",
+                    "trans": "raw"
+                },
+                {
+                    "attr": "JP_Sales",
+                    "trans": "raw"
+                },
+                {
+                    "attr": "Other_Sales",
+                    "trans": "raw"
+                }
+            ]
+        },
+        {
+            "describe": "yearly sales by platform",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Platform",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "total sales of different publishers",
+            "chart": "bar",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total games of different publishers",
+            "chart": "bar",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Publisher",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "mean sales of different publishers of differen year",
+            "chart": "line",
+            "x": {
+                "attr": "Year_of_Release",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean sales of different publishers",
+            "chart": "bar",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "publisher and genre",
+            "chart": "heatmap",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "color": {
+                "attr": "Publisher",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "publisher and genre sales",
+            "chart": "heatmap",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "color": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "publisher and genre sales",
+            "chart": "heatmap",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "color": {
+                "attr": "Global_Sales",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "publisher and Global_Sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "publisher and na sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "NA_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "publisher and EU_Sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "EU_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "publisher and JP_Sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "JP_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "publisher and Other_Sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Publisher",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Other_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Genre and Global_Sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Genre and na sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "NA_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Genre and EU_Sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "EU_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Genre and JP_Sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "JP_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Genre and Other_Sales",
+            "chart": "bar",
+            "x": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Other_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "most popular games",
+            "chart": "bar",
+            "x": {
+                "attr": "Name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "most popular games in each genre",
+            "chart": "heatmap",
+            "x": {
+                "attr": "Name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genre",
+                "trans": "raw",
+                "groupby": true
+            },
+            "color": {
+                "attr": "Global_Sales",
+                "trans": "sum",
+                "groupby": true
+            }
+        }
+    ]
+}

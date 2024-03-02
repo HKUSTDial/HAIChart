@@ -1,0 +1,109 @@
+{
+    "url": "https://www.kaggle.com/nilanml/eda-lasso",
+    "votes": 25,
+    "rank": 6,
+    "charts": [
+        {
+            "describe": "avg price by date",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "avg price by year and type",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "avg price by region",
+            "chart": "bar",
+            "x": {
+                "attr": "region",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "avg volume by year",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Total Volume",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "avg volume by region",
+            "chart": "bar",
+            "x": {
+                "attr": "region",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Total Volume",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        }
+    ]
+}

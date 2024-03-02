@@ -1,0 +1,77 @@
+{
+    "url": "https://www.kaggle.com/nilanml/eda-of-google-play-store-apps",
+    "votes": 32,
+    "rank": 7,
+    "charts": [
+        {
+            "describe": "app Installs histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Installs",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by type",
+            "chart": "bar",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Content Rating",
+            "chart": "bar",
+            "x": {
+                "attr": "Content Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Content Rating",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "which category has the higheset share",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Genres",
+            "chart": "bar",
+            "x": {
+                "attr": "Genres",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genres",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

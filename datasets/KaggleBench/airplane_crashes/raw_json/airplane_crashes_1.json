@@ -1,0 +1,259 @@
+{
+    "url": "https://www.kaggle.com/garydee/who-not-to-fly-with",
+    "votes": 132,
+    "rank": 1,
+    "charts": [
+        {
+            "describe": "Number of accidents of different operators",
+            "chart": "bar",
+            "x": {
+                "attr": "Operator",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Operator",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Proportion of accidents of different operators",
+            "chart": "bar",
+            "x": {
+                "attr": "Operator",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Operator",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Number of fatalities of different operators",
+            "chart": "bar",
+            "x": {
+                "attr": "Operator",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Proportion of fatalities of different operators",
+            "chart": "bar",
+            "x": {
+                "attr": "Operator",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Fatalities per accident(average) of different operators",
+            "chart": "bar",
+            "x": {
+                "attr": "Operator",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Predicting fatalities given accidents of different operators",
+            "chart": "scatter",
+            "x": {
+                "attr": "Fatalities",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "groupby": {
+                "attr": "Operator",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "Number of accidents of different types",
+            "chart": "bar",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Proportion of accidents of different types",
+            "chart": "bar",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Number of fatalities of different types",
+            "chart": "bar",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Proportion of fatalities of different types",
+            "chart": "bar",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Number of fatalities per accident(average) of different types",
+            "chart": "bar",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of fatalities of different years",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of accidents of different years",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of fatalities of different years of different operators",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Operator",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Number of accidents of different years of different operators",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Date",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Operator",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Number of fatalities of different countries",
+            "chart": "bar",
+            "x": {
+                "attr": "Location",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Proportion of fatalities of different countries",
+            "chart": "bar",
+            "x": {
+                "attr": "Location",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Fatalities",
+                "trans": "sum",
+                "calcus": "percentage"
+            }
+        }
+    ]
+}

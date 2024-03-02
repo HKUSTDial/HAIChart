@@ -1,0 +1,168 @@
+{
+    "url": "https://www.kaggle.com/janiobachmann/price-of-avocados-pattern-recognition-analysis",
+    "votes": 133,
+    "rank": 1,
+    "charts": [
+        {
+            "describe": "avocado price by type",
+            "chart": "densityplot",
+            "x": {
+                "attr": "AveragePrice",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "averageprice of diferent year and type",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "averageprice of diferent year month and type",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year-month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "total volumn of diferent year and type",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year-month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Total Volume",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "price distribution by year",
+            "chart": "densityplot",
+            "x": {
+                "attr": "AveragePrice",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "price distribution by month",
+            "chart": "pointplot",
+            "x": {
+                "attr": "Date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "facted avg price of different year and month",
+            "chart": "facetgrid",
+            "x": {
+                "attr": "Date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "col": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "avg volume by month",
+            "chart": "bar",
+            "x": {
+                "attr": "Date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Total Volume",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "avg price by month",
+            "chart": "bar",
+            "x": {
+                "attr": "Date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+    "Date": "object",
+    "Location": "object",
+    "Operator": "object",
+    "Type": "object",
+    "Aboard": "float64",
+    "Fatalities": "float64"
+}

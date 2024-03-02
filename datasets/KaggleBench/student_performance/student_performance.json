@@ -1,0 +1,722 @@
+{
+    "charts": [
+        {
+            "describe": "math score distribution",
+            "id": "student_performance_1_extracted.json_id_1-student_performance_5_extracted.json_id_5",
+            "rank": 1,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "math score",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "math score",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "reading score distribution",
+            "id": "student_performance_1_extracted.json_id_2-student_performance_5_extracted.json_id_6",
+            "rank": 2,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "reading score",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "reading score",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "writing score distribution",
+            "id": "student_performance_1_extracted.json_id_3-student_performance_5_extracted.json_id_7",
+            "rank": 3,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "writing score",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "writing score",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "gender distribtion",
+            "id": "student_performance_2_extracted.json_id_1-student_performance_5_extracted.json_id_1",
+            "rank": 4,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "gender",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "race_ethnicity distribtion",
+            "id": "student_performance_2_extracted.json_id_2-student_performance_5_extracted.json_id_2",
+            "rank": 5,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "race_ethnicity",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "mean writing score of different parental level",
+            "id": "student_performance_2_extracted.json_id_3",
+            "rank": 6,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "writing score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean reading score of different parental level",
+            "id": "student_performance_2_extracted.json_id_4",
+            "rank": 7,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "reading score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean math score of different parental level",
+            "id": "student_performance_2_extracted.json_id_5",
+            "rank": 8,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "math score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean math score of different gender",
+            "id": "student_performance_2_extracted.json_id_6",
+            "rank": 9,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "math score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean math score of different gender and preparation course",
+            "id": "student_performance_2_extracted.json_id_7",
+            "rank": 10,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "math score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean writing score of different parental level",
+            "id": "student_performance_2_extracted.json_id_8",
+            "rank": 11,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "writing score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "sum writing score of lunch type",
+            "id": "student_performance_2_extracted.json_id_9",
+            "rank": 12,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "lunch",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "writing score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "race_ethnicity distribtion",
+            "id": "student_performance_2_extracted.json_id_10",
+            "rank": 13,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "race_ethnicity",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "race_ethnicity distribtion",
+            "id": "student_performance_2_extracted.json_id_11",
+            "rank": 14,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "reading score",
+                    "trans": "mean",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "math score vs reading score",
+            "id": "student_performance_2_extracted.json_id_12",
+            "rank": 15,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "math score",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "reading score",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "math score vs writing score",
+            "id": "student_performance_2_extracted.json_id_13",
+            "rank": 16,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "math score",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "writing score",
+                    "trans": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "gender and race",
+            "id": "student_performance_2_extracted.json_id_14",
+            "rank": 17,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "race_ethnicity",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "gender and parental level of education",
+            "id": "student_performance_2_extracted.json_id_15",
+            "rank": 18,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "parental level of education",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "lunch distribution",
+            "id": "student_performance_2_extracted.json_id_16-student_performance_5_extracted.json_id_4",
+            "rank": 19,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "lunch",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "lunch",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "parental level of education distribution",
+            "id": "student_performance_2_extracted.json_id_17",
+            "rank": 20,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "parental level of education",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "lunch",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean math score of different gender and preparation course",
+            "id": "student_performance_3_extracted.json_id_1",
+            "rank": 21,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "math score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean reading score of different gender and preparation course",
+            "id": "student_performance_3_extracted.json_id_2",
+            "rank": 22,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "reading score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean writing score of different gender and preparation course",
+            "id": "student_performance_3_extracted.json_id_3",
+            "rank": 23,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "writing score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean math score of different lunch and preparation course",
+            "id": "student_performance_3_extracted.json_id_4",
+            "rank": 24,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "math score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "lunch",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean reading score of different lunch and preparation course",
+            "id": "student_performance_3_extracted.json_id_5",
+            "rank": 25,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "reading score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "lunch",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean writing score of different lunch and preparation course",
+            "id": "student_performance_3_extracted.json_id_6",
+            "rank": 26,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "writing score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "lunch",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean math score of different gender and race_ethnicity",
+            "id": "student_performance_3_extracted.json_id_7",
+            "rank": 27,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "math score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean reading score of different gender and race_ethnicity",
+            "id": "student_performance_3_extracted.json_id_8",
+            "rank": 28,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "reading score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "mean writing score of different gender and race_ethnicity",
+            "id": "student_performance_3_extracted.json_id_9",
+            "rank": 29,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "writing score",
+                    "trans": "mean",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "parental level of education",
+            "id": "student_performance_3_extracted.json_id_10-student_performance_5_extracted.json_id_3",
+            "rank": 30,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "parental level of education",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "gender and race distribution",
+            "id": "student_performance_5_extracted.json_id_8",
+            "rank": 31,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "gender",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "gender",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "parental and race distribution",
+            "id": "student_performance_5_extracted.json_id_9",
+            "rank": 32,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "race_ethnicity",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "parental and course distribution",
+            "id": "student_performance_5_extracted.json_id_10",
+            "rank": 33,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "parental level of education",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "parental level of education",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "race and course distribution",
+            "id": "student_performance_5_extracted.json_id_11",
+            "rank": 34,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "race_ethnicity",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "race_ethnicity",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "test preparation course",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        }
+    ]
+}

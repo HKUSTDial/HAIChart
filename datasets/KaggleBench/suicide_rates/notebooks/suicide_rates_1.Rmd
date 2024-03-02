@@ -1,0 +1,564 @@
+---
+title: "Suicide Dashboard" 
+# author: "Saba Tavoosi"
+# date: "June 13, 2019"
+output: 
+  flexdashboard::flex_dashboard:
+    source_code: embed
+    vertical_layout: scroll
+    theme: yeti
+---
+
+Thank you for checking out my kernel!  
+
+Please upvote if you like the dashboard and if you have any suggestions feel free to leave a comment!
+
+.
+
+``` {js}
+// Inverse color of navigation bar.
+$('.navbar-inverse').removeClass('navbar-inverse').addClass('navbar-default');
+```
+
+```{r setup, include=FALSE}
+# Load necessary packages. 
+library(flexdashboard) # Dashboard package
+library(highcharter) # Interactive data visualizations
+library(plotly) # Interactive data visualizations
+library(viridis) # Color gradients
+library(tidyverse) # Metapackge
+library(countrycode) # Converts country names/codes
+library(rjson) # JSON reader
+library(crosstalk) # Provides interactivity for HTML widgets
+library(DT) # Displaying data tables
+```
+
+```{r include=FALSE}
+# Read in data. 
+data <- read.csv('../input/suicide-rates-overview-1985-to-2016/master.csv') %>%
+  filter(year != 2016, # filter out 2016 and countries with 0 data. 
+         country != 'Dominica',
+         country != 'Saint Kitts and Nevis')
+         
+# Fix the names of some of the countries in our data to match the country names 
+# used by our map later on so that they'll be interpreted and displayed. 
+data <- data %>%
+  mutate(country = fct_recode(country, "The Bahamas" = "Bahamas"),
+         country = fct_recode(country, "Cape Verde" = "Cabo Verde"),
+         country = fct_recode(country, "South Korea" = "Republic of Korea"),
+         country = fct_recode(country, "Russia" = "Russian Federation"),
+         country = fct_recode(country, "Republic of Serbia" = "Serbia"),
+         country = fct_recode(country, "United States of America" = "United States"))
+
+# Reorder levels of age to be in chronological order. 
+data$age <- factor(data$age, levels = c("5-14 years", "15-24 years", "25-34 years", "35-54 years", "55-74 years", "75+ years"))
+```
+
+```{r include=FALSE}
+# Create a custom theme for the plots. 
+custom_theme <- hc_theme(
+  colors = c('#5CACEE', 'green', 'red'),
+  chart = list(
+         backgroundColor = '#FAFAFA', 
+         plotBorderColor = "black"),
+  xAxis = list(
+         gridLineColor = "E5E5E5", 
+         labels = list(style = list(color = "#333333")), 
+         lineColor = "#E5E5E5", 
+         minorGridLineColor = "#E5E5E5", 
+         tickColor = "#E5E5E5", 
+         title = list(style = list(color = "#333333"))), 
+  yAxis = list(
+         gridLineColor = "#E5E5E5", 
+         labels = list(style = list(color = "#333333")), 
+         lineColor = "#E5E5E5", 
+         minorGridLineColor = "#E5E5E5", 
+         tickColor = "#E5E5E5", 
+         tickWidth = 1, 
+         title = list(style = list(color = "#333333"))),   
+  title = list(style = list(color = '#333333', fontFamily = "Lato")),
+  subtitle = list(style = list(color = '#666666', fontFamily = "Lato")),
+  legend = list(
+         itemStyle = list(color = "#333333"), 
+         itemHoverStyle = list(color = "#FFF"), 
+         itemHiddenStyle = list(color = "#606063")), 
+  credits = list(style = list(color = "#666")),
+  itemHoverStyle = list(color = 'gray'))
+```
+
+<style>
+.colored {
+  background-color: #FAFAFA;
+}
+</style>
+
+
+Worldwide
+=======================================================================
+
+ Column {.tabset .tabset-fade data-width=700 .colored }
+-----------------------------------------------------------------------
+
+### Worldwide suicides {.no-padding}
+```{r fig.height=5}
+# Create tibble for our line plot.  
+overall_tibble <- data %>%
+  select(year, suicides_no, population) %>%
+  group_by(year) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2)) 
+
+# Create a line plot.
+highchart() %>% 
+    hc_add_series(overall_tibble, hcaes(x = year, y = suicide_capita, color = suicide_capita), type = "line") %>%
+    hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = "", pointFormat = paste("Year: <b>{point.x}</b> <br> Suicides: <b>{point.y}</b>")) %>%
+    hc_title(text = "Worldwide suicides by year") %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_xAxis(title = list(text = "Year")) %>%
+    hc_yAxis(title = list(text = "Suicides per 100K people"),
+             allowDecimals = FALSE,
+             plotLines = list(list(
+                    color = "black", width = 1, dashStyle = "Dash", 
+                    value = mean(overall_tibble$suicide_capita),
+                    label = list(text = "Mean = 13.12", 
+                                 style = list(color = "black", fontSize = 11))))) %>%
+    hc_legend(enabled = FALSE) %>% 
+    hc_add_theme(custom_theme)
+```
+
+### Worldwide suicides by Gender {.no-padding}
+```{r fig.height=5.14}
+# Create tibble for sex so we can use it when creating our line plot.  
+sex_tibble <- data %>%
+  select(year, sex, suicides_no, population) %>%
+  group_by(year, sex) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2))
+
+# Pick color for gender.
+sex_color <- c("#EE6AA7", "#87CEEB") # baby blue & pink
+
+# Create line plot.
+highchart() %>% 
+    hc_add_series(sex_tibble, hcaes(x = year, y = suicide_capita, group = sex), type = "line", color = sex_color) %>%
+    hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = "", pointFormat = paste("Year: <b>{point.x}</b> <br>","Gender: <b>{point.sex}</b><br>", "Suicides: <b>{point.y}</b>")) %>%
+    hc_title(text = "Worldwide suicides by Gender") %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_xAxis(title = list(text = "Year")) %>%
+    hc_yAxis(title = list(text = "Suicides per 100K people"),
+             allowDecimals = FALSE,
+             plotLines = list(list(
+                    color = "black", width = 1, dashStyle = "Dash",
+                    value = mean(overall_tibble$suicide_capita),
+                    label = list(text = "Mean = 13.12", 
+                                 style = list(color = 'black', fontSize = 11))))) %>% 
+    hc_add_theme(custom_theme)
+```
+
+### Worldwide suicides by Age {.no-padding}
+```{r fig.height=5.13}
+# Create tibble for age so we can use it when creating our line plot.  
+age_tibble <- data %>%
+  select(year, age, suicides_no, population) %>%
+  group_by(year, age) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2))
+
+# Pick color for graph. 
+age_color <- rev(plasma(6))
+
+# Create a line plot.
+highchart() %>% 
+    hc_add_series(age_tibble, hcaes(x = year, y = suicide_capita, group = age), type = "line", color = age_color) %>%
+    hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = "", pointFormat = paste("Year: <b>{point.x}</b> <br>","Age: <b>{point.age}</b><br>", "Suicides: <b>{point.y}</b>")) %>%
+    hc_title(text = "Worldwide suicides by Age") %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_xAxis(title = list(text = "Year")) %>%
+    hc_yAxis(title = list(text = "Suicides per 100K people"),
+             allowDecimals = FALSE,
+             plotLines = list(list(
+                    color = "black", width = 1, dashStyle = "Dash",
+                    value = mean(overall_tibble$suicide_capita),
+                    label = list(text = "Mean = 13.12", 
+                                 style = list(color = 'black', fontSize = 11))))) %>% 
+    hc_add_theme(custom_theme)
+```
+
+
+Column {data-width=300}
+-----------------------------------------------------------------------
+
+### Suicides per 100K <font size='1'> (1985-2015) </font>
+```{r fig.height=0.8}
+# Grab worldwide number of suicides per 100K people from the data
+total_suicides <- round(mean(overall_tibble$suicide_capita), 2)
+
+# Create value box
+valueBox(total_suicides, icon = "fa-plus", color = 'firebrick')
+```
+
+### Worldwide suicides by Gender {.no-title .no-padding .colored }
+```{r fig.height=1.9}
+# First, make a tibble of suicide by sex. We will use this for our pie chart.
+pie_sex <- data %>%
+  select(sex, suicides_no, population) %>%
+  group_by(sex) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2))
+  
+# Create pie chart for sex. 
+highchart() %>% 
+  hc_add_series(pie_sex, hcaes(x = sex, y = suicide_capita, 
+                               color = sex_color), type = "pie") %>%
+  hc_tooltip(borderWidth = 1.5, headerFormat = "", pointFormat = paste("Gender: <b>{point.sex} ({point.percentage:.1f}%)</b> <br> Suicides per 100K: <b>{point.y}</b>")) %>%
+  hc_title(text = "<b>Worldwide suicides by Gender</b>", style = (list(fontSize = '14px'))) %>% 
+  hc_subtitle(text = "1985-2015", style = (list(fontSize = '10px'))) %>%
+  hc_plotOptions(pie = list(dataLabels = list(distance = 5, 
+                            style = list(fontSize = 10)), 
+                            size = 130)) %>% 
+  hc_add_theme(custom_theme)
+```
+
+### Worldwide suicides by Age {.no-title .no-padding .colored }
+```{r fig.height=1.9}
+# First, create a tibble of suicide by Age. We will use this for our pie chart.
+pie_age <- data %>%
+  select(age, suicides_no, population) %>%
+  group_by(age) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2)) %>%
+  arrange(suicide_capita)
+
+# Create pie chart for Age. 
+highchart() %>% 
+  hc_add_series(pie_age, hcaes(x = age, y = suicide_capita, 
+                               color = age_color), type = "pie") %>%
+  hc_tooltip(borderWidth = 1.5, headerFormat = "", pointFormat = paste("Age: <b>{point.age} ({point.percentage:.1f}%)</b> <br> Suicides per 100K: <b>{point.y}</b>")) %>%  
+  hc_title(text = "<b>Worldwide suicides by Age</b>", style = (list(fontSize = '14px'))) %>% 
+  hc_subtitle(text = "1985-2015", style = (list(fontSize = '10px'))) %>%
+  hc_plotOptions(pie = list(dataLabels = list(distance = 5, 
+                            style = list(fontSize = 10)), 
+                            size = 130)) %>% 
+  hc_add_theme(custom_theme)
+```
+
+
+
+Continents 
+========================================================================
+
+Column {data-width=375}
+-----------------------------------------------------------------------
+
+```{r include=FALSE}
+# Create new column in our data for continent. Use countrycode() to extract continents from country names. 
+data$continent <- countrycode(sourcevar = data$country,
+                              origin = "country.name",
+                              destination = "continent")
+
+# Reclassify countries that have been coded as 'Americas', by countrycode(), into 'North America' and 'South America'. 
+south_america <- c('Argentina', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Guyana', 'Paraguay', 'Suriname', 'Uruguay')
+
+data$continent[data$country %in% south_america] <- 'South America'
+data$continent[data$continent=='Americas'] <- 'North America'
+```
+
+### Suicides by continent and Gender {.no-title .no-padding .colored }
+```{r fig.height=2.35}
+# Create a tibble for continent and sex.
+continent_sex_tibble <- data %>%
+  select(continent, sex, suicides_no, population) %>%
+  group_by(continent, sex) %>%
+  summarize(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2))
+
+# Create histogram of suicides by continent.
+highchart() %>%
+hc_add_series(continent_sex_tibble, hcaes(x = continent, y = suicide_capita, group = sex), type = "column")  %>% 
+    hc_colors(colors = sex_color) %>%
+    hc_title(text = "Suicides by continent and <b>Gender</b>", style = (list(fontSize = '14px'))) %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_tooltip(borderWidth = 1.5, pointFormat = paste("Gender: <b> {point.sex} </b> <br> Suicides: <b>{point.y}</b>")) %>%
+    hc_xAxis(categories = c("Africa", "Asia", "Europe", "North <br> America", "Oceania", "South <br> America"), labels = list(style = list(fontSize = 8))) %>%
+    hc_yAxis(labels = list(style = list(fontSize = 10)),
+             title = list(text = "Suicides per 100K people",
+             style = list(fontSize = 10)),
+        plotLines = list(
+          list(color = "black", width = 1, dashStyle = "Dash", 
+               value = mean(overall_tibble$suicide_capita),
+               label = list(text = "Mean = 13.12", style = list(color = "black", fontSize = 6))))) %>%     
+    hc_legend(verticalAlign = 'top', enabled = FALSE) %>% 
+    hc_add_theme(custom_theme)
+```
+
+### Suicides by continent and Age {.no-title .no-padding .colored }
+```{r fig.height=2.35}
+# Create a tibble for continent and sex.
+continent_age_tibble <- data %>%
+  select(continent, age, suicides_no, population) %>%
+  group_by(continent, age) %>%
+  summarize(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2)) 
+
+# Create histogram of suicides by continent.
+highchart() %>%
+hc_add_series(continent_age_tibble, hcaes(x = continent, y = suicide_capita, group = age), type = "column")  %>% 
+    hc_colors(colors = age_color) %>%
+    hc_title(text = "Suicides by continent and <b>Age</b>", style = (list(fontSize = '14px'))) %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_tooltip(borderWidth = 1.5, pointFormat = paste("Age: <b> {point.age} </b> <br> Suicides: <b>{point.y}</b>")) %>%
+    hc_xAxis(categories = c("Africa", "Asia", "Europe", "North <br> America", "Oceania", "South <br> America"), labels = list(style = list(fontSize = 8))) %>%
+    hc_yAxis(labels = list(style = list(fontSize = 10)),
+             title = list(text = "Suicides per 100K people",
+                          style = list(fontSize = 10)),
+        plotLines = list(
+          list(color = "black", width = 1, dashStyle = "Dash", 
+               value = mean(overall_tibble$suicide_capita),
+               label = list(text = "Mean = 13.12", style = list(color = "black", fontSize = 6))))) %>%    
+    hc_legend(verticalAlign = 'top', enabled = FALSE) %>% 
+    hc_add_theme(custom_theme)
+```
+
+
+Column {data-width=625}
+-----------------------------------------------------------------------
+
+### Suicides by continent {.no-title .no-padding .colored }
+```{r}
+# Import continent map data. 
+# In order for the map to work on kaggle I had to save the map data and import it. 
+# This is what is shown as my "private data set". If you want to reproduce this in R you can use the 
+# commented out code right below it which downloads the map data straight from the internet. 
+map_data <- fromJSON(file = "../input/world-continents-geo-json/world-continents.geo.json")
+# map_data <- download_map_data("custom/world-continents")
+
+# Create a tibble for continent.
+continent_tibble <- data %>%
+  select(continent, suicides_no, population) %>%
+  group_by(continent) %>%
+  summarize(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2)) %>%
+  arrange(suicide_capita)
+
+# Create continent map with suicide data. 
+highchart() %>%
+hc_add_series_map(map_data, continent_tibble, value = "suicide_capita", joinBy = c('name','continent'), name = "Suicides (per 100K people)")  %>% 
+    hc_add_series(continent_tibble, hcaes(x = continent, y = suicide_capita, color = suicide_capita), type = "pie", name = 'Suicides (per 100K people)')  %>% 
+    hc_colorAxis(stops = color_stops()) %>% 
+    hc_title(text = "Suicides by Continent") %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_tooltip(borderWidth = 1.5, valueSuffix = '') %>%
+    hc_plotOptions(
+    pie = list(center = c('10%', '80%'), size = 110, dataLabels = list(enabled = FALSE))) %>% 
+    hc_add_theme(custom_theme)
+```
+
+
+
+Countries
+========================================================================
+
+Column {.tabset .tabset-fade data-width=400 .colored }
+-----------------------------------------------------------------------
+
+### By country {.no-padding}
+```{r fig.height=4.55}
+# Create tibble for overall suicides by country
+country_bar <- data %>%
+  select(country, suicides_no, population) %>%
+  group_by(country) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2)) %>%
+  arrange(desc(suicide_capita))
+
+# Create interactive bar plot
+highchart() %>%
+    hc_add_series(country_bar, hcaes(x = country, y = suicide_capita, color = suicide_capita), type = "bar")  %>% 
+    hc_tooltip(borderWidth = 1.5, 
+               pointFormat = paste("Suicides: <b>{point.y}</b>")) %>%
+    hc_legend(enabled = FALSE) %>%
+    hc_title(text = "Suicides by country") %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_xAxis(categories = country_bar$country, 
+             labels = list(step = 1),
+             min = 0, max = 25,
+             scrollbar = list(enabled = TRUE)) %>%
+    hc_yAxis(title = list(text = "Suicides per 100K people")) %>%
+    hc_plotOptions(bar = list(stacking = "normal", 
+                              pointPadding = 0, groupPadding = 0, borderWidth = 0.5)) %>% 
+    hc_add_theme(custom_theme)
+```
+
+### By gender {.no-padding}
+```{r fig.height=4.65}
+# Create tibble for suicide by countries and sex. 
+country_bar_sex <- data %>%
+  select(country, sex, suicides_no, population) %>%
+  group_by(country, sex) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2))
+
+country_tibble <- data %>%
+  select(country, suicides_no, population) %>%
+  group_by(country) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2)) 
+
+# Create bar chart of suicide by sex.
+highchart() %>%
+    hc_add_series(country_bar_sex, hcaes(x = country, y = suicide_capita, group = sex), type = "bar", color = sex_color)  %>% 
+    hc_tooltip(borderWidth = 1.5, pointFormat = paste("Gender: <b>{point.sex} ({point.percentage:.1f}%)</b> <br> Suicides per 100K: <b>{point.y}</b>")) %>%
+    hc_legend(enabled = TRUE, colorByPoint = TRUE) %>%
+    hc_title(text = "Suicides by country and gender") %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_xAxis(categories = country_tibble$country,
+             labels = list(step = 1),
+             min = 0, max = 25,
+             scrollbar = list(enabled = TRUE)) %>%
+    hc_yAxis(title = list(text = "Percentage of total suicides")) %>%
+    hc_plotOptions(bar = list(stacking = "percent", 
+                              pointPadding = 0, groupPadding = 0, borderWidth = 0.4)) %>% 
+    hc_add_theme(custom_theme)
+```
+
+### By age {.no-padding}
+```{r fig.height=4.65}
+# Create tibble for suicide by countries and age 
+country_bar_age <- data %>%
+  select(country, age, suicides_no, population) %>%
+  group_by(country, age) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2))
+
+# Create interactive bar plot.
+highchart() %>%
+    hc_add_series(country_bar_age, hcaes(x = country, y = suicide_capita, group = age), type = "bar", color = age_color)  %>% 
+    hc_tooltip(borderWidth = 1.5, pointFormat = paste("Age: <b>{point.age} ({point.percentage:.1f}%)</b> <br> Suicides per 100K: <b>{point.y}</b>")) %>%
+    hc_title(text = "Suicides by country and age") %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_xAxis(categories = country_tibble$country,
+             labels = list(step = 1),
+             min = 0, max = 25,
+             scrollbar = list(enabled = TRUE)) %>%
+    hc_yAxis(title = list(text = "Percent of total suicides")) %>%
+    hc_plotOptions(bar = list(stacking = "percent", 
+                              pointPadding = 0, groupPadding = 0, borderWidth = 0.5)) %>% 
+    hc_add_theme(custom_theme)
+```
+
+
+Column {data-width=600}
+-----------------------------------------------------------------------
+
+### Suicides by country {.no-title .no-padding .colored }
+```{r fig.height=4.9}
+# Create a tibble with suicide per capita by country for 1985-2015. 
+country_tibble <- data %>%
+  select(country, suicides_no, population) %>%
+  group_by(country) %>%
+  summarize(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2))
+
+# Create interactive world map.
+highchart() %>%
+hc_add_series_map(worldgeojson, country_tibble, value = "suicide_capita", joinBy = c('name','country'))  %>% 
+    hc_colorAxis(stops = color_stops()) %>% 
+    hc_title(text = "Suicides by Country") %>% 
+    hc_subtitle(text = "1985-2015") %>%
+    hc_tooltip(borderWidth = 1.5, headerFormat = "", valueSuffix = " suicides (per 100K people)") %>% 
+    hc_add_theme(custom_theme)
+```
+
+
+
+Search {data-icon="fa-search"}
+=======================================================================
+
+Column {data-width=250}
+-----------------------------------------------------------------------
+
+### Filters {.no-title .colored }
+
+**Pick filters here:**
+```{r}
+# Create tibble for our line plot.  
+country_year_tibble <- data %>%
+  select(country, year, suicides_no, population) %>%
+  group_by(country, year) %>%
+  summarise(suicide_capita = round((sum(suicides_no)/sum(population))*100000, 2)) 
+
+# Create shared data that will be used to link filters, data table, and line plot. 
+shared_data <- SharedData$new(country_year_tibble, group = 'hello')
+
+# Create filter for year and country. These filters will adjust the DT datatable and PLOTLY plot. 
+filter_slider("year", "Year", shared_data, ~year, step = 1)
+filter_select("country", "Country", shared_data, ~country, allLevels = TRUE, multiple = TRUE)
+```
+
+***
+
+**Data table**
+```{r}
+# Create datatable. 
+datatable(shared_data,
+          rownames = FALSE,
+          colnames = c('Country', 'Year', 'Suicides /100K'),
+          class = 'cell-border stripe',
+          extensions = "Scroller",
+          options=list(deferRender = FALSE, 
+                       scrollY = 200, 
+                       scrollCollapse = TRUE,
+                       scroller = TRUE,
+                       dom = 't'))
+```
+
+
+Column {data-width=750}
+-----------------------------------------------------------------------
+
+### Suicides by country {.no-title .colored }
+```{r}
+# Set a random seed. We will do this so that we can reproduce the random sample of colors we will use for our next graph. 
+set.seed(80085)
+
+# Create line graph. 
+plot_ly(shared_data, x = ~year, y = ~suicide_capita, 
+       color = ~country, colors = sample(colours(), 120),
+       type = 'scatter', mode = 'lines',
+       hoverinfo = 'text', text = ~paste("Country: ", country, '<br>Year: ', year, "<br>Suicides: ", suicide_capita)) %>%
+       layout(showlegend = FALSE,
+              title = "Suicide by country",
+              xaxis = list(title = "Year"),
+              yaxis = list(title = "Suicides per 100K people")) %>%
+       layout(plot_bgcolor = 'transparent') %>% 
+       layout(paper_bgcolor = 'transparent') %>% 
+       add_markers() %>% 
+       highlight("plotly_click")
+```
+
+
+
+About {data-icon="fa-info-circle"}
+=======================================================================
+
+Column {data-width=600}
+-----------------------------------------------------------------------
+
+### { .colored }
+
+**Thank you for checking out my kernel!**  
+
+Please **upvote** if you like the dashboard and if you have any suggestions feel free to leave a comment!
+
+<br>
+
+**Suicide Prevention:**
+
+This wikipedia page lists suicide crisis lines by country:
+
+* https://en.wikipedia.org/wiki/List_of_suicide_crisis_lines 
+
+<br>
+
+**References:**  
+
+The data set used to create the dashboard can be found at:   
+
+* https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016 
+
+and was compiled from data from the following sources: 
+
+* United Nations Development Program. (2018). Human development index (HDI). Retrieved from http://hdr.undp.org/en/indicators/137506
+
+* World Bank. (2018). World development indicators: GDP (current US$) by country:1985 to 2016. Retrieved from http://databank.worldbank.org/data/source/world-development-indicators#
+
+* [Szamil]. (2017). Suicide in the Twenty-First Century [dataset]. Retrieved from https://www.kaggle.com/szamil/suicide-in-the-twenty-first-century/notebook
+
+* World Health Organization. (2018). Suicide prevention. Retrieved from http://www.who.int/mental_health/suicide-prevention/en/

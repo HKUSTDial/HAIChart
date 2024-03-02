@@ -1,0 +1,87 @@
+{
+    "url": "https://www.kaggle.com/nursah/data-visualization",
+    "votes": 29,
+    "rank": 9,
+    "charts": [
+        {
+            "describe": "which category has the higheset share",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "which category has the higheset installs",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "which category,type has the higheset installs",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "count by Genres",
+            "chart": "bar",
+            "x": {
+                "attr": "Genres",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genres",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Genres, category",
+            "chart": "bar",
+            "x": {
+                "attr": "Genres",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genres",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            }
+        }
+    ]
+}

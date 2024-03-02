@@ -1,0 +1,83 @@
+{
+    "url": "https://www.kaggle.com/venky73/predicting-student-percentage",
+    "votes": 41,
+    "rank": 4,
+    "charts": [
+        {
+            "describe": "mean total score of different gender and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "total=math+reading+writing",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "parental level of education and gender",
+            "chart": "bar",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "total=math+reading+writing",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean total score of different lunch and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "lunch",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "total=math+reading+writing",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean total score of different gender and race/ethnicity",
+            "chart": "bar",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "total=math+reading+writing",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            }
+        }
+    ]
+}

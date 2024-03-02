@@ -1,0 +1,133 @@
+{
+    "url": "https://www.kaggle.com/sabasiddiqi/google-play-store-apps-data-cleaning",
+    "votes": 38,
+    "rank": 6,
+    "charts": [
+        {
+            "describe": "app size histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Size",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Size",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "app Installs histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Installs",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "app Reviews histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Reviews",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Reviews",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "app rating histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Rating",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "app Price histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Price",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Price",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "which category has the higheset share",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Content Rating",
+            "chart": "bar",
+            "x": {
+                "attr": "Content Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Content Rating",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Genres",
+            "chart": "bar",
+            "x": {
+                "attr": "Genres",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genres",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Android Ver",
+            "chart": "bar",
+            "x": {
+                "attr": "Android Ver",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Android Ver",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

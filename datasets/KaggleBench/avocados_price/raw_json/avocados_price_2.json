@@ -1,0 +1,46 @@
+{
+    "url": "https://www.kaggle.com/hely333/explore-avocados-from-all-sides",
+    "votes": 82,
+    "rank": 2,
+    "charts": [
+        {
+            "describe": "price distribution",
+            "chart": "histogram",
+            "x": {
+                "attr": "AveragePrice",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "price distribution of different type",
+            "chart": "boxplot",
+            "x": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": "raw"
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        }
+    ]
+}

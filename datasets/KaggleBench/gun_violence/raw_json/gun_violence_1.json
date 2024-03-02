@@ -1,0 +1,319 @@
+{
+    "url": "https://www.kaggle.com/shivamb/deep-exploration-of-gun-violence-in-us",
+    "votes": 152,
+    "rank": 1,
+    "charts": [
+        {
+            "describe": "Number of gun violence incidents by year",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "date",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of incidents per month",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "date",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of incidents by day of week",
+            "chart": "bar",
+            "x": {
+                "attr": "date",
+                "trans": "week",
+                "groupby": true
+            },
+            "y": {
+                "attr": "date",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of incidents by date",
+            "chart": "line",
+            "x": {
+                "attr": "date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "date",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Total number of killed by date",
+            "chart": "line",
+            "x": {
+                "attr": "date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Total number of injured by date",
+            "chart": "line",
+            "x": {
+                "attr": "date",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "State wise number of incidents",
+            "chart": "heatmap",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "state",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Total loss(n_injured+n_killed) of different states",
+            "chart": "bar",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured+n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "State wise number of incidents",
+            "chart": "bar",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "state",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Total number of n_killed of different states",
+            "chart": "bar",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Total number of injured of different states",
+            "chart": "bar",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Gun violence incidents per 100000 people by state",
+            "chart": "bar",
+            "x": {
+                "attr": "state",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "count(state)*100000/population",
+                "trans": "derive",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Incidents population ratio by city",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "count(city_or_county)*1000/population",
+                "trans": "derive",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of incidents by city",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "city_or_county",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Killed population ratio by city",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(n_killed)*1000/population",
+                "trans": "derive",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of killed by city",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_killed",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Injured population ratio by city",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(n_injured)*1000/population",
+                "trans": "derive",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of injured by city",
+            "chart": "bar",
+            "x": {
+                "attr": "city_or_county",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "n_injured",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Wordcloud of location description",
+            "chart": "wordcloud",
+            "x": {
+                "attr": "location_description",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "location_description",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "Number of guns used",
+            "chart": "pie",
+            "x": {
+                "attr": "n_guns_involved",
+                "trans": "bin"
+            },
+            "y": {
+                "attr": "n_guns_involved",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Location of incidents on map",
+            "chart": "map",
+            "x": {
+                "attr": "latitude",
+                "trans": "raw",
+                "groupby": false
+            },
+            "y": {
+                "attr": "longitude",
+                "trans": "raw",
+                "groupby": false
+            },
+            "size": {
+                "attr": "n_injured+n_killed",
+                "trans": "raw",
+                "groupby": false
+            }
+        },
+        {
+            "describe": "Word count of incident_characteristics",
+            "chart": "wordcloud",
+            "x": {
+                "attr": "incident_characteristics",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "incident_characteristics",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

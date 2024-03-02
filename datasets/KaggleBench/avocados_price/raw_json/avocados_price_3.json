@@ -1,0 +1,21 @@
+{
+    "url": "https://www.kaggle.com/samuelbelko/predicting-prices-of-avocados",
+    "votes": 66,
+    "rank": 3,
+    "charts": [
+        {
+            "describe": "avg price by year",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year-month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

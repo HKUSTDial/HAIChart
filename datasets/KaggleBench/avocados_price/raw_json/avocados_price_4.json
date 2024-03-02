@@ -1,0 +1,71 @@
+{
+    "url": "https://www.kaggle.com/tusubasa/i-am-beginner",
+    "votes": 28,
+    "rank": 4,
+    "charts": [
+        {
+            "describe": "correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "bags scatter plot",
+            "chart": "scatter",
+            "x": {
+                "attr": "Total Bags",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Small Bags",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "price distribution",
+            "chart": "histogram",
+            "x": {
+                "attr": "AveragePrice",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total volumes scatter plot",
+            "chart": "scatter",
+            "x": {
+                "attr": "Total Volume",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Small Bags",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "Small Bags distribution",
+            "chart": "histogram",
+            "x": {
+                "attr": "Small Bags",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Small Bags",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

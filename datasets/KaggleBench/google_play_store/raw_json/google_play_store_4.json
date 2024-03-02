@@ -1,0 +1,196 @@
+{
+    "url": "https://www.kaggle.com/kralmachine/python-programming-language-for-data-scientists",
+    "votes": 68,
+    "rank": 4,
+    "charts": [
+        {
+            "describe": "which category has the higheset share",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "mean rating by category",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "size vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Size",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "count by type",
+            "chart": "bar",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "sum price by category",
+            "chart": "pie",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "price",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "sum size by content rating",
+            "chart": "bar",
+            "x": {
+                "attr": "Content Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "size",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "sum reviews by Category",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Reviews",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Genres",
+            "chart": "bar",
+            "x": {
+                "attr": "Genres",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Genres",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by type",
+            "chart": "pie",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "reviews vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Reviews",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "reviews vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Reviews",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "scattermatrix",
+            "chart": "scattermatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "size vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Size",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        }
+    ]
+}

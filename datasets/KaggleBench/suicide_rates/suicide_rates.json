@@ -1,0 +1,494 @@
+{
+    "charts": [
+        {
+            "describe": "population by generation and year",
+            "id": "suicide_rates_2_extracted.json_id_1",
+            "rank": 1,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "year",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "population",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "generation",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "suicides by country and age",
+            "id": "suicide_rates_3_extracted.json_id_1",
+            "rank": 2,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "country",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "age",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "suicides by sex and age",
+            "id": "suicide_rates_3_extracted.json_id_2",
+            "rank": 3,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "sex",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "age",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "suicides by age and sex",
+            "id": "suicide_rates_3_extracted.json_id_3-suicide_rates_4_extracted.json_id_7",
+            "rank": 4,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "age",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "sex",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "suicides by age of different year",
+            "id": "suicide_rates_3_extracted.json_id_4",
+            "rank": 5,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "year",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "age",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "suicides of country",
+            "id": "suicide_rates_3_extracted.json_id_5-suicide_rates_4_extracted.json_id_6",
+            "rank": 6,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "country",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "suicides of sex and year",
+            "id": "suicide_rates_3_extracted.json_id_6",
+            "rank": 7,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "year",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "sex",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "suicides of sex and country",
+            "id": "suicide_rates_3_extracted.json_id_7",
+            "rank": 8,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "sex",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "country",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "suicides and gdp",
+            "id": "suicide_rates_3_extracted.json_id_8",
+            "rank": 9,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "gdp_per_capita",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "suicides/100k pop",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "average suicides of year",
+            "id": "suicide_rates_3_extracted.json_id_9",
+            "rank": 10,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "year",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides/100k pop",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "average gdp of year",
+            "id": "suicide_rates_3_extracted.json_id_10",
+            "rank": 11,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "year",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "gdp_per_capita",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "suicides of sex and country",
+            "id": "suicide_rates_4_extracted.json_id_1",
+            "rank": 12,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "country",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "sex",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "population of country",
+            "id": "suicide_rates_4_extracted.json_id_2",
+            "rank": 13,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "country",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "population",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count of sex",
+            "id": "suicide_rates_4_extracted.json_id_3",
+            "rank": 14,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "sex",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "sex",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count of sex and age",
+            "id": "suicide_rates_4_extracted.json_id_4",
+            "rank": 15,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "sex",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "sex",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "age",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "count of age",
+            "id": "suicide_rates_4_extracted.json_id_5",
+            "rank": 16,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "age",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "age",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count of generation",
+            "id": "suicide_rates_4_extracted.json_id_8",
+            "rank": 17,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "generation",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "generation",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "count of generation",
+            "id": "suicide_rates_4_extracted.json_id_9-suicide_rates_4_extracted.json_id_16",
+            "rank": 18,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "generation",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "generation",
+                    "trans": "count",
+                    "calcus": "raw"
+                },
+                "color": {
+                    "attr": "sex",
+                    "trans": "raw",
+                    "groupby": true
+                }
+            }
+        },
+        {
+            "describe": "average population of age",
+            "id": "suicide_rates_4_extracted.json_id_10",
+            "rank": 19,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "age",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "population",
+                    "trans": "mean",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "suicides of year",
+            "id": "suicide_rates_4_extracted.json_id_11",
+            "rank": 20,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "year",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "sum",
+                    "calcus": "Raw"
+                }
+            }
+        },
+        {
+            "describe": "count of generation",
+            "id": "suicide_rates_4_extracted.json_id_12",
+            "rank": 21,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "generation",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "generation",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "suicides by year",
+            "id": "suicide_rates_4_extracted.json_id_13",
+            "rank": 22,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "year",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "suicides by population",
+            "id": "suicide_rates_4_extracted.json_id_14",
+            "rank": 23,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "population",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "suicides_no",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "suicides by population",
+            "id": "suicide_rates_4_extracted.json_id_15",
+            "rank": 24,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "year",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "gdp_per_capita",
+                    "trans": "raw"
+                }
+            }
+        },
+        {
+            "describe": "suicides and suicides per 100K",
+            "id": "suicide_rates_4_extracted.json_id_17",
+            "rank": 25,
+            "type": "scatter",
+            "channels": {
+                "x": {
+                    "attr": "suicides_no",
+                    "trans": "raw"
+                },
+                "y": {
+                    "attr": "suicides/100k pop",
+                    "trans": "raw"
+                }
+            }
+        }
+    ]
+}

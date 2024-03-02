@@ -1,0 +1,11 @@
+{
+    "country": "object",
+    "year": "object",
+    "sex": "object",
+    "age": "object",
+    "suicides_no": "float32",
+    "population": "float32",
+    "suicides/100k pop": "float32",
+    "gdp_per_capita": "float32",
+    "generation": "object"
+}

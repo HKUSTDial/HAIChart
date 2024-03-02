@@ -1,0 +1,193 @@
+{
+    "url": "https://www.kaggle.com/tanetboss/how-to-get-high-rating-on-play-store",
+    "votes": 161,
+    "rank": 2,
+    "charts": [
+        {
+            "describe": "app rating histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Rating",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "which category has the higheset share",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "boxplot of rating by category",
+            "chart": "boxplot",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "app Reviews histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Reviews",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Reviews",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "reviews vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Reviews",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "size vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Size",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "installs vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Installs",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "count by type",
+            "chart": "pie",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "price vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "Price",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "boxplot of rating by PriceBand",
+            "chart": "boxplot",
+            "x": {
+                "attr": "PriceBand",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "boxplot of rating by PriceBand, category",
+            "chart": "boxplot",
+            "x": {
+                "attr": "PriceBand",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "boxplot of rating by Content Rating",
+            "chart": "boxplot",
+            "x": {
+                "attr": "Content Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "boxplot of rating by Genres",
+            "chart": "boxplot",
+            "x": {
+                "attr": "Genres",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "lastupdate vs rating",
+            "chart": "scatter",
+            "x": {
+                "attr": "lastupdate",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "Rating",
+                "trans": "raw"
+            }
+        }
+    ]
+}

@@ -1,0 +1,537 @@
+{
+    "url": "https://www.kaggle.com/lmorgan95/r-suicide-rates-in-depth-stats-insights",
+    "votes": 240,
+    "rank": 2,
+    "charts": [
+        {
+            "describe": "worldwide suicides of different years",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides by continent",
+            "chart": "bar",
+            "x": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides by continent over year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by sex",
+            "chart": "bar",
+            "x": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides by sex over year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by age",
+            "chart": "bar",
+            "x": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides by age over year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by country",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides by country",
+            "chart": "map",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides by continent and gender",
+            "chart": "bar",
+            "x": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by country and gender",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by continent and age",
+            "chart": "bar",
+            "x": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Correlation between GDP and suicides",
+            "chart": "scatter",
+            "x": {
+                "attr": "gdp_per_capita ($)",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "groupby": {
+                "attr": "sub_area",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "continent",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Relation between generation, age and year",
+            "chart": "breakline",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            },
+            "row": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by generation and year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "population by generation and year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "population",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "suicides by age and sex",
+            "chart": "bar",
+            "x": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Suicides by country and year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Suicides by country and year and sex",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "row": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Suicides by country and sex between 2010 and 2015",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            },
+            "filter": [
+                {
+                    "attr": "year",
+                    "range": [
+                        2010,
+                        2015
+                    ]
+                }
+            ]
+        },
+        {
+            "describe": "Suicides by country and age between 2010 and 2015",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            },
+            "filter": [
+                {
+                    "attr": "year",
+                    "range": [
+                        2010,
+                        2015
+                    ]
+                }
+            ]
+        },
+        {
+            "describe": "Suicides by country and age and sex between 2010 and 2015",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            },
+            "row": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            },
+            "filter": [
+                {
+                    "attr": "year",
+                    "range": [
+                        2010,
+                        2015
+                    ]
+                }
+            ]
+        },
+        {
+            "describe": "Suicides by country and year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "filter": {
+                "attr": "age",
+                "in": [
+                    "15-24 years",
+                    "25-34 years",
+                    "35-54 years"
+                ]
+            }
+        },
+        {
+            "describe": "Suicides by country and year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "filter": {
+                "attr": "age",
+                "equal": "15-24 years"
+            }
+        },
+        {
+            "describe": "Suicides by country and year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "filter": {
+                "attr": "age",
+                "equal": "25-34 years"
+            }
+        },
+        {
+            "describe": "Suicides by country and year",
+            "chart": "line",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(suicides_no)/sum(population)*100000",
+                "trans": "raw",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "filter": {
+                "attr": "age",
+                "equal": "35-54 years"
+            }
+        }
+    ]
+}

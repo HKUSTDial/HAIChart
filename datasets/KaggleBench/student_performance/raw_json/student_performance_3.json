@@ -1,0 +1,230 @@
+{
+    "url": "https://www.kaggle.com/nitindatta/eda-in-depth",
+    "votes": 49,
+    "rank": 3,
+    "charts": [
+        {
+            "describe": "violin math score",
+            "chart": "violinplot",
+            "x": {
+                "attr": "math score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "violin reading score",
+            "chart": "violinplot",
+            "x": {
+                "attr": "reading score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "violin writing score",
+            "chart": "violinplot",
+            "x": {
+                "attr": "writing score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "mean math score of different gender and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean reading score of different gender and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "reading score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean writing score of different gender and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean math score of different lunch and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "lunch",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean reading score of different lunch and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "reading score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "lunch",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean writing score of different lunch and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "lunch",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean math score of different gender and race/ethnicity",
+            "chart": "bar",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean reading score of different gender and race/ethnicity",
+            "chart": "bar",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "reading score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean writing score of different gender and race/ethnicity",
+            "chart": "bar",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "parental level of education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "parental level of education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Total score=math+reading+writing",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

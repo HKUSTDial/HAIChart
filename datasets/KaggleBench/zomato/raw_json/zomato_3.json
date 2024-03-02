@@ -1,0 +1,223 @@
+{
+    "url": "https://www.kaggle.com/akshayjhamb2/zomato-restaurants-eda-and-dashboard-to-search",
+    "votes": 29,
+    "rank": 3,
+    "charts": [
+        {
+            "describe": "accept online orders or not",
+            "chart": "bar",
+            "x": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "online_order",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "accept online orders or not",
+            "chart": "bar",
+            "x": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "online_order",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "listed_in(type)",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "book_table or not",
+            "chart": "bar",
+            "x": {
+                "attr": "book_table",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "book_table",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "book_table or not",
+            "chart": "bar",
+            "x": {
+                "attr": "book_table",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "book_table",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "listed_in(type)",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "rate count",
+            "chart": "pie",
+            "x": {
+                "attr": "rate",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rate",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "rate count",
+            "chart": "bar",
+            "x": {
+                "attr": "rate",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rate",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "book_table",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "rate count",
+            "chart": "bar",
+            "x": {
+                "attr": "rate",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rate",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "top location",
+            "chart": "bar",
+            "x": {
+                "attr": "location",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "location",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "listed_in(type) count",
+            "chart": "pie",
+            "x": {
+                "attr": "listed_in(type)",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "listed_in(type)",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "top listed_in(city)",
+            "chart": "bar",
+            "x": {
+                "attr": "listed_in(city)",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "listed_in(city)",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "approx_cost(for two people) count",
+            "chart": "bar",
+            "x": {
+                "attr": "approx_cost(for two people)",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "approx_cost(for two people)",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "cuisines count",
+            "chart": "pie",
+            "x": {
+                "attr": "cuisines",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "cuisines",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "dish liked count",
+            "chart": "wourdcount",
+            "x": {
+                "attr": "dish_liked",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "dish_liked",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "top restarurant chains",
+            "chart": "bar",
+            "x": {
+                "attr": "name",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "name",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

@@ -1,0 +1,462 @@
+---
+title: "Google Play EDA with Highchart"
+author: "Danilo da Silva"
+date: "September 18, 2018"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+---
+
+If you liked this kernel or it was helpful for you, **please upvote**!  
+
+# Setup  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
+## Load packages
+```{r setupLibraries}
+library(tidyverse)
+library(highcharter) 
+library(lubridate)
+library(stringr)
+library(xts)
+```
+
+## Load data
+
+Load data and take a look at it,  
+```{r setupLoadFile, echo=FALSE}
+data <- read.csv("../input/googleplaystore.csv")
+str(data)
+```
+
+I see a lot of factor variables that should actually be numeric. So, let's do a bit of data cleaning.
+
+```{r datacleaning, echo = TRUE}
+data.clean <- data %>%
+  mutate(
+    # Eliminate some characters to transform Installs to numeric
+    Installs = gsub("\\+", "", as.character(Installs)),
+    Installs = as.numeric(gsub(",", "", Installs)),
+    # Eliminate M to transform Size to numeric
+    Size = gsub("M", "", Size),
+    # Replace cells with k to 0 since it is < 1MB
+    Size = ifelse(grepl("k", Size), 0, as.numeric(Size)),
+    # Transform reviews to numeric
+    Reviews = as.numeric(Reviews),
+    # Remove currency symbol from Price, change it to numeric
+    Price = as.numeric(gsub("\\$", "", as.character(Price))),
+    # Last Updated to date format
+    Last.Updated = mdy(Last.Updated),
+    # Replace "Varies with device" to NA since it is unknown
+    Min.Android.Ver = gsub("Varies with device", NA, Android.Ver),
+    # Keep only version number to 1 decimal
+    Min.Android.Ver = as.numeric(substr(Min.Android.Ver, start = 1, stop = 3)),
+    # Drop old Android version column
+    Android.Ver = NULL
+  ) %>%
+  filter(
+    # Two apps had type as 0 or NA, they will be removed 
+    Type %in% c("Free", "Paid")
+  )
+
+str(data.clean)
+```
+
+
+# EDA
+
+## Duplicate records
+
+First, we check if there are any duplicate rows (if the complete row is found duplicated).  
+
+```{r, echo = TRUE}
+nrow(data.clean %>%
+  distinct())
+```
+
+The above should've listed `r I(nrow(data))`, so there are `r I(sum(duplicated(data)))` rows duplicated. We'll remove them.
+
+```{r, echo = FALSE}
+data.clean <- data.clean %>%
+  distinct()
+```
+
+## NA anlaysis
+
+Let's see if data is complete, going through all columns to see if we find any NA values:
+
+```{r NACount, echo = TRUE}
+data.clean %>%
+    summarise_all(
+        funs(sum(is.na(.)))
+    ) %>%
+  gather() %>%
+  # Only show columns with NA
+  filter(value> 1) %>%
+  arrange(-value) %>%
+    hchart('column', hcaes(x = 'key', y = 'value', color = 'key')) %>%
+  hc_add_theme(hc_theme_elementary()) %>%
+  hc_title(text = "Columns with NA values")
+```
+
+We have 3 columns with NA values, some of them part of the data cleaning process above (transforming factor variable to numeric). Let's take a closer look at these NAs.
+
+### NA values in Rating 
+
+Let's take a look at how many installs applications with NA rating have:
+
+```{r, echo = TRUE}
+data.clean %>%
+  filter(is.na(Rating)) %>%
+  count(Installs) %>%
+  arrange(-n) %>%
+  hchart('column', hcaes(x = "Installs", y = "n")) %>%
+  hc_add_theme(hc_theme_google()) %>%
+  hc_title(text = "Installations with no rating")
+```
+
+Most applications without rating have very few installs, which could make sense. If you have low amount of installs, people haven't reviewed it yet. But, even an application with 1 million installs is listed without rating. Something maybe went wrong with scrapping?
+
+### NA values in Size
+
+On the data cleaning process above, I saw "Varies with device" was present under "Size". There were a total of `r I(as.numeric(filter(data, Size %in% "Varies with device") %>% count()))` applications with "Varies with device" which we transformed to NA. So, that explains NA in this column.
+
+```{r, echO = TRUE}
+data %>%
+  filter(
+    Size %in% "Varies with device"
+    ) %>% 
+  count()
+```
+
+### NA values in Minimum Android Version
+
+Same as above, with "Varies with device" label present. There were a total of `r I(as.numeric(filter(data, Android.Ver %in% "Varies with device") %>% count()))` applications with "Varies with device" which we transformed to NA. So, that explains NA in this column.
+
+```{r, echO = TRUE}
+data %>%
+  filter(
+    Android.Ver %in% "Varies with device"
+    ) %>% 
+  count()
+```
+
+## Category
+
+Most popular category, by number of installs:  
+
+```{r, echo = TRUE}
+data.clean %>%
+  count(Category, Installs) %>%
+  group_by(Category) %>%
+  summarize(
+    TotalInstalls = sum(as.numeric(Installs))
+  ) %>%
+  arrange(-TotalInstalls) %>%
+  hchart('scatter', hcaes(x = "Category", y = "TotalInstalls", size = "TotalInstalls", color = "Category")) %>%
+  hc_add_theme(hc_theme_538()) %>%
+  hc_title(text = "Most popular categories (# of installs)")
+```
+
+## Application size  
+
+Now let's take a look at application size (in MB).  
+```{r, echo = TRUE}
+data.clean %>%
+  count(Size) %>%
+  hchart('area', hcaes(x = "Size", y = "n")) %>%
+  hc_colors("#fb4901") %>%
+  hc_add_theme(hc_theme_ffx()) %>%
+  hc_title(text = "Distribution of application size (in MB)")
+```
+
+```{r, echo = TRUE}
+hcboxplot(x = data.clean$Size, var = data.clean$Type, outliers = TRUE, color = "#fb4901", fillColor = "lightblue") %>%
+  hc_chart(type = "column") %>%
+  hc_add_theme(hc_theme_ffx()) %>%
+  hc_title(text = "Application size range (in MB) by Application Type")
+```
+
+There are a lot of apps under 10MB, in general applications are between 5 MB to 30 MB. Paid applications are slightly smaller.
+
+## Installs
+
+Applications in this dataset range from `r I(min(data.clean$Installs))` to  `r I(max(data.clean$Installs))` installations. The full range is,
+
+```{r, echo = FALSE}
+summary(data.clean$Installs)
+```
+
+If we divide this range by groups of 10k, we can see the following distribution:  
+
+```{r, echo = TRUE}
+tmp <- data.clean %>%
+  group_by(
+    Installs.Group = cut(Installs, breaks= seq(0, 1000000000, by = 10000))
+    ) %>% 
+  summarise(
+    n= n()
+    )
+
+highchart() %>%
+  hc_chart(
+    type = "pie"
+    ) %>%
+  hc_add_series_labels_values(
+    labels = tmp$Installs.Group, values = tmp$n
+    ) %>%
+  hc_title(
+    text="Number of installs (groups per 10k)"
+    ) %>%
+  hc_add_theme(hc_theme_economist())
+```
+
+The largest group is made of applications with up to 10k downloads. Over half of the applications had less than 100k installs.
+
+## Type
+
+Let's take a look at the total split between free and paid applications.  
+
+```{r, echo = TRUE}
+tmp <- data.clean %>%
+  count(Type) %>%
+  mutate(perc = round((n /sum(n))*100)) %>%
+  arrange(desc(perc))
+
+hciconarray(tmp$Type, tmp$perc, icons = "android", size = 5) %>%
+  hc_title(text="Percentage of paid vs free apps")
+```
+
+For every 100 applications, 7 are free. Let's see if how much this ratio changes per category:
+
+```{r, echo = TRUE}
+data.clean %>% 
+  group_by(Category, Type) %>%
+  summarize(
+    n = n()
+  ) %>%
+  mutate(perc = round((n /sum(n))*100)) %>%
+  hchart('bar', hcaes(x = 'Category', y = 'perc', group = 'Type')) %>%
+  hc_plotOptions(series=list(stacking='normal')) %>%
+  hc_title(text="Percentage of Free vs Paid by Category") %>%
+  hc_add_theme(hc_theme_flat())
+```
+
+Two categories, "medical" and "personalization" have a lot more paid apps then free (>20% of the apps are paid).
+
+## Price
+
+```{r, echo = FALSE}
+tmp <- data.clean %>%
+  mutate(
+    Total.Paid = Price * Installs
+  )
+```
+A total of `r I(sum(tmp$Total.Paid))` was spent on all of these apps, combined. Let's now see pricing per category. I'll avoid using mean because outliers could skew the data a lot. So, using median let's see which categories have most expensive apps:  
+
+```{r, echo = TRUE}
+data.clean %>%
+  filter(Type == "Paid") %>%
+  group_by(Category) %>%
+  summarize(
+    Price = median(Price)
+  ) %>%
+  arrange(-Price) %>%
+  hchart('treemap', hcaes(x = 'Category', value = 'Price', color = 'Price')) %>%
+  hc_add_theme(hc_theme_elementary()) %>%
+  hc_title(text="Median price per category")
+```
+
+
+"Events" is the leader (but it has 1 paid app only...). "Finance" is the category with most expensive apps, a median of almost 29 USD.
+
+Finally, let's see how much money was spent per category:  
+```{r, echo = TRUE}
+data.clean %>%
+  filter(Type == "Paid") %>%
+  mutate(
+    Total.Paid = Price * Installs
+  ) %>%
+  group_by(Category) %>%
+  summarize(USD.Paid = sum(Total.Paid)) %>%
+  arrange(-USD.Paid) %>%
+  hchart('treemap', hcaes(x = 'Category', value = 'USD.Paid', color = 'USD.Paid')) %>%
+  hc_add_theme(hc_theme_elementary()) %>%
+  hc_title(text="Total amount spent by category (installs * price)")
+```
+Family is the category that generated the highest revenue, probably due to Minecraft's huge populatiry.
+
+
+## Content Rating
+
+How many installations were there by "content rating"?  
+
+```{r, echo = TRUE}
+tmp <- data.clean %>%
+  group_by(Content.Rating) %>%
+  summarize(Total.Installs = sum(Installs)) %>%
+  arrange(-Total.Installs)
+
+highchart() %>%
+  hc_chart(type = "pyramid") %>%
+  hc_add_series_labels_values(
+    labels = tmp$Content.Rating, values = tmp$Total.Installs
+    ) %>%
+  hc_title(
+    text="Number of Installs by Content Rating"
+    ) %>%
+  hc_add_theme(hc_theme_flat())
+```
+
+"Everyone" has the largest share of installations, followed by "Teen".
+
+## Genres
+
+There are a total of `r I(length(unique(data.clean$Genres)))` unique "Genres" on this dataset. Let's take a look at the most popular, by number of installs.
+```{r, echo = FALSE}
+tmp <- data.clean %>%
+  group_by(Genres, Type) %>%
+  summarize(
+    Total.Installs = sum(Installs)
+  ) %>%
+  arrange(-Total.Installs)
+```
+
+```{r, echo = TRUE}
+highchart() %>% 
+  hc_chart(type ="column",
+           options3d = list(enabled = TRUE, alpha = 15, beta = 15)) %>%
+  hc_xAxis(categories = tmp$Genres) %>% 
+  hc_add_series(data = tmp$Total.Installs, name = "Total.Installs") %>%
+  hc_add_theme(hc_theme_smpl()) %>%
+  hc_title(
+    text="Number of Installs by Genre (all apps)"
+    ) %>%
+    hc_chart(
+      borderColor = '#EBBA95',
+      borderRadius = 10,
+      borderWidth = 1,
+      backgroundColor = list(
+        linearGradient = c(0, 0, 500, 500), stops = list(
+               list(0, 'rgb(255, 255, 255)'),
+               list(1, 'rgb(200, 200, 255)')
+             )))
+```
+
+"Communication" is by far the most popular genre, by number of installs. Which are the top 10 communication apps?
+
+```{r, echo = TRUE}
+data.clean %>%
+    select(App, Installs) %>%
+    arrange(-Installs) %>%
+    head(10)
+```
+
+There are actually more apps listed with the same number of installs, but these are the first 10. Next, we see which were the top 10 paid and free apps, by genre.  
+
+```{r, echo = TRUE}
+tmp.paid <- tmp %>% filter(Type == "Paid") %>% head(10)
+
+highchart() %>% 
+  hc_chart(type ="column",
+           options3d = list(enabled = TRUE, alpha = 15, beta = 15)) %>%
+  hc_xAxis(categories = tmp.paid$Genres) %>% 
+  hc_add_series(data = tmp.paid$Total.Installs, name = "Total.Installs") %>%
+  hc_add_theme(hc_theme_smpl()) %>%
+  hc_title(
+    text = "Top 10 number of installs by genre"
+    ) %>%
+  hc_subtitle(
+    text = "(paid apps only)"
+  )
+
+rm(tmp.paid)
+```
+
+```{r, echo = TRUE}
+tmp.free <- tmp %>%
+  filter(Type == "Free") %>%
+  head(10)
+
+highchart() %>% 
+  hc_chart(type ="column",
+           options3d = list(enabled = TRUE, alpha = 15, beta = 15)) %>%
+  hc_xAxis(categories = tmp.free$Genres) %>% 
+  hc_add_series(data = tmp.free$Total.Installs, name = "Total.Installs") %>%
+  hc_add_theme(hc_theme_smpl()) %>%
+  hc_title(
+    text="Top 10 number of installs by genre"
+    ) %>%
+  hc_subtitle(
+    text = "(free apps only)"
+  )
+
+rm(tmp.free)
+```
+
+The top 10 application genre changes quite a bit on free vs paid. Top free applications are more 'social' (browsers, chat apps, social network apps) while top paid genres are games.
+
+## Last updated
+
+Let's now analyze when applications were last updated by making a time series chart.
+```{r, echo = TRUE}
+# Get number of apps by last updated date
+tmp <- data.clean %>% count(Last.Updated)
+
+# Transform data into time series
+time_series <- xts(
+  tmp$n, order.by = tmp$Last.Updated 
+)
+
+highchart(type = "stock") %>% 
+  hc_title(text = "Last updated date") %>% 
+  hc_subtitle(text = "Number of applications by date of last update") %>% 
+  hc_add_series(time_series) %>%
+  hc_add_theme(hc_theme_gridlight())
+
+rm(time_series)
+```
+
+Most applications have been updated within the last 6 months but there are applications that haven't not seen an update for 5 years!!
+
+## Android Version
+
+The column "Android version" actually relates to the minimum Android version the application supports. Let's analyze minimum android version by number of installations.  
+
+```{r, echo = TRUE}
+# Heatmap is working on my computer but not on Kaggle. I'll put here the code and comment it out so I don't get an error.
+#data.clean %>%
+#  filter(Min.Android.Ver > 0, Type %in% c("Free", "Paid")
+#    ) %>%
+#  group_by(as.factor(Min.Android.Ver), Type) %>%
+#  rename(Minimum.Android.Version = "as.factor(Min.Android.Ver)") %>%
+#  summarize(Total.Installs = sum(Installs)) %>%
+#  hchart(
+#    type = "heatmap", hcaes(x = Minimum.Android.Version, y = Type, value = Total.Installs)
+#    ) %>%
+#  hc_title(text = "Minimum Android Version (by number of installs)")
+```
+    
+```{r, echo = FALSE}
+data.clean %>%
+  filter(Min.Android.Ver > 0, Type %in% c("Free", "Paid")
+         ) %>%
+  group_by(as.factor(Min.Android.Ver), Type) %>%
+  rename(Minimum.Android.Version = "as.factor(Min.Android.Ver)") %>%
+  summarize(Total.Installs = sum(Installs)) %>%
+  hchart('bar', hcaes(x = 'Minimum.Android.Version', y = 'Total.Installs', group = 'Type'))
+    
+
+```
+Applications rely mostly that users have Android version 4.1 and up. This is good news for legacy devices.
+ 
+# References and more information
+
+* [Highcharter r package](http://jkunst.com/highcharter/index.html) ;
+* [amrrs "Beginners guide to Highchart Visual in R" Kernel](https://www.kaggle.com/nulldata/beginners-guide-to-highchart-visual-in-r) ;
+* [Datacamp "Data Visualization with Highcharter in R"](https://www.datacamp.com/community/tutorials/data-visualization-highcharter-r).
+
+If you liked this kernel feel free to **upvoat** it.

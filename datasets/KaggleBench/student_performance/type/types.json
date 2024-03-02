@@ -1,0 +1,10 @@
+{
+    "gender": "object",
+    "race_ethnicity": "object",
+    "parental level of education": "object",
+    "lunch": "object",
+    "test preparation course": "object",
+    "math score": "float32",
+    "reading score": "float32",
+    "writing score": "float32"
+}

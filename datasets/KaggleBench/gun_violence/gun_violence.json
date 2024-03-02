@@ -1,0 +1,381 @@
+{
+    "charts": [
+        {
+            "describe": "Number of gun violence incidents by year",
+            "id": "gun_violence_1_extracted.json_id_1-gun_violence_2_extracted.json_id_1",
+            "rank": 1,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of incidents per month",
+            "id": "gun_violence_1_extracted.json_id_2-gun_violence_2_extracted.json_id_3",
+            "rank": 2,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of incidents by day of week",
+            "id": "gun_violence_1_extracted.json_id_3",
+            "rank": 3,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "week",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of incidents by date",
+            "id": "gun_violence_1_extracted.json_id_4",
+            "rank": 4,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Total number of killed by date",
+            "id": "gun_violence_1_extracted.json_id_5-gun_violence_3_extracted.json_id_14",
+            "rank": 5,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_killed",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Total number of injured by date",
+            "id": "gun_violence_1_extracted.json_id_6-gun_violence_3_extracted.json_id_15",
+            "rank": 6,
+            "type": "line",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_injured",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "State wise number of incidents",
+            "id": "gun_violence_1_extracted.json_id_7-gun_violence_2_extracted.json_id_5-gun_violence_3_extracted.json_id_1",
+            "rank": 7,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "state",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "state",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Total number of n_killed of different states",
+            "id": "gun_violence_1_extracted.json_id_8-gun_violence_3_extracted.json_id_4",
+            "rank": 8,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "state",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_killed",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Total number of injured of different states",
+            "id": "gun_violence_1_extracted.json_id_9-gun_violence_3_extracted.json_id_5",
+            "rank": 9,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "state",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_injured",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of incidents by city",
+            "id": "gun_violence_1_extracted.json_id_10-gun_violence_2_extracted.json_id_6-gun_violence_3_extracted.json_id_2",
+            "rank": 10,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "city_or_county",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "city_or_county",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of killed by city",
+            "id": "gun_violence_1_extracted.json_id_11-gun_violence_3_extracted.json_id_6",
+            "rank": 11,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "city_or_county",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_killed",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of injured by city",
+            "id": "gun_violence_1_extracted.json_id_12-gun_violence_3_extracted.json_id_7",
+            "rank": 12,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "city_or_county",
+                    "trans": "raw",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_injured",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of guns used",
+            "id": "gun_violence_1_extracted.json_id_13-gun_violence_3_extracted.json_id_3",
+            "rank": 13,
+            "type": "pie",
+            "channels": {
+                "x": {
+                    "attr": "n_guns_involved",
+                    "trans": "bin"
+                },
+                "y": {
+                    "attr": "n_guns_involved",
+                    "trans": "count",
+                    "calcus": "percentage"
+                }
+            }
+        },
+        {
+            "describe": "Number of gun violence incidents by quarter",
+            "id": "gun_violence_2_extracted.json_id_2",
+            "rank": 14,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "quarter",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of gun violence incidents by weekday",
+            "id": "gun_violence_2_extracted.json_id_4",
+            "rank": 15,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "weekday",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "date",
+                    "trans": "count",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of killed incidents by weekday",
+            "id": "gun_violence_3_extracted.json_id_8",
+            "rank": 16,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "weekday",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_killed",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of injured incidents by weekday",
+            "id": "gun_violence_3_extracted.json_id_9",
+            "rank": 17,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "weekday",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_injured",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of killed incidents by month",
+            "id": "gun_violence_3_extracted.json_id_10",
+            "rank": 18,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_killed",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of injured incidents by month",
+            "id": "gun_violence_3_extracted.json_id_11",
+            "rank": 19,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "month",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_injured",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of killed incidents by year",
+            "id": "gun_violence_3_extracted.json_id_12",
+            "rank": 20,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_killed",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        },
+        {
+            "describe": "Number of injured incidents by year",
+            "id": "gun_violence_3_extracted.json_id_13",
+            "rank": 21,
+            "type": "bar",
+            "channels": {
+                "x": {
+                    "attr": "date",
+                    "trans": "year",
+                    "groupby": true
+                },
+                "y": {
+                    "attr": "n_injured",
+                    "trans": "sum",
+                    "calcus": "raw"
+                }
+            }
+        }
+    ]
+}

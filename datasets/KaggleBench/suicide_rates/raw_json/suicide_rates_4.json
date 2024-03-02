@@ -1,0 +1,514 @@
+{
+    "url": "https://www.kaggle.com/kralmachine/data-visualization-of-suicide-rates",
+    "votes": 100,
+    "rank": 4,
+    "charts": [
+        {
+            "describe": "suicides of sex and country",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "population of country",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "population",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count of sex",
+            "chart": "bar",
+            "x": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sex",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count of sex and age",
+            "chart": "bar",
+            "x": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sex",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "count of age",
+            "chart": "bar",
+            "x": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "age",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicide of country",
+            "chart": "bar",
+            "x": {
+                "attr": "country",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicide of age and sex",
+            "chart": "bar",
+            "x": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "count of generation",
+            "chart": "bar",
+            "x": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "generation",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count of generation",
+            "chart": "bar",
+            "x": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "generation",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "average population of age",
+            "chart": "bar",
+            "x": {
+                "attr": "age",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "population",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "distribution of population",
+            "chart": "boxplot",
+            "x": {
+                "attr": "population",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "distribution of gdp_per_capita ($)",
+            "chart": "boxplot",
+            "x": {
+                "attr": "gdp_per_capita ($)",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "distribution of year",
+            "chart": "boxplot",
+            "x": {
+                "attr": "year",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "suicides of year",
+            "chart": "bar",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "sum",
+                "calcus": "Raw"
+            }
+        },
+        {
+            "describe": "lmplot of year suicidesno and generation",
+            "chart": "lmplot",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "count of generation",
+            "chart": "pie",
+            "x": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "generation",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "suicides by year",
+            "chart": "scatter",
+            "x": {
+                "attr": "year",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "suicides by population",
+            "chart": "scatter",
+            "x": {
+                "attr": "population",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "suicides by population",
+            "chart": "scatter",
+            "x": {
+                "attr": "year",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "gdp_per_capita ($)",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "suicides by population",
+            "chart": "kdeplot",
+            "x": {
+                "attr": "year",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "gdp_per_capita ($)",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "suicides by gdp_per_capita ($)",
+            "chart": "binscatter",
+            "x": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "gdp_per_capita ($)",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "suicides by gdp_per_capita ($)",
+            "chart": "kdeplot",
+            "x": {
+                "attr": "suicides/100k pop",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "gdp by population",
+            "chart": "facetscatter",
+            "x": {
+                "attr": "gdp_per_capita ($)",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "population",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "population",
+            "chart": "kdeplot",
+            "x": {
+                "attr": "population",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "population",
+                "trans": "kde"
+            },
+            "color": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "count of generation and sex",
+            "chart": "bar",
+            "x": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "generation",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "stripplot of suicides ",
+            "chart": "stripplot",
+            "x": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "suicides of generation and sex",
+            "chart": "relplot",
+            "x": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "stripplot of suicides and year",
+            "chart": "stripplot",
+            "x": {
+                "attr": "year",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "stripplot of suicides ",
+            "chart": "violinplot",
+            "x": {
+                "attr": "sex",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "scatter of suicides per 100K",
+            "chart": "scatter",
+            "x": {
+                "attr": "index",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "suicides/100k pop",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "scatter of suicides_no",
+            "chart": "scatter",
+            "x": {
+                "attr": "index",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "scatter of population",
+            "chart": "scatter",
+            "x": {
+                "attr": "index",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "population",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "scatter of gdp_per_capita ($)",
+            "chart": "scatter",
+            "x": {
+                "attr": "index",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "gdp_per_capita ($)",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "histogram of suicides per 100K",
+            "chart": "histogram",
+            "x": {
+                "attr": "suicides/100k pop",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "suicides/100k pop",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "suicides and suicides per 100K",
+            "chart": "scatter",
+            "x": {
+                "attr": "suicides_no",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "suicides/100k pop",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "generation and population",
+            "chart": "violinplot",
+            "x": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "population",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "generation and population",
+            "chart": "boxplot",
+            "x": {
+                "attr": "generation",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "population",
+                "trans": "raw"
+            }
+        }
+    ]
+}

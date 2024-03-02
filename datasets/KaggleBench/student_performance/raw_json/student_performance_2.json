@@ -1,0 +1,421 @@
+{
+    "url": "https://www.kaggle.com/kralmachine/seaborn-tutorial-for-beginners",
+    "votes": 134,
+    "rank": 2,
+    "charts": [
+        {
+            "describe": "gender distribtion",
+            "chart": "bar",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "gender",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "race/ethnicity distribtion",
+            "chart": "bar",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "race/ethnicity",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "mean writing score of different parental level",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean reading score of different parental level",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "reading score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean math score of different parental level",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean math score of different gender",
+            "chart": "bar",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean math score of different gender and preparation course",
+            "chart": "bar",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean writing score of different parental level",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "sum writing score of lunch type",
+            "chart": "bar",
+            "x": {
+                "attr": "lunch",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "reading score vs writing score",
+            "chart": "pointplot",
+            "x": {
+                "attr": "reading score",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "race/ethnicity distribtion",
+            "chart": "pie",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "race/ethnicity",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "race/ethnicity distribtion",
+            "chart": "pie",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "reading score",
+                "trans": "mean",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "math score vs reading score",
+            "chart": "scatter",
+            "x": {
+                "attr": "math score",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "reading score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "math score vs writing score",
+            "chart": "scatter",
+            "x": {
+                "attr": "math score",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "violin math score",
+            "chart": "violinplot",
+            "x": {
+                "attr": "math score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "violin math score different race",
+            "chart": "violinplot",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "violin math score different race and gender",
+            "chart": "violinplot",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "violin math score different race and gender",
+            "chart": "violinplot",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "violin math score different parental level of education and gender",
+            "chart": "violinplot",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "correlation",
+            "chart": "correlation matix",
+            "x": {
+                "attr": "all"
+            },
+            "y": {
+                "attr": "all"
+            }
+        },
+        {
+            "describe": "math score boxplot",
+            "chart": "boxplot",
+            "x": {
+                "attr": "math score"
+            }
+        },
+        {
+            "describe": "math score boxplot of different gender",
+            "chart": "boxplot",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "math score boxplot of different gender and race/ethnicity",
+            "chart": "boxplot",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "gender and race",
+            "chart": "bar",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "race/ethnicity",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "gender and parental level of education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "lunch distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "lunch",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "lunch",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "parental level of education distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "lunch",
+                "trans": "raw",
+                "groupby": true
+            }
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+{
+    "Date": "object",
+    "AveragePrice": "float32",
+    "Total Volume": "float32",
+    "Total Bags": "float32",
+    "Small Bags": "float32",
+    "type": "object",
+    "region": "object"
+}

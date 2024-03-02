@@ -1,0 +1,150 @@
+{
+    "url": "https://www.kaggle.com/rishpande/avocado-prices-data-visualization-beginner",
+    "votes": 26,
+    "rank": 5,
+    "charts": [
+        {
+            "describe": "price distribution",
+            "chart": "histogram",
+            "x": {
+                "attr": "AveragePrice",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "averageprice of diferent month and type",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "average price of diferent month and type",
+            "chart": "boxplot",
+            "x": {
+                "attr": "Date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "average price of diferent month and year",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "month",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Total Volume of diferent year",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Total Volume",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "average price of diferent year",
+            "chart": "line",
+            "x": {
+                "attr": "Date",
+                "trans": "year",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "average price vs Total volume of different type",
+            "chart": "scatter",
+            "x": {
+                "attr": "Total Volume",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "raw"
+            },
+            "color": {
+                "attr": "type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "avg price by region",
+            "chart": "bar",
+            "x": {
+                "attr": "region",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "AveragePrice",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "avg volume by region",
+            "chart": "bar",
+            "x": {
+                "attr": "region",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Total Volume",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

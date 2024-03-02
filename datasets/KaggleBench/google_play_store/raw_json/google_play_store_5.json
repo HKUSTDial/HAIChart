@@ -1,0 +1,157 @@
+{
+    "url": "https://www.kaggle.com/mrwolfgang/google-playstore-eda",
+    "votes": 41,
+    "rank": 5,
+    "charts": [
+        {
+            "describe": "which category has the higheset share",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "which category has the higheset installs",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Content Rating",
+            "chart": "bar",
+            "x": {
+                "attr": "Content Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Content Rating",
+            "chart": "bar",
+            "x": {
+                "attr": "Content Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Content Rating",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by Content Rating",
+            "chart": "bar",
+            "x": {
+                "attr": "Content Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(Installs)/count(Content Rating)",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Type",
+            "chart": "bar",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Name_check",
+            "chart": "bar",
+            "x": {
+                "attr": "Name_check",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Name_check",
+            "chart": "bar",
+            "x": {
+                "attr": "Name_check",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Name_check",
+            "chart": "bar",
+            "x": {
+                "attr": "Name_check",
+                "trans": "split",
+                "groupby": true
+            },
+            "y": {
+                "attr": "sum(Installs)/count(Name_check)",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "correlation matrix",
+            "chart": "correlationmatrix",
+            "x": {
+                "attr": "all",
+                "trans": "raw"
+            },
+            "y": {
+                "attr": "all",
+                "trans": "raw"
+            }
+        }
+    ]
+}

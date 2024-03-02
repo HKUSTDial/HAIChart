@@ -1,0 +1,237 @@
+{
+    "url": "https://www.kaggle.com/danilodiogo/google-play-store-eda-plotting-with-highcharts",
+    "votes": 74,
+    "rank": 3,
+    "charts": [
+        {
+            "describe": "which category has the higheset installs",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "app size histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Size",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Size",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "size by type",
+            "chart": "boxplot",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Size",
+                "trans": "raw"
+            }
+        },
+        {
+            "describe": "app Installs histogram",
+            "chart": "histogram",
+            "x": {
+                "attr": "Installs",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "count by type",
+            "chart": "pie",
+            "x": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "count by category, type",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "count by category, type",
+            "chart": "bar",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Category",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "mean price by category and type",
+            "chart": "treemap",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "color": {
+                "attr": "price",
+                "trans": "mean",
+                "calcus": "raw"
+            },
+            "size": {
+                "attr": "price",
+                "trans": "mean",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total amount by category and type",
+            "chart": "treemap",
+            "x": {
+                "attr": "Category",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "color": {
+                "attr": "price*installs",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "size": {
+                "attr": "price*installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Content Rating",
+            "chart": "bar",
+            "x": {
+                "attr": "Content Rating",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Genres",
+            "chart": "bar",
+            "x": {
+                "attr": "Genres",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Genres, Type",
+            "chart": "bar",
+            "x": {
+                "attr": "Genres",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Type",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "count by Last Updated",
+            "chart": "bar",
+            "x": {
+                "attr": "Last Updated",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Last Updated",
+                "trans": "raw",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "total installs by Android Ver",
+            "chart": "bar",
+            "x": {
+                "attr": "Android Ver",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Installs",
+                "trans": "sum",
+                "calcus": "raw"
+            }
+        }
+    ]
+}

@@ -1,0 +1,129 @@
+{
+    "url": "https://www.kaggle.com/parthsharma5795/finding-the-best-restaurants-in-bangalore",
+    "votes": 73,
+    "rank": 2,
+    "charts": [
+        {
+            "describe": "localised count",
+            "chart": "bar",
+            "x": {
+                "attr": "listed_in(city)",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "listed_in(city)",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "rest_type count",
+            "chart": "bar",
+            "x": {
+                "attr": "rest_type",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "rest_type",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "online_order count",
+            "chart": "bar",
+            "x": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "online_order",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "rate and online_order count",
+            "chart": "bar",
+            "x": {
+                "attr": "rate",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "online_order",
+                "trans": "count",
+                "calcus": "percentage"
+            },
+            "color": {
+                "attr": "online_order",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "book_table count",
+            "chart": "bar",
+            "x": {
+                "attr": "book_table",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "book_table",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "rate and book_table count",
+            "chart": "bar",
+            "x": {
+                "attr": "rate",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "book_table",
+                "trans": "count",
+                "calcus": "percentage"
+            },
+            "color": {
+                "attr": "book_table",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "approx_cost(for two people) distribution",
+            "chart": "histogram",
+            "x": {
+                "attr": "approx_cost(for two people)",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "approx_cost(for two people)",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "top listed_in(type)",
+            "chart": "pie",
+            "x": {
+                "attr": "listed_in(type)",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "listed_in(type)",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        }
+    ]
+}

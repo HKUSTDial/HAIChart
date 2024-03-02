@@ -1,0 +1,336 @@
+{
+    "url": "https://www.kaggle.com/roshansharma/student-performance-analysis",
+    "votes": 32,
+    "rank": 5,
+    "charts": [
+        {
+            "describe": "gender distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "gender",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "race/ethnicity distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "race/ethnicity",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "parental level of education distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "lunch distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "lunch",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "lunch",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "math score distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "math score",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "math score",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "reading score distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "reading score",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "reading score",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "writing score distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "writing score",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "writing score",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "gender and race distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "gender",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "parental and race distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "race/ethnicity",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "parental and course distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "race and course distribution",
+            "chart": "bar",
+            "x": {
+                "attr": "race/ethnicity",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "race/ethnicity",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "test preparation course",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "pass/fail in math",
+            "chart": "pie",
+            "x": {
+                "attr": "pass_math=math>40",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "pass_math=math>40",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "pass/fail in reading",
+            "chart": "pie",
+            "x": {
+                "attr": "pass_reading=reading>40",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "pass_reading=reading>40",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "pass/fail in writing",
+            "chart": "pie",
+            "x": {
+                "attr": "pass_writing=writing>40",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "pass_writing=writing>40",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "histogram of total score",
+            "chart": "histogram",
+            "x": {
+                "attr": "total score=math+reading+writing",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "total score=math+reading+writing",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "histogram of avg score",
+            "chart": "histogram",
+            "x": {
+                "attr": "avg score=math+reading+writing/3",
+                "trans": "bin",
+                "bins": "default"
+            },
+            "y": {
+                "attr": "avg score=math+reading+writing/3",
+                "trans": "count",
+                "calcus": "raw"
+            }
+        },
+        {
+            "describe": "pass/fail in all",
+            "chart": "pie",
+            "x": {
+                "attr": "pass_all=all>40",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "pass_alll=all>40",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Grade distribution",
+            "chart": "pie",
+            "x": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "count",
+                "calcus": "percentage"
+            }
+        },
+        {
+            "describe": "Grade distribution by parental education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "percentage"
+            },
+            "color": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "Grade distribution by parental education",
+            "chart": "bar",
+            "x": {
+                "attr": "parental level of education",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "parental level of education",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "raw",
+                "groupby": true
+            }
+        },
+        {
+            "describe": "grade and gender",
+            "chart": "bar",
+            "x": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "raw",
+                "groupby": true
+            },
+            "y": {
+                "attr": "Grade=Total_Marks分级",
+                "trans": "count",
+                "calcus": "raw"
+            },
+            "color": {
+                "attr": "gender",
+                "trans": "raw",
+                "groupby": true
+            }
+        }
+    ]
+}
