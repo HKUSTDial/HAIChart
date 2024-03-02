@@ -66,7 +66,7 @@ class Node:
     def get_untried_actions(self, current_state, dp,constraints):
         available_actions = current_state.get_available_actions(dp,constraints)
 
-        # 提取动作值
+        # Extract action value
         tried_action_values = {identifier.split('_')[1] for identifier in self.edges.keys()}
 
         untried_actions = [action for action in available_actions if action not in tried_action_values]
