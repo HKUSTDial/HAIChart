@@ -1,0 +1,9 @@
+tensorflow==1.15.0
+numpy==1.19.2
+pandas==1.1.5
+scipy==1.5.2
+lightgbm==4.1.0
+h5py==2.10.0
+ipykernel
+notebook
+jupyter

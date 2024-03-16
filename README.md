@@ -9,6 +9,20 @@ HAIChart is a system based on reinforcement learning that integrates human insig
 - `user_model` folder holds the implementation code for the user model, including `discriminator.py`, `agent.py`, and more.
 - `mcgs.py` is the implementation code for visualization generation and recommendation based on Monte Carlo Graph Search.
 
+## Environment Setup
+To set up the environment for HAIChart, ensure you have Anaconda installed and then follow these steps:
+
+1. **Create and activate a new environment:**
+```
+conda create -n haichart python=3.6.13
+conda activate haichart
+```
+
+2. **Install the necessary packages:**
+```
+pip install -r requirements.txt
+```
+
 ## Contact
 If you have any questions, please contact:  
 yxie740@connect.hkust-gz.edu.cn
