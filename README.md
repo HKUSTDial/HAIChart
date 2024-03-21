@@ -1,5 +1,13 @@
 # HAIChart
-HAIChart is a system based on reinforcement learning that integrates human insights and AI capabilities for improved visualizations.
+
+![HAIChart Overview](./assets/overview.png)
+
+## Overview
+
+**HAIChart** combines human insights and AI capabilities through reinforcement learning to enhance data visualization processes. This innovative system supports users with high-quality visualization recommendations and hints for interactive exploration, leveraging a two-part framework: the offline learning-to-rate component and the online multi-round recommendations.
+
+- **Offline Learning**: Focuses on understanding and rating visualizations by training a neural network on a vast dataset of visualizations with their ratings.
+- **Online Recommendations**: Uses a Monte Carlo Graph Search (MCGS)-powered agent to offer promising visualizations and hints, encouraging exploratory user interaction.
 
 ## File Structure
 - `datasets` contains the datasets used in this project, including VizML and KaggleBench.
