@@ -47,9 +47,9 @@ python haichart.py
 <!-- <div align="center"><img width="90%" src="./assets/example.png"></div> -->
 
 3. **In the HAIChart interface:**
-- **Dataset Upload and Display Area:** Click 'Select Dataset' to select a dataset from your local system. Once uploaded, the dataset will be displayed in this area.
-- **Constraint Selection Area:** Here, the constraints are dynamically generated based on the hints you've interacted with previously. These constraints are derived from your responses to hints and serve to refine the visualization recommendations. Engage with this area to set or adjust your analysis parameters according to the insights you're seeking.
-- **Visualization Recommendations Area:** Based on your dataset and the constraints influenced by your interaction with hints, HAIChart will automatically recommend several visualizations. Explore these recommendations to uncover valuable insights.
+- **Dataset Select and Display Area:** Click 'Select Dataset' to select a dataset from your local system. Once uploaded, the dataset will be displayed in this area.
+- **Current Constraints Area:** Here, the constraints are dynamically generated based on the hints you've interacted with previously. These constraints are derived from your responses to hints and serve to refine the visualization recommendations. Engage with this area to set or adjust your analysis parameters according to the insights you're seeking.
+- **Visualization Results Area:** Based on your dataset and the constraints influenced by your interaction with hints, HAIChart will automatically recommend several visualizations. Explore these recommendations to uncover valuable insights.
 - **Hints Area:** HAIChart provides hints to guide you through refining your visualizations or discovering new analytical angles. Interaction with these hints directly influences the constraints and recommendations, fostering a personalized exploration experience.
 
 This example demonstrates the interactive workflow of HAIChart, emphasizing the importance of hints and user constraints in driving the discovery of insightful visualizations. Experiment with different datasets and engage with the hints to leverage the full analytical power of HAIChart.
