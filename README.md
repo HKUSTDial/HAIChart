@@ -16,6 +16,7 @@
 - `tools` folder contains components that organize this project, such as `features.py`, `instance.py`, etc.
 - `user_model` folder holds the implementation code for the user model, including `discriminator.py`, `agent.py`, and more.
 - `mcgs.py` is the implementation code for visualization generation and recommendation based on Monte Carlo Graph Search.
+- `haichart.py` is the main script used to start the HAIChart web server. Running this script activates the backend server, enabling users to access the HAIChart web interface through their browser. 
 
 ## Environment Setup
 To set up the environment for HAIChart, ensure you have Anaconda installed and then follow these steps:
