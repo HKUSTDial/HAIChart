@@ -42,9 +42,9 @@ python haichart.py
 
 2. **Open your web browser and navigate to the provided local server URL (typically http://localhost:8080).**
 
-<!-- ![HAIChart Example](./assets/example.png) -->
+![HAIChart Example](./assets/example.png)
 
-<div align="center"><img width="90%" src="./assets/example.png"></div>
+<!-- <div align="center"><img width="90%" src="./assets/example.png"></div> -->
 
 3. **In the HAIChart interface:**
 - **Dataset Upload and Display Area:** Click 'Select Dataset' to select a dataset from your local system. Once uploaded, the dataset will be displayed in this area.
