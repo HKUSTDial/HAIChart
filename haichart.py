@@ -428,8 +428,65 @@ def update_constraints():
 
     c_key = action.split("_")[0]
     c_value = action.split("_")[1]
+    
+    test_vail = False
+    if constraints[c_key] == [] and c_value not in constraints[c_key]:
+        constraints[c_key].append(c_value)
+    
+        for key,view in good_view.items():
+            querys = key.split(' ')
+            chart_type = querys[querys.index("M")+1]
+            x_axis = querys[querys.index("E")+2]
+            method = querys[querys.index("A")+1] 
+            y_axis = querys[querys.index("A") + 2]
+            group_by_who = querys[querys.index("G") + 1]
+            bin_by_who = querys[querys.index("B") + 3]
 
-    if c_value not in constraints[c_key]:
+            groups = group_by_who.split(",")
+
+            is_valid_view = True  
+            for constraint_key, constraint_values in constraints.items():
+                if constraint_values:  
+                    if constraint_key == '[T]': 
+                        if chart_type not in constraint_values:
+                            is_valid_view = False
+                            continue  
+                    elif constraint_key == '[X]':
+                        if x_axis not in constraint_values:
+                            is_valid_view = False
+                            continue
+                    elif constraint_key == '[Y]':
+                        if y_axis not in constraint_values:
+                            is_valid_view = False
+                            continue
+                    elif constraint_key == '[AggFunction]':
+                        if method not in constraint_values:
+                            is_valid_view = False
+                            continue
+                    elif constraint_key == '[G]':
+                        if len(groups) == 2:
+                            if groups[0] not in constraint_values and groups[1] not in constraint_values:
+                                is_valid_view = False
+                                continue
+                        else:
+                            if group_by_who not in constraint_values:
+                                is_valid_view = False
+                                continue
+                    elif constraint_key == '[B]':
+                        if bin_by_who not in constraint_values:
+                            is_valid_view = False
+                            continue
+            if is_valid_view:
+                test_vail = True
+                break
+        
+    if test_vail == False:
+        constraints['[T]'] = []
+        constraints['[X]'] = []
+        constraints['[Y]'] = []
+        constraints['[AggFunction]'] = []
+        constraints['[G]'] = []
+        constraints['[B]'] = []
         constraints[c_key].append(c_value)
 
     suggestions = mcgs_according_to_constraints()
