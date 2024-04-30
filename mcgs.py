@@ -312,5 +312,5 @@ class MCGS:
             self.root = Node(None, "root", "root")
         self.current_node = self.root # Always start from the root node
         self.simulation(100, dp, history_score, good_view, constraints, current_view) 
-        d = dict((k, v) for k, v in history_score.items() if v != -15)
+        d = dict((k, v) for k, v in history_score.items() if v != 0)
 
