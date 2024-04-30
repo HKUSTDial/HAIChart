@@ -322,7 +322,7 @@ def mcgs_according_to_constraints():
 
         return selected_hints
 
-    budget = 200  # Maximum number of charts
+    budget = 50  # Maximum number of charts
     k = 9  # Number of hints to select
 
     selected_hints = select_k_hints(new_idf_data, budget, k)
