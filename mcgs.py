@@ -78,7 +78,7 @@ class Node:
         action_index = np.random.choice(range(action_number))
         return available_actions[action_index]
 
-    def select(self, current_state, dp, constraints, c_param=10):
+    def select(self, current_state, dp, constraints, c_param=1.5):
         """
         Selects the optimal action based on the current child nodes and returns the child node
         :param c_param: Exploration parameter used for the proportion of exploration
@@ -299,7 +299,7 @@ class MCGS:
             if is_over:
                 break
             if current_node.is_full_expand(current_state, dp, constraints):  # Attack unexplored items
-                _, current_node = current_node.select(current_state, dp, constraints)  # Root node selection is complete, continue from child node downwards
+                _, current_node = current_node.select(current_state, dp, constraints, 1.5)  # Root node selection is complete, continue from child node downwards
             else: 
                 expand_node = current_node.expand(current_state, dp, constraints)  # If the current node has unexplored options, select and return it, waiting for simulation
                 return expand_node
