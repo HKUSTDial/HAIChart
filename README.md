@@ -1,15 +1,15 @@
-# HAIChart
+# 📈HAIChart
 
 ![HAIChart Overview](./assets/overview.png)
 
-## Overview
+## 📖Overview
 
 **HAIChart** combines human insights and AI capabilities through reinforcement learning to enhance data visualization processes. This innovative system supports users with high-quality visualization recommendations and hints for interactive exploration, leveraging a two-part framework: the offline learning-to-rate component and the online multi-round recommendations.
 
 - **Offline Learning**: Focuses on understanding and rating visualizations by training a neural network on a vast dataset of visualizations with their ratings.
 - **Online Recommendations**: Uses a Monte Carlo Graph Search (MCGS)-powered agent to offer promising visualizations and hints, encouraging exploratory user interaction.
 
-## File Structure
+## 📁File Structure
 - `datasets` contains the datasets used in this project, including VizML and KaggleBench.
 - `static` houses web resources used by the project.
 - `templates` includes the source code for the frontend interaction interface.
@@ -18,7 +18,7 @@
 - `mcgs.py` is the implementation code for visualization generation and recommendation based on Monte Carlo Graph Search.
 - `haichart.py` is the main script used to start the HAIChart web server. Running this script activates the backend server, enabling users to access the HAIChart web interface through their browser. 
 
-## Environment Setup
+## 🛠️Environment Setup
 To set up the environment for HAIChart, ensure you have Anaconda installed and then follow these steps:
 
 1. **Create and activate a new environment:**
@@ -32,7 +32,7 @@ conda activate haichart
 pip install -r requirements.txt
 ```
 
-## Demo Running Example
+## 🌰Demo Running Example
 
 After setting up your environment, you can start exploring HAIChart with a basic demo. This example will guide you through the process of interacting with hints, selecting user constraints, and viewing recommended visualizations.
 
@@ -55,6 +55,21 @@ python haichart.py
 
 This example demonstrates the interactive workflow of HAIChart, emphasizing the importance of hints and user constraints in driving the discovery of insightful visualizations. Experiment with different datasets and engage with the hints to leverage the full analytical power of HAIChart.
 
-## Contact
+## 📌Citation
+
+```
+@misc{xie2024haichart,
+      title={HAIChart: Human and AI Paired Visualization System}, 
+      author={Yupeng Xie and Yuyu Luo and Guoliang Li and Nan Tang},
+      year={2024},
+      eprint={2406.11033},
+      archivePrefix={arXiv},
+      primaryClass={cs.DB},
+      url={https://arxiv.org/abs/2406.11033}, 
+}
+```
+
+
+## ✉️Contact
 If you have any questions, please contact:  
 yxie740@connect.hkust-gz.edu.cn
