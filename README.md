@@ -15,6 +15,11 @@
 
 [24/6/30] Our paper [HAIChart: Human and AI Paired Visualization System](https://www.vldb.org/pvldb/vol17/p3178-luo.pdf) has been accepted by VLDB'24.
 
+## 🎈Features
+
+- **Monte Carlo Graph Search**: Auto-generates high-quality visualizations.
+- **Composite Reward Function**: Effectively evaluates visualization quality.
+- **Visualization Hints Mechanism**: Integrates feedback to fine-tune visualizations.
 
 
 ## 📁File Structure
