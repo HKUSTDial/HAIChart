@@ -9,6 +9,14 @@
 - **Offline Learning**: Focuses on understanding and rating visualizations by training a neural network on a vast dataset of visualizations with their ratings.
 - **Online Recommendations**: Uses a Monte Carlo Graph Search (MCGS)-powered agent to offer promising visualizations and hints, encouraging exploratory user interaction.
 
+
+## 🎉News
+[24/8/27] We presented our [paper](./assets/HAIChart_Slides.pdf) and [poster](./assets/HAIChart_VLDB_Poster.jpg) at [VLDB 2024](https://vldb.org/2024/), receiving widespread attention and positive feedback from researchers.
+
+[24/6/30] Our paper [HAIChart: Human and AI Paired Visualization System](https://www.vldb.org/pvldb/vol17/p3178-luo.pdf) has been accepted by VLDB'24.
+
+
+
 ## 📁File Structure
 - `datasets` contains the datasets used in this project, including VizML and KaggleBench.
 - `static` houses web resources used by the project.
@@ -32,7 +40,7 @@ conda activate haichart
 pip install -r requirements.txt
 ```
 
-## 🌰Demo Running Example
+## 📊Demo Running Example
 
 After setting up your environment, you can start exploring HAIChart with a basic demo. This example will guide you through the process of interacting with hints, selecting user constraints, and viewing recommended visualizations.
 
