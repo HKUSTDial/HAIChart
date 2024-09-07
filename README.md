@@ -71,14 +71,19 @@ This example demonstrates the interactive workflow of HAIChart, emphasizing the 
 ## 📌Citation
 
 ```
-@misc{xie2024haichart,
-      title={HAIChart: Human and AI Paired Visualization System}, 
-      author={Yupeng Xie and Yuyu Luo and Guoliang Li and Nan Tang},
-      year={2024},
-      eprint={2406.11033},
-      archivePrefix={arXiv},
-      primaryClass={cs.DB},
-      url={https://arxiv.org/abs/2406.11033}, 
+@article{10.14778/3681954.3681992,
+         author = {Xie, Yupeng and Luo, Yuyu and Li, Guoliang and Tang, Nan},
+         title = {HAIChart: Human and AI Paired Visualization System},
+         year = {2024},
+         publisher = {VLDB Endowment},
+         volume = {17},
+         number = {11},
+         issn = {2150-8097},
+         url = {https://doi.org/10.14778/3681954.3681992},
+         doi = {10.14778/3681954.3681992},
+         journal = {Proc. VLDB Endow.},
+         pages = {3178–3191},
+         numpages = {14}
 }
 ```
 
