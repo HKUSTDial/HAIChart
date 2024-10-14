@@ -5,3 +5,4 @@ scipy==1.5.2
 lightgbm==4.1.0
 h5py==2.10.0
 flask==2.0.3
+pyecharts==2.0.4
