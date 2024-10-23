@@ -9,14 +9,14 @@ import time
 
 import numpy as np
 import pandas as pd
-from state import State
+from tools.state import State
 from copy import deepcopy
 
 np.random.seed(15)
 random.seed(15)
 
-from user_model.test_env_model import get_config_score
-from user_model.vega_zero_trans import vega_zero_trans_config
+# from user_model.test_env_model import get_config_score
+# from user_model.vega_zero_trans import vega_zero_trans_config
 
 
 def formatting_query(query):
@@ -47,6 +47,81 @@ def formatting_query(query):
         querys[querys.index("none")] = "N"
 
     return ' '.join(querys)
+
+
+def matching_query(query):
+    query_parts = query.split(' ')
+    chart = query_parts[query_parts.index("mark") + 1]
+
+    if chart == "point":
+        chart = "scatter"
+    elif chart == "arc":
+        chart = "pie"
+
+    x_name = query_parts[query_parts.index("encoding") + 2]
+    y_name = query_parts[query_parts.index("aggregate") + 2]
+    agg = query_parts[query_parts.index("aggregate") + 1]
+
+    agg_mapping = {"count": "CNT", "sum": "SUM", "average": "AVG", "none": ""}
+    agg = agg_mapping.get(agg, "")
+
+    if agg:
+        y_name = f"{agg}({y_name})"
+
+    group_by_fields = query_parts[query_parts.index("group") + 1]
+    bin_by = query_parts[query_parts.index("bin") + 3]
+
+    if group_by_fields != "none" and bin_by != "none":
+        describe = f"group by {group_by_fields}, bin {x_name} by {bin_by}"
+        if bin_by.lower() == 'year':
+            x_name = f"{x_name}/({bin_by})"
+
+    elif group_by_fields != "none":
+        describe = f"group by {group_by_fields}"
+        
+    elif bin_by != "none":
+        describe = f"bin {x_name} by {bin_by}"
+        # year-of-release/(year)
+        if bin_by.lower() == 'year':
+            x_name = f"{x_name}/({bin_by})"
+        
+    else:
+        describe = ""
+
+    m_query = f"chart: {chart} x_name: {x_name} y_name: {y_name} describe: {describe}"
+
+    return m_query.lower()
+
+
+def get_view_score(new_query,dp,history_score,good_view,current_view):
+
+    cur_score = history_score.get(formatting_query(new_query))
+    if cur_score is not None:
+
+        if cur_score != -15: 
+            current_view.append(formatting_query(new_query))
+
+        return cur_score
+
+    search_view = matching_query(new_query)
+    view = dp.eh_view.get(search_view)
+    
+    new_query = formatting_query(new_query)
+
+
+    if view == 0 or view == None:  
+        history_score[new_query] = -15  
+        return -15
+    
+    v_score = view.score 
+
+    view.score_l = v_score  
+    history_score[new_query] = v_score  
+
+    good_view[new_query] = view
+    current_view.append(new_query)
+
+    return v_score 
 
 
 class Node:

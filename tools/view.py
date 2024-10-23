@@ -48,6 +48,7 @@ class View(object):
         self.M = self.Q = self.W = self.score = 0 # partial and div_ranking score
         self.getM()
         self.getQ()
+        self.describe = self.output_describe()
 
 
 #### function for learning to rank
@@ -322,4 +323,28 @@ class View(object):
             y_data = '["%s"]' % ''.join(list(reduce(lambda s1, s2: s1 + s2, ['","'.join(list(map(str, self.Y[i]))) for i in range(len_y)]).replace("'",'"')))
         data = '{"order1":' + str(order) + ',"order2":' + str(1) +  ',"describe":"' + self.table.describe + '","x_name":"' + self.fx.name + '","y_name":"' + self.fy.name + '","chart":"' + Chart.chart[self.chart] + '","classify":' + classify + ',"x_data":' + x_data + ',"y_data":' + y_data + '}'
         return data
+        
+
+    def output_describe(self):
+        """
+            Encapsulate the value of several variables in variable data(ruturned value).
+
+        Args:
+            order(int): Not an important argument, only used in the assignment of data.
+            
+        Returns:
+            data(str): A string including the value of several variables:
+                       order1, order2, describe, x_name, y_name, chart, classify, x_data, y_data.
+            
+        """
+        classify = str([])
+        if self.series_num > 1:
+            classify = str([v[0] for v in self.table.classes]).replace("u'", '\'').replace("'",'"')
+        #if self.fy.type == Type.numerical:
+        #    y_data = y_data.replace('L', '')
+        # data = '{"describe":"' + self.table.describe + '","x_name":"' + self.fx.name + '","y_name":"' + self.fy.name + '","chart":"' + Chart.chart[self.chart] + '}'
+        data = f"chart: {Chart.chart[self.chart]} x_name: {self.fx.name} y_name: {self.fy.name} describe: {self.table.describe}"
+        #data = 'score:' + str(round(self.score, 2)) + '\tM:' + str(round(self.M, 2)) + '\tQ:' + str(round(self.Q, 2)) + '\tW:' + str(round(self.W, 2)) + '{"order":' + str(order) + ',"describe":"' + self.table.describe + '","x_name":"' + self.fx.name + '","y_name":"' + self.fy.name + '","chart":"' + Chart.chart[self.chart] + '","classify":' + classify + ',"x_data":' + x_data + ',"y_data":' + y_data + '}'
+        return data.lower()
+
 
