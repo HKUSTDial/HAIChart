@@ -2,6 +2,7 @@
 import os
 import sys
 import time
+import traceback
 
 import numpy as np
 import pandas as pd
@@ -41,20 +42,6 @@ def is_vaild_datetime(old_date):
 
 
 class haichart(object):
-    """
-    Attributes:
-        name(str): the name of the deepeye project, default set as "deepeye".
-        is_table_info(bool): Whether or not the table info has been completely set.
-        import_method(str): the method of import, including "mysql" and "csv".
-        rank_method(str): the method of rank, including "learn_to_rank", "partial_order" and "diversified_ranking"
-        table_name(str): the name of the table to be visualized.
-        column_names(list): the name of each column in the table.
-        column_types(list): the type of each column in the table.
-        csv_path(str): the path of the csv dataset to be visualized.
-        csv_dataframe(pandas.Dataframe): dataset of Dataframe format.
-        instance(Instance): an Instance object corresponding to the dataset.
-        page(Page): the page to be showed in html or jupyter notebook.
-    """
 
     ##### initial function
     def __init__(self, *name):
@@ -73,12 +60,13 @@ class haichart(object):
 
         """
         if not name:
-            self.name = 'deepeye'  # if name is empty, set default name 'deepeye'
+            self.name = 'haichart'  # if name is empty, set default name 'haichart'
         else:
             self.name = name
         self.is_table_info = False
         self.import_method = methods_of_import[0]  # = none
         self.rank_method = methods_of_ranking[0]  # = none
+        self.eh_view = {}
 
     def table_info(self, name, column_info, *column_info2):
         """
@@ -181,7 +169,7 @@ class haichart(object):
                 rank_method_string += (methods_of_ranking[i] + '() or ')
             else:
                 rank_method_string += (methods_of_ranking[i] + '()')
-        print("please rank first by " + rank_method_string)
+        print(" " + rank_method_string)
         sys.exit(0)
 
     ##### data import function
@@ -264,9 +252,6 @@ class haichart(object):
             column_names = a.split(',')
             column_names = [name.replace(' ', '-').replace('_', '-') for name in column_names]
             x = column_names  # x stores the name of each column
-
-
-
         except IOError:
             print("Error: no such file or directory")
 
@@ -393,7 +378,7 @@ class haichart(object):
         # display(HTML(self.csv_dataframe.head(10).to_html()))
 
     ##### ranking function
-    def rank_generate_all_views(self, instance, new_query):
+    def rank_generate_all_views(self,instance):
         """
         initialize before ranking 
 
@@ -405,13 +390,24 @@ class haichart(object):
             instance with tables added
             
         """
-        if len(instance.tables[0].D) == 0:  
-            print('no data in table')
+        if len(instance.tables[0].D) == 0:
+            print ('no data in table')
             sys.exit(0)
-        return instance.tables[0].dealWithTable(new_query)
+        # print(instance.table_num, instance.view_num)
+        instance.addTables(instance.tables[0].dealWithTable()) # the first deal with is to transform the table into several small ones
+        # print(instance.table_num, instance.view_num)
+        begin_id = 1
+        while begin_id < instance.table_num:
+            instance.tables[begin_id].dealWithTable() # to generate views
+            begin_id += 1
+        if instance.view_num == 0:
+            print ('no chart generated')
+            # sys.exit(0)
+        # print(instance.table_num, instance.view_num)
+        return instance
 
 
-    def learning_to_rank(self, new_query):
+    def learning_to_rank(self):
         """
         use Learn_to_rank method to rank the charts
 
@@ -430,10 +426,14 @@ class haichart(object):
             instance = self.mysql_handle(instance)
         elif self.import_method == 'csv':
             instance = self.csv_handle(instance)  
-        return self.rank_learning(instance, new_query)
+
+        self.rank_learning(instance)
+
+        self.rank_method = methods_of_ranking[1] # = 'learn_to_rank'
+    
 
 
-    def rank_learning(self, instance, new_query):
+    def rank_learning(self, instance):
         """
         inner function of learning_to_rank
 
@@ -442,9 +442,11 @@ class haichart(object):
             
         Returns:
             None
-            
         """
-        return self.rank_generate_all_views(instance, new_query)
+        instance = self.rank_generate_all_views(instance)
+        instance.getScore_learning_to_rank()
+        self.instance = instance
+
 
     def rank_partial(self, instance):
         """
@@ -478,7 +480,7 @@ class haichart(object):
             the export list
             
         """
-        self.error_throw('output')
+        # self.error_throw('output')
 
         if self.rank_method == methods_of_ranking[3]:  # 'diversified_ranking'
             export_list = self.output_div('list')
@@ -585,8 +587,10 @@ class haichart(object):
             None
 
         """
+        instance = self.instance
         order1 = order2 = 1
         old_view = ''
+        export_dict = {}
 
         path2 = os.getcwd() + '/html/'
         if not os.path.exists(path2):
@@ -604,6 +608,108 @@ class haichart(object):
                 self.html_output(order1, view, 'single', tname, num)
                 num = num + 1
             self.page.render('./html/' + tname + '_all' + '.html')
+        elif output_method == 'list':
+            for i in range(instance.view_num):
+                view = instance.tables[instance.views[i].table_pos].views[instance.views[i].view_pos]
+                if old_view:
+                    order2 = 1
+                    order1 += 1
+                export_dict[view.output_describe()] = view
+                # export_list.append(view.output(order1))
+                old_view = view
+            return export_dict
+
+    def output_list(self, output_method):
+        """
+        output function of partial_order and learning_to_rank for all kinds of output
+
+        Args:
+            output_method(str): output method:
+                                list: to list
+                                print: print to console
+                                single_json/multiple_jsons: single/multiple json file(s)
+                                single_html/multiple_htmls: single/multiple html file(s)
+            
+        Returns:
+            None
+            
+        """
+        instance = self.instance
+        export_list = []
+        export_dict = {}
+        order1 = order2 = 1
+        old_view = ''
+        if output_method == 'list':
+            for i in range(instance.view_num):
+                view = instance.tables[instance.views[i].table_pos].views[instance.views[i].view_pos]
+                if old_view:
+                    order2 = 1
+                    order1 += 1
+                export_dict[view.output_describe()] = view
+                # export_list.append(view.output(order1))
+                old_view = view
+            return export_dict
+        elif output_method == 'print':
+            for i in range(instance.view_num):
+                view = instance.tables[instance.views[i].table_pos].views[instance.views[i].view_pos]
+                if old_view:
+                    order2 = 1
+                    order1 += 1
+                pprint (view.output(order1))
+                old_view = view
+            return
+        elif output_method == 'single_json' or output_method == 'multiple_jsons':
+            path2 = os.getcwd() + '/json/'
+            if not os.path.exists(path2):
+                os.mkdir(path2)
+            if output_method == 'single_json':
+                f = open(path2 + self.table_name + '.json','w')
+                for i in range(instance.view_num):
+                    view = instance.tables[instance.views[i].table_pos].views[instance.views[i].view_pos]
+                    if old_view:
+                        order2 = 1
+                        order1 += 1
+                    f.write(view.output(order1) + '\n')
+                    old_view = view
+                f.close() # Notice that f.close() is out of the loop to create only one file
+            else: # if output_method == 'multiple_jsons'
+                for i in range(instance.view_num):
+                    view = instance.tables[instance.views[i].table_pos].views[instance.views[i].view_pos]
+                    if old_view:
+                        order2 = 1
+                        order1 += 1
+                    f = open(path2 + self.table_name + str(order1) + '.json','w')
+                    f.write(view.output(order1))
+                    f.close() # Notice that f.close() is in the loop to create multiple files
+                    old_view = view
+            return
+        elif output_method == 'single_html' or output_method == 'multiple_htmls':
+            path2 = os.getcwd() + '/html/'
+            if not os.path.exists(path2):
+                os.mkdir(path2)
+            page = Page()
+            if output_method == 'single_html':
+                self.page = Page()
+                for i in range(instance.view_num):
+                    view = instance.tables[instance.views[i].table_pos].views[instance.views[i].view_pos]
+                    if old_view:
+                        order2 = 1
+                        order1 += 1
+                    old_view = view
+                    self.html_output(order1, view, 'single')
+                self.page.render('./html/' + self.table_name + '_all' + '.html')
+            else: # if output_method == 'multiple_htmls'
+                path3 = os.getcwd() + '/html/' + self.table_name
+                if not os.path.exists(path3):
+                    os.mkdir(path3)
+                for i in range(instance.view_num):
+                    view = instance.tables[instance.views[i].table_pos].views[instance.views[i].view_pos]
+                    if old_view:
+                        order2 = 1
+                        order1 += 1
+                    old_view = view
+                    self.html_output(order1, view, 'multiple')
+            return
 
     def html_output(self, order, view, mode, tname, num):
         """
@@ -632,14 +738,29 @@ class haichart(object):
             data['title_top'] = 5
             [chart, filename] = self.html_handle(data, view.table.D)
         except Exception as e:
-            pass
+            print(f"error{e}-------------")
+            traceback.print_exc()  # 打印详细的错误堆栈信息
+            sys.exit()
+
+        # if data['chart'] == 'pie':
+        #     pos_top = '30%'
+        #     pos_bottom = '10%'
+        # else:
+        #     pos_top = '25%'  
+        #     pos_bottom = '20%'
+
         grid = Grid()
-        grid.add(chart, grid_opts=opts.GridOpts(pos_bottom='20%', pos_top='20%'))
+
+        percent = '20%'
+        # grid.add(chart, grid_opts=opts.GridOpts(pos_bottom=pos_bottom, pos_top=pos_top, pos_left=percent, pos_right=percent))
+        grid.add(chart, grid_opts=opts.GridOpts(pos_bottom="20%", pos_top="25%", pos_left=percent, pos_right=percent))
+        # grid.add(chart, grid_opts=opts.GridOpts(pos_bottom='20%', pos_top='20%', pos_left='10%'))
         if mode == 'single':
             self.page.add(grid)  # the grid is added in the same page
         elif mode == 'multiple':
             grid.render('./html/' + self.table_name + '/' + filename)  # the grid is added in a new file
 
+    # * 画图看这里
     def html_handle(self, data, table_data):
         """
         convert function to html by pyecharts
@@ -655,49 +776,168 @@ class haichart(object):
 
         filename = self.table_name + str(data['order']) + '.html'
         margin = str(data['title_top']) + '%'
+
+        # common_axis_label_opts = opts.LabelOpts(font_size=20)
+
+        my_font_size = 22
+        common_text_style = opts.TextStyleOpts(font_size=my_font_size)  
+
+        common_label_opts = opts.LabelOpts(font_size=my_font_size)
+        
+        chart_subtitle = ""
+        if data['describe'] != '':
+            chart_subtitle = "Operation: " + data['describe'].lower()
+        else:
+            chart_subtitle = "Operation: none"
+
+        # subtitle_style_opts = opts.TextStyleOpts(color="grey", font_size=13, font_family="Arial")
+
+        data['chartname'] = data['chartname'].split('、')[-1] if '、' in data['chartname'] else data['chartname']
+        
+        subtitle_style_opts = opts.TextStyleOpts(font_size=24, font_weight="bold")
+        common_title_opts = opts.TitleOpts(
+            # title=data['chartname'],
+            subtitle=chart_subtitle,
+            pos_left='center',
+            pos_top=margin,
+            # pos_top="-10%",
+            title_textstyle_opts=common_text_style,
+            subtitle_textstyle_opts=subtitle_style_opts
+            # pos_left="5%",  
+            # pos_top="1%"  
+            # pos_top="10%"
+            # subtitle_textstyle_opts=subtitle_style_opts
+        )
+
+        # common_legend_opts = opts.LegendOpts(textstyle_opts=common_text_style)
+
+        common_axis_opts = opts.AxisOpts(
+            axislabel_opts=common_label_opts,
+            name_textstyle_opts=common_text_style
+        )
+
+        # tool_percent = '30%'
+        common_toolbox_opts = opts.ToolboxOpts(
+            item_gap=5,
+            item_size = 17,
+            # pos_top="1%",  
+            # pos_top="5%",
+            # pos_bottom="90%",
+            pos_right="20%",  
+            pos_left="75%",  
+            # pos_top=tool_percent,  
+            # pos_bottom=tool_percent,  
+            feature={
+                "dataZoom": {"show": True, "title": {
+                            "zoom": "Zoom In/Out",
+                            "back": "Reset Zoom"
+                            }},
+                "dataView": {"show": True, "title": "Data View", "lang": ["Data View", "Close", "Refresh"]},
+                "magicType": {"type": ["line", "bar", "stack"], "title": {
+                            "line": "Switch to Line Chart",
+                            "bar": "Switch to Bar Chart",
+                            "stack": "Switch to Stacked Chart",
+                            "tiled": "Switch to Tiled Chart"
+                            }},  
+                # "restore": {"show": True, "title": "Restore"},
+                "saveAsImage": {"show": True, "title": "Save"},  
+            }
+        )
+
+        color_flag = False
+        if "," in chart_subtitle or data['chart'] == 'pie' or (data['chart'] == 'scatter' and "none" not in chart_subtitle):
+            color_flag = True
+
+        common_legend_opts = opts.LegendOpts(
+            textstyle_opts=common_text_style, 
+            is_show=color_flag,
+            # pos_top = margin
+            )
+
         if data['chart'] == 'bar':
             chart = (Bar().set_series_opts(label_opts=opts.LabelOpts(is_show=False))
                 .set_global_opts(
-                title_opts=opts.TitleOpts(title=data['chartname'], subtitle=data['describe'], pos_left='center',
-                                          pos_top=margin),
-                xaxis_opts=opts.AxisOpts(name=data['x_name']),
-                yaxis_opts=opts.AxisOpts(name=data['y_name'], splitline_opts=opts.SplitLineOpts(is_show=True))))
+                    title_opts=common_title_opts,
+                    xaxis_opts=opts.AxisOpts(name=data['x_name'],
+                                            #  ,axislabel_opts=common_axis_label_opts
+                                            axislabel_opts=common_label_opts,
+                                            name_textstyle_opts=common_text_style
+                                             ),
+                    yaxis_opts=opts.AxisOpts(
+                        name=data['y_name'],
+                        splitline_opts=opts.SplitLineOpts(is_show=True),
+                        axislabel_opts=common_label_opts,
+                        name_textstyle_opts=common_text_style
+                        # ,axislabel_opts=common_axis_label_opts
+                    ),
+                    # legend_opts=opts.LegendOpts(is_show=True,pos_left='center'),  
+                    legend_opts=common_legend_opts,
+                    toolbox_opts=common_toolbox_opts 
+                ))
+
         elif data['chart'] == 'pie':
             chart = (Pie().set_global_opts(
-                title_opts=opts.TitleOpts(title=data['chartname'], subtitle=data['describe'], pos_left='center',
-                                          pos_top=margin)))
+                    title_opts=common_title_opts,
+                    legend_opts=common_legend_opts,
+                    toolbox_opts=common_toolbox_opts, 
+                    )
+                    # .set_series_opts(label_opts=opts.LabelOpts(font_size=my_font_size))
+                )
+            
         elif data['chart'] == 'line':
             chart = (Line().set_series_opts(label_opts=opts.LabelOpts(is_show=False))
                 .set_global_opts(
-                title_opts=opts.TitleOpts(title=data['chartname'], subtitle=data['describe'], pos_left='center',
-                                          pos_top=margin),
-                xaxis_opts=opts.AxisOpts(name=data['x_name']),
-                yaxis_opts=opts.AxisOpts(name=data['y_name'], splitline_opts=opts.SplitLineOpts(is_show=True))))
+                title_opts=common_title_opts,
+                xaxis_opts=opts.AxisOpts(name=data['x_name'],axislabel_opts=common_label_opts,name_textstyle_opts=common_text_style),
+                yaxis_opts=opts.AxisOpts(name=data['y_name'], 
+                                         splitline_opts=opts.SplitLineOpts(is_show=True),
+                                         axislabel_opts=common_label_opts,
+                                         name_textstyle_opts=common_text_style
+                                         )
+                
+                ,
+                    # legend_opts=opts.LegendOpts(is_show=True),
+                    legend_opts=common_legend_opts,
+                    toolbox_opts=common_toolbox_opts  
+                ))
         elif data['chart'] == 'scatter':
             chart = (Scatter().set_series_opts(label_opts=opts.LabelOpts(is_show=False))
                 .set_global_opts(
-                title_opts=opts.TitleOpts(title=data['chartname'], subtitle=data['describe'], pos_left='center',
-                                          pos_top=margin),
+                title_opts=common_title_opts,
                 xaxis_opts=opts.AxisOpts(type_='value', name=data['x_name'],
-                                         splitline_opts=opts.SplitLineOpts(is_show=True)),
+                                         splitline_opts=opts.SplitLineOpts(is_show=True),
+                                         axislabel_opts=common_label_opts,
+                                         name_textstyle_opts=common_text_style
+                                         ),
                 yaxis_opts=opts.AxisOpts(type_='value', name=data['y_name'],
-                                         splitline_opts=opts.SplitLineOpts(is_show=True))))
+                                         splitline_opts=opts.SplitLineOpts(is_show=True),
+                                         axislabel_opts=common_label_opts,
+                                         name_textstyle_opts=common_text_style
+                                         )
+                                         ,
+                    # legend_opts=opts.LegendOpts(is_show=True),
+                    legend_opts=common_legend_opts,
+                    toolbox_opts=common_toolbox_opts  
+                    
+                    
+                    ))
         elif data['chart'] == 'heatmap':
             chart = (HeatMap().set_series_opts(label_opts=opts.LabelOpts(is_show=False))
                 .set_global_opts(
-                title_opts=opts.TitleOpts(title=data['chartname'], subtitle=data['describe'], pos_left='center',
-                                          pos_top=margin),
+                title_opts=common_title_opts,
                 xaxis_opts=opts.AxisOpts(name=data['x_name']),
                 yaxis_opts=opts.AxisOpts(name=data['y_name'], splitline_opts=opts.SplitLineOpts(is_show=True))))
         elif data['chart'] == 'box':
             chart = (Boxplot().set_series_opts(label_opts=opts.LabelOpts(is_show=False))
                 .set_global_opts(
-                title_opts=opts.TitleOpts(title=data['chartname'], subtitle=data['describe'], pos_left='center',
-                                          pos_top=margin),
+                title_opts=common_title_opts,
                 xaxis_opts=opts.AxisOpts(name=data['x_name']),
                 yaxis_opts=opts.AxisOpts(name=data['y_name'], splitline_opts=opts.SplitLineOpts(is_show=True))))
         else:
             print("not valid chart")
+
+
+        # chart.set_global_opts(toolbox_opts=common_toolbox_opts)
 
         if not data["classify"]:  
             attr = data["x_data"][0]  
@@ -714,7 +954,12 @@ class haichart(object):
             elif data['chart'] == 'line':
                 chart.add_xaxis(attr).add_yaxis("", val, label_opts=opts.LabelOpts(is_show=False))
             elif data['chart'] == 'pie':
-                chart.add("", [list(z) for z in zip(attr, val)])
+                data_pair = [list(z) for z in zip(attr, val)]
+                series_name = data['y_name']
+                label_opts = opts.LabelOpts(font_size=my_font_size)
+                chart.add(series_name=series_name, 
+                data_pair=data_pair,
+                label_opts=label_opts)
             elif data['chart'] == 'scatter':
                 if isinstance(attr[0], str):
                     attr = [x for x in attr if x != '']
@@ -784,11 +1029,11 @@ class haichart(object):
                     yaxis_opts=opts.AxisOpts(name=data['y_name']))
 
 
-        else:  
+        else: 
 
-            attr = data["x_data"][0]  
+            attr = data["x_data"][0] 
             for i in range(len(data["classify"])):  
-                val = data["y_data"][i] 
+                val = data["y_data"][i]  
                 name = (
                     data["classify"][i][0] if type(data["classify"][i]) == type(('a', 'b')) else data["classify"][i])
                 if i == 0:
@@ -802,7 +1047,7 @@ class haichart(object):
                     chart.add("", [list(z) for z in zip(attr, val)])
                 elif data['chart'] == 'scatter':
                     attr_scatter = data["x_data"][i]
-                    if isinstance(attr_scatter[0], str): 
+                    if isinstance(attr_scatter[0], str):  
                         attr_scatter = [x for x in attr_scatter if x != '']
                         attr_scatter = list(map(float, attr_scatter))
                     if isinstance(val[0], str):
@@ -810,6 +1055,8 @@ class haichart(object):
                         val = list(map(float, val))
                     chart.add_xaxis(attr_scatter).add_yaxis(name, val, label_opts=opts.LabelOpts(is_show=False))
         return chart, filename
+
+
 
     def show_visualizations(self, number=-1):
         """

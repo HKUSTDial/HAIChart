@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>ChartPilot</title>
+		<title>HAIChart</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='all.min.css') }}">
 		<style>
@@ -24,6 +24,8 @@
 				background-color: #ffffff;
 				border-color: #e8e8ea;
 				color: #000000;
+				font-size: 20px;
+
 			}
 
 			.btn-primary:hover {
@@ -61,6 +63,7 @@
 			    transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
 			    margin-right: 10px; /* Space between buttons */
 			    margin-bottom: 10px; /* Space below the button */
+				position: relative;
 			}
 			
 			.constraint-btn i {
@@ -73,9 +76,37 @@
 			    background-color: #eaeff3; /* Slightly darker shade on hover */
 			    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover for depth */
 			}
+
+
+			.constraint-tooltip {
+				visibility: hidden;
+				/* width: fit-content; 悬浮框宽度根据内容自适应 */
+				display: inline-block; /* 改为内联块显示 */
+				white-space: nowrap; /* 防止内容换行 */
+				background-color: white; /* 悬浮框的背景颜色 */
+				color: black; /* 悬浮框的文字颜色 */
+				text-align: center; /* 文本左对齐 */
+				border-radius: 5px;
+				padding: 8px 10px;
+				position: absolute;
+				z-index: 1;
+				bottom: 125%; /* 增加底部距离以适应大小 */
+				left: 50%;
+				transform: translateX(-50%); /* 使用transform来精确居中 */
+				box-shadow: 0px 2px 5px rgba(0,0,0,0.2); /* 添加一些阴影 */
+				border: 1px solid #ddd; /* 描边颜色 */
+				font-size: 0.9em;
+				word-wrap: break-word; /* 允许单词内换行 */
+				overflow-wrap: break-word; /* 长单词或URL地址换行 */
+			}
+
+
+			.constraint-btn:hover .constraint-tooltip {
+				visibility: visible;
+			}
 			
 			h4 {
-				font-size: 20px;
+				font-size: 24px;
 				font-weight: bold;
 				margin-bottom: 15px;
 				color: #333333;
@@ -87,13 +118,15 @@
 			    font-size: 1em; /* Larger font size for better readability */
 				font-weight: 500;
 				color: #211d1d;
-				padding: 4px 5px 8px 5px; 
+				padding: 4px 5px 8px 5px; /* 添加一些内边距 */
+				/* border-radius: 10px; /* 圆角边框 */ */
 			    text-align: center;
-				display: inline-block; 
+				display: inline-block; /* 确保可以应用文本对齐 */
+				/* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.175); 阴影效果 */
 			}
 			
 			.recommendation-item {
-			    font-size: 1em; /* Slightly larger font size for the whole item */
+			    font-size: 1.2em; /* Slightly larger font size for the whole item */
 				border: 1px solid #ddd; /* Light grey border */
 				padding: 10px;
 				border-radius: 5px;
@@ -109,12 +142,81 @@
 			    /*color: #fbe737;  Gold color for the bulb icon */
 				color: #f9e323;
 			}
-			
+
+			.filename {
+				word-wrap: break-word;
+				overflow-wrap: break-word;
+				max-width: 100%;
+			}
+
+			/* 表格内容详情 */
+
+			#dataset-details-table {
+			table-layout: auto;
+			margin-bottom: 1rem;
+			background-color: transparent;
+			width: 100%; /* 设置表格宽度为100% */
+			}
+
+			#dataset-details-table th,
+			#dataset-details-table td {
+			padding: 0.75rem;
+			vertical-align: middle;
+			border-top: 1px solid #dee2e6;
+			text-align: center;
+			white-space: nowrap;
+			}
+
+			#dataset-details-table thead th {
+			vertical-align: bottom;
+			border-bottom: 2px solid #dee2e6;
+			}
+
+			/* 添加滚动条以适应屏幕尺寸 */
+			.modal-body {
+			overflow-x: auto;
+			}
+
+			/* 分页 */
+			.pagination {
+			display: flex;
+			justify-content: center; /* Center the pagination */
+			padding-left: 0;
+			list-style: none;
+			border-radius: 0.25rem;
+			}
+
+			.page-item.active .page-link,
+			.page-link:focus, /* For focused link */
+			.page-link:hover /* For hover state */ {
+			color: #fff; /* White text */
+			background-color: #6c757d; /* The gray you provided */
+			border-color: #6c757d; /* The gray you provided */
+			}
+
+			.page-link {
+			position: relative;
+			display: block;
+			padding: 0.5rem 0.75rem;
+			margin-left: -1px;
+			line-height: 1.25;
+			color: #6c757d; /* The gray you provided for normal state */
+			background-color: #fff; /* White background */
+			border: 1px solid #dee2e6;
+			}
+
+			.page-item.disabled .page-link {
+			color: #6c757d; /* Same gray color */
+			pointer-events: none; /* No pointer events on disabled */
+			background-color: #fff;
+			border-color: #dee2e6;
+			}
 
 		</style>
 	</head>
 	<body>
 		<!-- Navigation bar -->
+		<!-- 浅蓝色 #527292 -->
 		<nav class="navbar navbar-expand-lg navbar-dark" style="padding: 2em;background-color: #393b3e;">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,13 +234,14 @@
 		<div class="container-fluid">
         <div class="row">
             <!-- Side panel -->
-            <div class="col-md-2 sidebar" style="background-color: #ffffff;padding: 1px;">
+			<!-- max-width: fit-content; -->
+            <div class="col-md-2 sidebar" style="background-color: #ffffff;padding: 1px;font-size: 1.2em;">
                 <div class="p-3 custom-border" style="background-color: white; margin: 7px;">
                     <h4><i class="fas fa-database"></i> Dataset</h4>
                     <hr>
                     <div class="d-flex justify-content-center mb-3">
-                        <input type="file" id="fileInput" accept=".csv" style="display: none;" />
-                        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click();">Select Dataset</button>
+                        <!-- <input type="file" id="fileInput" accept=".csv" style="display: none;" /> -->
+                        <button class="btn btn-primary" id="select-dataset-btn">Select Dataset</button>
                     </div>
                     <hr>
                     <div id="dataset-info">
@@ -147,19 +250,38 @@
                 </div>
 
 				<!-- History of clicked recommendations -->
-				<div class="p-3" style="background-color: white; margin: 7px;">
-					
-					<!-- <hr>
-					<div id="history-list" style="max-height: 200px; overflow-y: auto;">
-					</div> -->
+				<div class="p-3 custom-border" style="background-color: white; margin: 7px;">
+					<h4><i class="fas fa-history"></i> History</h4>
+					<hr>
+					<div id="history-list" class="list-group">
+						<!-- Example of a history item -->
+						<!-- <div class="list-group-item">
+							<i class="fas fa-chart-line mr-2"></i>
+							<span class="history-text">Break down the data by carrier</span>
+						</div>
+						<div class="list-group-item">
+							<i class="fas fa-chart-line mr-2"></i>
+							<span class="history-text">Summarize data using average</span>
+						</div>
+						<div class="list-group-item">
+							<i class="fas fa-chart-line mr-2"></i>
+							<span class="history-text">Compare delay to different categories</span>
+						</div>
+						<div class="list-group-item">
+							<i class="fas fa-chart-line mr-2"></i>
+							<span class="history-text">Explore destcity across categories or time</span>
+						</div> -->
+						<!-- More items can be added here -->
+					</div>
 				</div>
+
             </div>
 
             <!-- Main content -->
-			<div class="col-md-7" style="padding: 1px;">
+			<div class="col-md-6" style="padding: 1px;">
 				<!-- Current Constraints -->
 				<div id="current-constraints" class="p-3 custom-border" style="margin: 7px; display: none;">
-				    <h4>Current Constraints</h4>
+				    <h4>User Preferences</h4>
 				    <br>
 				    <div id="constraints-list" class="d-flex flex-wrap">
 				        <!-- Example constraints as buttons -->
@@ -176,10 +298,11 @@
 				
 				
 				<!-- Visualization Results -->
-				<div id="visualization-results" class="p-3 custom-border" style="display: none; margin: 7px; border-radius: 10px; border: 0.5px solid #efefef; background-color: #ffffff; overflow-y: hidden; overflow-x: hidden;">
+				<div id="visualization-results" class="p-4 custom-border" style="display: none; margin: 7px; border-radius: 10px; border: 0.5px solid #efefef; background-color: #ffffff; overflow-y: hidden; overflow-x: hidden;">
 				    <h4 style="margin-bottom: 10px;">Visualization Results</h4>
 				    <br>
-				    <div id="visualization" style="padding: 15px;">
+				    <!-- <div id="visualization" style="padding: 15px;margin: auto;"> -->
+				    <div id="visualization" style="margin: auto;margin-left: -60px;">
 						
 						<!-- Placeholder for visualization result -->
 						<iframe id="visualization-iframe" src="" width="100%" height="1000px" style="border: none; display: block;"></iframe>
@@ -196,9 +319,10 @@
 			</div>
 			
 			<!-- Right panel - Next Recommendation -->
-			<div id="next-action-recommendation" class="col-md-3" style="padding: 1px;display: none;">
+			<!-- max-width: fit-content; -->
+			<div id="next-action-recommendation" class="col-md-4" style="padding: 1px;display: none;max-width: fit-content;">
 			    <div class="p-3 custom-border" style="background-color: white; margin: 7px;">
-			        <h4>Next-Action Recommendation</h4>
+			        <h4>Visualization Hints</h4>
 			        <br>
 			        <ul id="recommendation-list" class="list-unstyled">
 			            <!-- Example Recommendations with Badges for keywords -->
@@ -238,6 +362,94 @@
 			    </div>
 			</div>
 
+
+			<!-- 新增的选择数据集的模态框 -->
+			<div class="modal fade" id="datasetModal" tabindex="-1" aria-labelledby="datasetModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title" id="datasetModalLabel">Select Dataset</h4>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<h5>Example Datasets</h5>
+							<ul class="list-group" style="font-size: 18px;">
+								<!-- 这里可以列出一些示例数据集 -->
+								<li class="list-group-item clickable">FlightDelayStatistics</li>
+								<li class="list-group-item clickable">AirplaneCrashes</li>
+								<li class="list-group-item clickable">AvocadosPrice</li>
+								<li class="list-group-item clickable">GooglePlayStore</li>
+								<li class="list-group-item clickable">GunViolence</li>
+								<li class="list-group-item clickable">StudentsPerformance</li>
+								<li class="list-group-item clickable">SuicideRates</li>
+								<li class="list-group-item clickable">VideoGamesSales</li>
+								<li class="list-group-item clickable">Zomato</li>
+								<!-- 添加更多数据集 -->
+							</ul>
+							<hr>
+							<div class="d-flex justify-content-center">
+								<input type="file" id="fileInput" accept=".csv" style="display: none;" />
+								<button class="btn btn-primary" onclick="document.getElementById('fileInput').click();">Upload Your Dataset</button>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
+			<!-- 数据集详情模态框 -->
+			<div class="modal fade" id="datasetDetailsModal" tabindex="-1" style="display: none; padding-right: 17px;" aria-labelledby="datasetDetailsModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content" style="width: fit-content;">
+						<div class="modal-header">
+						<h5 class="modal-title" id="datasetDetailsModalLabel">FlightDelayStatistics</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						</div>
+						<div class="modal-body">
+						<table id="dataset-details-table" class="table">
+							<thead><tr><th>date</th><th>carrier</th><th>destcity</th><th>depdelay</th><th>arrdelay</th><th>passengers</th></tr></thead>
+							<tbody><tr><td>2015-01-01</td><td>AA</td><td>LA</td><td>16</td><td>0</td><td>236</td></tr><tr><td>2015-01-01</td><td>AA</td><td>SF</td><td>5</td><td>-24</td><td>231</td></tr><tr><td>2015-01-01</td><td>AA</td><td>NYC</td><td>-3</td><td>-21</td><td>95</td></tr><tr><td>2015-01-01</td><td>AA</td><td>NYC</td><td>-3</td><td>-15</td><td>91</td></tr><tr><td>2015-01-01</td><td>AA</td><td>DC</td><td>-2</td><td>-9</td><td>73</td></tr><tr><td>2015-01-01</td><td>AA</td><td>BOS</td><td>-5</td><td>-24</td><td>92</td></tr><tr><td>2015-01-01</td><td>AA</td><td>BOS</td><td>-4</td><td>-15</td><td>96</td></tr><tr><td>2015-01-01</td><td>AA</td><td>NYC</td><td>0</td><td>-15</td><td>93</td></tr><tr><td>2015-01-01</td><td>AA</td><td>NYC</td><td>65</td><td>53</td><td>94</td></tr><tr><td>2015-01-01</td><td>AA</td><td>NYC</td><td>-4</td><td>-11</td><td>96</td></tr></tbody>
+						</table>
+						<!-- 分页控件 -->
+						<nav aria-label="Dataset pagination">
+							<ul class="pagination justify-content-center">
+							  <li class="page-item">
+								<a class="page-link" href="#" aria-label="Previous">
+								  <span aria-hidden="true">«</span>
+								</a>
+							  </li>
+							  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+							  <li class="page-item"><a class="page-link" href="#">2</a></li>
+							  <li class="page-item"><a class="page-link" href="#">3</a></li>
+							  <li class="page-item"><a class="page-link" href="#">4</a></li>
+							  <li class="page-item"><a class="page-link" href="#">5</a></li>
+							  <li class="page-item disabled"><span class="page-link">...</span></li>
+							  <li class="page-item"><a class="page-link" href="#">376</a></li>
+							  <li class="page-item">
+								<a class="page-link" href="#" aria-label="Next">
+								  <span aria-hidden="true">»</span>
+								</a>
+							  </li>
+							</ul>
+						</nav>
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+						</div>
+					</div>
+				</div>
+			</div>
+  
+  
+
+
         </div>
     </div>
 
@@ -248,17 +460,274 @@
 		<script src="{{ url_for('static', filename='vega-lite@5') }}"></script>
 		<script src="{{ url_for('static', filename='vega-embed@6') }}"></script>
 		<script>
+
+			// $('#datasetModal').on('shown.bs.modal', function (e) {
+			// 	document.body.style.paddingRight = '0';
+			// });
+
 			
+			function showDatasetDetailsModal(data) {
+				// 清空现有的表头和数据行
+				// var thead = document.querySelector('#dataset-details-table thead');
+				// var tbody = document.querySelector('#dataset-details-table tbody');
+				// thead.innerHTML = '';
+				// tbody.innerHTML = '';
+				
+				// // // 设置模态框标题为数据集名称
+				// document.getElementById('datasetDetailsModalLabel').textContent = data.fileName.replace('.csv', '');
+
+				// // 创建表头
+				// var theadHTML = '<tr>';
+				// data.columnNames.forEach(function(column) {
+				// 	theadHTML += '<th>' + column + '</th>';
+				// });
+				// theadHTML += '</tr>';
+				// thead.innerHTML = theadHTML;
+
+				// // 创建数据行
+				// data.sampleData.forEach(function(row) {
+				// 	var rowHTML = '<tr>';
+				// 	row.forEach(function(cell) {
+				// 	rowHTML += '<td>' + cell + '</td>';
+				// 	});
+				// 	rowHTML += '</tr>';
+				// 	tbody.innerHTML += rowHTML;
+				// });
+
+				// 显示模态框
+				$('#datasetDetailsModal').modal('show');
+			}
+
+			
+			// 当点击选择数据集按钮时，打开模态框
+            document.getElementById('select-dataset-btn').addEventListener('click', function() {
+				// TODO 这里应该动态构建示例的数据集列表
+                $('#datasetModal').modal('show');
+            });
+
+			// 全局变量，用于存储当前选中的数据集名称
+			var selectedDatasetName = '';
+
+            // 处理点击预存数据集的逻辑
+			document.querySelectorAll('#datasetModal .list-group-item').forEach(item => {
+				item.addEventListener('click', function() {
+					var datasetName = this.innerText; // 获取被点击的数据集名称
+					selectedDatasetName = datasetName
+					
+					if (this.innerText === 'FlightDelayStatistics') {
+						// 显示静态内容的模态框
+						$('#datasetDetailsModal').modal('show');
+					}else{
+						loadDataset(datasetName); // 加载该数据集
+					}
+					
+				});
+			});
+
+			// 在详情模态框中，用户点击OK后加载数据集
+			document.querySelector('#datasetDetailsModal .modal-footer button').addEventListener('click', function() {
+				if (selectedDatasetName) {
+					loadDataset(selectedDatasetName); // 加载选中的数据集
+				}
+			});
+
+			
+			function loadDataset(datasetName) {
+				showLoadingIndicator(); // 显示加载指示器
+				clearDisplay()
+
+				// 发送数据集名称到 Flask 后端
+				fetch('/upload-dataset', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ datasetName: datasetName }) // 发送 JSON 数据
+				})
+				.then(response => response.json())
+				.then(data => {
+					// 使用从后端获取的数据来更新界面
+					updateDatasetInfo(data.fileName, data.columnsInfo);
+					
+					updateConstraintsDisplay(data.constraints); // 更新当前约束显示
+
+					// // 使用新的函数来显示数据集详情模态框
+					// showDatasetDetailsModal({
+					// 	columnNames: data.columnsInfo.map(info => info.name), // 从columnsInfo提取列名
+					// 	sampleData: data.sampleData, // 直接使用后端发送的前15行数据
+					// 	fileName: data.fileName
+					// });
+
+
+					// 更新 Visualization Results 区域
+					var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
+					visualizationIframe.src = data.visualization; // 更新iframe的src属性以指向生成的HTML文件
+
+					// 更新 Next-Action Recommendation 列表
+					updateRecommendations(data.recommendations);
+					hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
+					document.getElementById('visualization-results').style.display = 'block';
+        			document.getElementById('next-action-recommendation').style.display = 'block';
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
+				});
+
+				
+				$('#datasetModal').modal('hide');
+			}
+
+			// ------------------------------------加入示例数据集------------------------------------
+
+			document.getElementById('fileInput').addEventListener('change', function (e) {
+			    var file = e.target.files[0];
+			    if (!file) return;
+				
+				showLoadingIndicator(); // 当文件选中，开始上传前，显示加载指示器
+
+				// 清空展示，可视化结果，下一步推荐和数据展示都清空
+				clearDisplay()
+
+				// 保存文件并且更新可视化结果
+				// 创建 FormData 对象并添加文件
+				var formData = new FormData();
+				formData.append('file', file);
+
+				// 使用 fetch API 发送文件到 Flask 后端
+				fetch('/upload-dataset', {
+					method: 'POST',
+					body: formData
+				})
+				.then(response => response.json())
+				.then(data => {
+					// 使用从后端获取的数据来更新界面
+					updateDatasetInfo(data.fileName, data.columnsInfo);
+
+					updateConstraintsDisplay(data.constraints); // 更新当前约束显示
+					// 更新 Visualization Results 区域
+					var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
+					visualizationIframe.src = data.visualization; // 更新iframe的src属性以指向生成的HTML文件
+
+					// 更新 Next-Action Recommendation 列表
+					updateRecommendations(data.recommendations);
+					hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
+					document.getElementById('visualization-results').style.display = 'block';
+        			document.getElementById('next-action-recommendation').style.display = 'block';
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
+				});
+
+				
+				$('#datasetModal').modal('hide');
+			});
+
+			function clearDisplay() {
+				// 清空数据集信息
+				document.getElementById('dataset-info').innerHTML = '';
+
+				// 隐藏可视化结果
+				document.getElementById('visualization-results').style.display = 'none';
+
+				// 隐藏下一步推荐
+				document.getElementById('next-action-recommendation').style.display = 'none';
+
+				// 清空历史列表
+				document.getElementById('history-list').innerHTML = '';
+			}
+			
+			// 全局变量，用于保存最后一次点击的推荐项的信息
+			var lastClickedRecommendations = {};
+
+			// 更新数据集信息的函数
+			function updateDatasetInfo(fileName, columnsInfo) {
+				var datasetInfoDiv = document.getElementById('dataset-info');
+    			datasetInfoDiv.innerHTML = '<strong>Filename:</strong> <span class="filename">' + fileName + '</span><br><br>';
+
+
+				var columnsList = document.createElement('ul');
+				columnsList.className = 'list-group';
+
+				columnsInfo.forEach(function(column) {
+					var listItem = document.createElement('li');
+					listItem.className = 'list-group-item  clickable';
+					listItem.setAttribute('data-key', column.name); // 将字段名用作键
+
+					var icon = document.createElement('i');
+					// 根据数据类型选择图标
+					if (column.type.includes('int') || column.type.includes('float')) {
+						icon.className = 'fas fa-chart-bar mr-2';
+					} else if (column.type.includes('date')) {
+						icon.className = 'fas fa-clock mr-2';
+					} else {
+						icon.className = 'fas fa-font mr-2'; // 默认为文本类型
+					}
+
+					listItem.appendChild(icon);
+					listItem.appendChild(document.createTextNode(column.name));
+
+
+					// 为每个字段名添加点击事件监听器
+					listItem.addEventListener('click', function() {
+					var fieldName = this.getAttribute('data-key'); // 获取字段名
+					// 以下是点击事件的处理逻辑，例如发送请求到服务器
+					// console.log("Field clicked:", fieldName);
+
+					showLoadingIndicator(); // 显示加载指示器
+
+					fetch('/update-constraints', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ fieldName: fieldName })
+					})
+					.then(response => response.json())
+					.then(data => {
+
+						// 新增代码：将点击的推荐项添加到历史记录中
+						addRecommendationToHistory(data.value, data.hintKey);
+
+						// 更新全局变量为当前点击项的信息
+						lastClickedRecommendations[data.hintKey] = data.value;
+						// alert(data.hint_key)
+
+						updateConstraintsDisplay(data.constraints); // 更新当前约束显示
+
+						// 更新 Visualization Results 区域
+						var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
+						visualizationIframe.src = data.visualization; // 更新iframe的src属性以指向生成的HTML文件
+						
+						updateRecommendations(data.recommendations); // 更新Next-Action Recommendation列表
+
+
+						
+
+
+						hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
+					})
+					.catch(error => console.error('Error:', error));
+				});
+
+
+					columnsList.appendChild(listItem);
+				});
+
+				datasetInfoDiv.appendChild(columnsList);
+			}
+
 
 			function showLoadingIndicator() {
-                document.getElementById('loading-indicator').style.display = 'flex'; // Show the loading indicator
-                document.getElementById('visualization-iframe').style.display = 'none'; // Hide the iframe at the same time
-            }
+				document.getElementById('loading-indicator').style.display = 'flex'; // 显示加载指示器
+				document.getElementById('visualization-iframe').style.display = 'none'; // 同时隐藏iframe
+			}
 
-            function hideLoadingIndicator() {
-                document.getElementById('loading-indicator').style.display = 'none'; // Hide the loading indicator
-                document.getElementById('visualization-iframe').style.display = 'block'; // Show the iframe
-            }
+			function hideLoadingIndicator() {
+				document.getElementById('loading-indicator').style.display = 'none'; // 隐藏加载指示器
+				document.getElementById('visualization-iframe').style.display = 'block'; // 显示iframe
+			}
 
 			function determineType(value) {
 			    // Check if the value can be converted to a number
@@ -274,140 +743,71 @@
 			}
 
 			var selectedDatasetName = ""; // Global variable to store the name of the selected dataset
-			
-			
 
-			// Function to update the Next-Action Recommendation list
-            function updateRecommendations(recommendations) {
-                var recommendationList = document.getElementById('recommendation-list');
-                recommendationList.innerHTML = ''; // Clear the current list
+			// 更新Next-Action Recommendation列表的函数
+			function updateRecommendations(recommendations) {
+				var recommendationList = document.getElementById('recommendation-list');
+				recommendationList.innerHTML = ''; // 清空当前列表
 
-                recommendations.forEach(function(rec) {
-                    var key = rec[0];  // Guidance keyword
-                    var text = rec[1]; // Suggestion text
+				recommendations.forEach(function(rec) {
+					var key = rec[0];  // 指导关键字
+					var text = rec[1]; // 建议文本
 
-                    // Create list item
-                    var listItem = document.createElement('li');
-                    listItem.setAttribute('data-key', key); // Set the keyword
-                    listItem.className = 'mb-2 recommendation-item clickable';
+					// 创建列表项
+					var listItem = document.createElement('li');
+					listItem.setAttribute('data-key', key); // 设置关键字
+					listItem.className = 'mb-2 recommendation-item clickable';
 
-                    // Process the suggestion text to wrap specific formatted text in <span>
-                    var processedText = text.replace(/'([^']+)'/g, "<span class='badge custom-badge'>$1</span>");
+					// 处理建议文本，将特定格式的文本用 <span> 包裹
+					var processedText = text.replace(/'([^']+)'/g, "<span class='badge custom-badge'>$1</span>");
 
-                    // Set the content of the list item
-                    listItem.innerHTML = '<i class="fas fa-lightbulb mr-2"></i> ' + processedText;
+					// 设置列表项的内容
+					listItem.innerHTML = '<i class="fas fa-lightbulb mr-2"></i> ' + processedText;
 
-                    // Add the list item to the list
-                    recommendationList.appendChild(listItem);
-                });
-            }
-
-
-			document.getElementById('fileInput').addEventListener('change', function (e) {
-				var file = e.target.files[0];
-				if (!file) return;
-				
-				showLoadingIndicator(); // Show the loading indicator before the file is selected and uploading begins
-
-				// Save the file and update the visualization results
-				// Create a FormData object and add the file
-				var formData = new FormData();
-				formData.append('file', file);
-
-				// Use the fetch API to send the file to the Flask backend
-				fetch('/upload-dataset', {
-					method: 'POST',
-					body: formData
-				})
-				.then(response => response.json())
-				.then(data => {
-					document.getElementById('visualization-results').style.display = 'block';
-					document.getElementById('next-action-recommendation').style.display = 'block';
-					
-					updateConstraintsDisplay(data.constraints); // Update the display of current constraints
-					// Update the Visualization Results area
-					var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
-					visualizationIframe.src = data.visualization; // Update the iframe's src attribute to point to the generated HTML file
-
-					// Update the Next-Action Recommendation list
-					updateRecommendations(data.recommendations);
-					hideLoadingIndicator(); // Hide the loading indicator after processing is complete
-				})
-				.catch(error => {
-					console.error('Error:', error);
-					hideLoadingIndicator(); // Hide the loading indicator after processing is complete
+					// 将列表项添加到列表中
+					recommendationList.appendChild(listItem);
 				});
-			});
+			}
 
-
-			    var reader = new FileReader();
-			    reader.onload = function (e) {
-			        var content = e.target.result;
 			
-			        var rows = content.split("\n");
-			        if (rows.length === 0) {
-			            alert("The selected file does not contain valid data.");
-			            return;
-			        }
 			
-			        var headers = rows[0].split(",");
-			        var firstDataRow = rows[1].split(",");
 			
-			        var columnsList = document.createElement('ul');
-			        columnsList.className = 'list-group';
-			
-			        headers.forEach(function(header, index) {
-			            var listItem = document.createElement('li');
-			            listItem.className = 'list-group-item';
-			
-			            var type = determineType(firstDataRow[index].trim());
-			            var icon = document.createElement('i');
-			
-			            if (type === 'Numeric') {
-			                icon.className = 'fas fa-chart-bar mr-2';
-			            } else if (type === 'Text') {
-			                icon.className = 'fas fa-font mr-2';
-			            } else if (type === 'Time') {
-			                icon.className = 'fas fa-clock mr-2';
-			            }
-			
-			            listItem.appendChild(icon);
-			            listItem.appendChild(document.createTextNode(header.trim()));
-			            columnsList.appendChild(listItem);
-			        });
-			
-			        var datasetInfoDiv = document.getElementById('dataset-info');
-			        datasetInfoDiv.innerHTML = '<strong>Filename:</strong> ' + file.name + '<br><br>';
-			        datasetInfoDiv.appendChild(columnsList);
-			    };
-			    reader.readAsText(file);
-			});
-			
-			// When the user clicks on an item in the Next-Action Recommendation
+			// 当用户点击 Next-Action Recommendation 中的项
 			document.getElementById('recommendation-list').addEventListener('click', function(e) {
 				if (e.target && e.target.closest('li.recommendation-item')) {
-					var key = e.target.closest('li.recommendation-item').getAttribute('data-key'); // Get the keyword of the clicked item
-					
-					showLoadingIndicator(); // Show the loading indicator before file selection begins and uploading starts
+					var recommendationItem = e.target.closest('li.recommendation-item');
+        			var key = recommendationItem.getAttribute('data-key'); // 获取点击项的关键字
+        			var value = recommendationItem.textContent || recommendationItem.innerText; // 获取推荐项的文本内容
+        			// var value = recommendationItem.innerHTML
 
-					// Send the keyword to the backend
+					// 新增代码：将点击的推荐项添加到历史记录中
+					addRecommendationToHistory(value, key);
+
+					// 更新全局变量为当前点击项的信息
+					lastClickedRecommendations[key] = value;
+
+					showLoadingIndicator(); // 当文件选中，开始上传前，显示加载指示器
+
+					// 发送关键字到后端
 					fetch('/update-constraints', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
 						},
-						body: JSON.stringify({ key: key }) // Send the keyword
+						body: JSON.stringify({ key: key }) // 发送关键字
 					})
+
+
 					.then(response => response.json())
 					.then(data => {
-						updateConstraintsDisplay(data.constraints); // Update the display of current constraints
+						updateConstraintsDisplay(data.constraints); // 更新当前约束显示
 
-						// Update the Visualization Results area
+						// 更新 Visualization Results 区域
 						var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
-						visualizationIframe.src = data.visualization; // Update the iframe's src attribute to point to the generated HTML file
+						visualizationIframe.src = data.visualization; // 更新iframe的src属性以指向生成的HTML文件
 						
-						updateRecommendations(data.recommendations); // Update the Next-Action Recommendation list
-						hideLoadingIndicator(); // Hide the loading indicator after processing is complete
+						updateRecommendations(data.recommendations); // 更新Next-Action Recommendation列表
+						hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
 					})
 					.catch(error => {
 						console.error('Error:', error);
@@ -417,36 +817,36 @@
 
 
 
-			// When the user clicks the delete icon in Current Constraints
+			// 当用户点击 Current Constraints 中的删除图标
 			document.getElementById('constraints-list').addEventListener('click', function(e) {
-				// Previously, it was deleted only when the red cross was clicked, but now it has been changed to delete upon any click
+				// 之前的做法是点击红色叉叉才删除，但是现在修改一下，只要点击了就行
 				// if (e.target && e.target.matches('i.fa-times')) {
-				// Check if a constraint button or its child element was clicked
+				// 检查是否点击了约束按钮或其子元素
 				let target = e.target;
 				while (target && !target.matches('.constraint-btn')) {
 					target = target.parentNode;
 				}
 				if (target) {
-					var dataKey = target.getAttribute('data-key'); // Get the original key
-					var [constraintKey, constraintValue] = dataKey.split('_'); // Split data-key into key and value
-					showLoadingIndicator(); // Show the loading indicator before file selection begins and uploading starts
-					// Send the delete request to the backend
+					var dataKey = target.getAttribute('data-key'); // 获取原始键
+					var [constraintKey, constraintValue] = dataKey.split('_'); // 分割 data-key 为 key 和 value
+					showLoadingIndicator(); // 当文件选中，开始上传前，显示加载指示器
+					// 发送删除请求到后端
 					fetch('/remove-constraint', {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
 						},
-						body: JSON.stringify({ key: constraintKey, value: constraintValue }) // Send the original key and value
+						body: JSON.stringify({ key: constraintKey, value: constraintValue }) // 发送原始键和值
 					})
 					.then(response => response.json())
 					.then(data => {
-						updateConstraintsDisplay(data.constraints); // Update the display of current constraints
-						// Update the Visualization Results area
+						updateConstraintsDisplay(data.constraints); // 更新当前约束显示
+						// 更新 Visualization Results 区域
 						var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
-						visualizationIframe.src = data.visualization; // Update the iframe's src attribute to point to the generated HTML file
+						visualizationIframe.src = data.visualization; // 更新iframe的src属性以指向生成的HTML文件
 						
-						updateRecommendations(data.recommendations); // Update the Next-Action Recommendation list
-						hideLoadingIndicator(); // Hide the loading indicator after processing is complete
+						updateRecommendations(data.recommendations); // 更新Next-Action Recommendation列表
+						hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
 					})
 					.catch(error => {
 						console.error('Error:', error);
@@ -458,31 +858,42 @@
 				'[T]': 'chart_type',
 				'[X]': 'x-axis',
 				'[Y]': 'y-axis',
-				'[AggFunction]': 'agg_function',
+				'[AggFunction]': 'candidate columns',
 				'[G]': 'group',
 				'[B]': 'bin',
 			};
 
-
-			// Function to update the display of current constraints
+			
+			// 更新当前约束显示的函数
 			function updateConstraintsDisplay(constraints) {
 				var constraintsDiv = document.getElementById('current-constraints');
 				var constraintsListDiv = document.getElementById('constraints-list');
-				constraintsListDiv.innerHTML = ''; // Clear the current constraint list
+				constraintsListDiv.innerHTML = ''; // 清空当前约束列表
 
-				var hasConstraints = false; // Mark whether there are constraints
+				var hasConstraints = false; // 标记是否有约束
 				// alert(constraints)
 				for (var key in constraints) {
 					// alert(constraints[key].length)
-					if (constraints[key].length > 0) { // Check if there are constraint values
-						hasConstraints = true; // If there are constraint values, set the marker to true
-						var userFriendlyKey = constraintMappings[key] || key; // Get user-friendly text or use the original key by default
+					if (constraints[key].length > 0) { // 检查是否有约束值
+						hasConstraints = true; // 有约束值，设置标记为true
+						var userFriendlyKey = constraintMappings[key] || key; // 获取用户友好的文本或默认使用原始键
 
 						constraints[key].forEach(function(value) {
+							// alert(value)
 							var constraintDiv = document.createElement('div');
 							constraintDiv.className = 'constraint-btn mr-2 mb-2';
-							constraintDiv.innerText = value + ' (' + userFriendlyKey + ')'; // Display the value and user-friendly text
-							constraintDiv.setAttribute('data-key', key + "_" + value); // Set the original key as a data attribute
+							constraintDiv.innerText = value + ' (' + userFriendlyKey + ')'; // 显示值和用户友好的文本
+							constraintDiv.setAttribute('data-key', key + "_" + value); // 设置原始键作为数据属性
+							
+							var compositeKey = key + "_" + value; // 创建组合键
+							// 查找与当前约束值相关联的建议
+							// var recommendationText = findRecommendationText(compositeKey);
+
+							// 添加悬浮框
+							var tooltip = document.createElement('span');
+							tooltip.className = 'constraint-tooltip';
+							tooltip.innerText = lastClickedRecommendations[compositeKey] || 'Original value: ' + value; // 显示建议文本或原始值
+							constraintDiv.appendChild(tooltip);
 
 							var removeIcon = document.createElement('i');
 							removeIcon.className = 'fas fa-times ml-2';
@@ -492,13 +903,93 @@
 					}
 				}
 				
-				// If there are no constraints, you can choose to hide the entire constraint list container
+				// 如果没有任何约束，可以选择隐藏整个约束列表容器
 				if (!hasConstraints) {
 					constraintsDiv.style.display = 'none';
 				} else {
-					constraintsDiv.style.display = 'block'; // Or any other display method you choose
+					constraintsDiv.style.display = 'block'; // 或者你选择的其他显示方式
 				}
 			}
+
+			// 新增一个函数，用于将推荐项添加到历史记录中
+			function addRecommendationToHistory(recommendationText, key) {
+				var historyList = document.getElementById('history-list'); // 获取历史记录列表的元素
+
+				// 检查历史记录中是否存在重复项
+				var historyItems = historyList.getElementsByClassName('list-group-item');
+				for (var i = 0; i < historyItems.length; i++) {
+					if (historyItems[i].querySelector('.history-text').textContent.trim() === recommendationText.trim()) {
+						// 如果存在重复项，则移除该项
+						historyItems[i].parentNode.removeChild(historyItems[i]);
+					}
+				}
+
+
+				var historyItem = document.createElement('div'); // 创建新的历史记录项
+				historyItem.className = 'list-group-item clickable'; // 设置样式类名
+				historyItem.setAttribute('data-key', key); // 设置data-key属性
+
+				// 构建历史记录项的内容
+				historyItem.innerHTML = '<i class="fas fa-chart-line mr-2"></i><span class="history-text">' + recommendationText + '</span>';
+
+				// 将新的历史记录项添加到历史记录列表中
+				historyList.appendChild(historyItem);
+			}
+
+
+			document.getElementById('history-list').addEventListener('click', function(e) {
+				var historyItem = e.target.closest('.list-group-item');
+				if (historyItem) {
+					var key = historyItem.getAttribute('data-key'); // 获取data-key属性
+					var value = historyItem.querySelector('.history-text').textContent.trim(); // 获取推荐文本作为value
+
+					// 新增代码：将点击的推荐项添加到历史记录中
+					addRecommendationToHistory(value, key);
+
+					// 更新全局变量为当前点击项的信息
+					lastClickedRecommendations[key] = value;
+
+					showLoadingIndicator(); // 当文件选中，开始上传前，显示加载指示器
+
+					// 发送关键字到后端
+					fetch('/update-constraints', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ key: key }) // 发送关键字
+					})
+
+
+					.then(response => response.json())
+					.then(data => {
+						updateConstraintsDisplay(data.constraints); // 更新当前约束显示
+
+						// 更新 Visualization Results 区域
+						var visualizationIframe = document.getElementById('visualization').querySelector('iframe');
+						visualizationIframe.src = data.visualization; // 更新iframe的src属性以指向生成的HTML文件
+						
+						updateRecommendations(data.recommendations); // 更新Next-Action Recommendation列表
+						hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
+					})
+					.catch(error => {
+						console.error('Error:', error);
+					});
+				}
+			});
+
+
+
+			// 根据约束的组合键查找建议文本的函数
+			// function findRecommendationText(compositeKey) {
+			// 	console.log("Composite Key:", compositeKey);
+			// 	console.log("Last Clicked Recommendation:", lastClickedRecommendation);
+
+			// 	if (lastClickedRecommendation.key === compositeKey) {
+			// 		return lastClickedRecommendation.value; // 如果匹配，返回保存的建议文本
+			// 	}
+			// 	return null; // 如果不匹配，返回null
+			// }
 
 		</script>
 	</body>

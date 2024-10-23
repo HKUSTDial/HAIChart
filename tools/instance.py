@@ -95,6 +95,50 @@ class Instance(object):
         for table in self.tables:
             for view in table.views:
                 view.W = view.W / max_W
+    
+    def getScore_learning_to_rank(self):
+        """
+        For learning_to_rank method, get score of each view and write to files
+
+        Args:
+            None
+            
+        Returns:
+            None
+            
+        """
+        path = os.path.dirname(__file__) 
+        path2 = os.getcwd() + '/data/' 
+        if not os.path.exists(path2):
+            os.mkdir(path2)
+        f = open(path2 + self.table_name + '.ltr','w') #ltr = learn to rank
+        for i in range(self.table_num):
+            self.views.extend([ViewPosition(i,view_pos) for view_pos in range(self.tables[i].view_num)])
+        for i in range(self.table_num):
+            for j in range(self.tables[i].view_num):
+                view = self.tables[i].views[j]
+                f.write(view.output_score()+'\n')
+        f.close()
+        #create '.ltr' and '.score' file
+        cmd = 'java -jar "'+path+'/jars/RankLib.jar" -load "'+path+'/jars/rank.model" -rank "'+ path2 + self.table_name+'.ltr" -score "'+ path2 + self.table_name + '.score"'
+        os.popen(cmd)
+        a = time.time()
+        while not os.path.exists(path2 + self.table_name + '.score') and time.time() - a < 60:
+            pass
+        time.sleep(1)
+        if os.path.exists(path2 + self.table_name + '.score'):
+            f = open(path2 + self.table_name + '.score')
+            i = 0
+            line = f.readline() #read '.score' file and store the scores
+            while line:
+                self.tables[self.views[i].table_pos].views[self.views[i].view_pos].score = float(line.split()[-1])
+                line = f.readline()
+                i += 1
+            f.close()
+        else:
+            print("Score file not found. You may run the program again to get the result.")
+        #sort by scores
+        self.views.sort(key=lambda view:self.tables[view.table_pos].views[view.view_pos].score,reverse=True)
 
     #for partial_order rank
     def getScore(self):
@@ -135,5 +179,12 @@ class Instance(object):
                     break
         for i in range(self.view_num):
             self.tables[self.views[i].table_pos].views[self.views[i].view_pos].score = score[i]
-
+            # print(i)
+            # print("M =", self.tables[self.views[i].table_pos].views[self.views[i].view_pos].M)
+            # print("Q =", self.tables[self.views[i].table_pos].views[self.views[i].view_pos].Q)
+            # print("W =", self.tables[self.views[i].table_pos].views[self.views[i].view_pos].W)
+            # print("score:", score[i])
+        #sort by scores
         self.views.sort(key=lambda view:self.tables[view.table_pos].views[view.view_pos].score,reverse=True)
+        # for i in range(self.view_num):
+        #     print("score[i], ", self.tables[self.views[i].table_pos].views[self.views[i].view_pos].score)
