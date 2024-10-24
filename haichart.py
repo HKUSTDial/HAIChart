@@ -310,7 +310,7 @@ def mcgs_according_to_constraints():
 
         return selected_hints
 
-    budget = 200  # Maximum number of charts
+    budget = 50  # Maximum number of charts
     k = 9       # Number of hints to select
 
     selected_hints = select_k_hints(new_idf_data, budget, k)
@@ -383,7 +383,7 @@ def upload_dataset():
         filename = dataset_name + ".csv"
         file_path = os.path.join("example_datasets", filename)
 
-    start_time = time.time()  # 记录开始时间
+    start_time = time.time()  
     start_time_formatted = datetime.fromtimestamp(start_time).strftime('%Y-%m-%d %H:%M:%S')  
 
     # user_log_name = f"multi_turn_log/user_log_{start_time}_{filename.split('.')[0]}.csv"  
