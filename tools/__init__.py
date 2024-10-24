@@ -760,7 +760,7 @@ class haichart(object):
         elif mode == 'multiple':
             grid.render('./html/' + self.table_name + '/' + filename)  # the grid is added in a new file
 
-    # * 画图看这里
+    # Drawing code
     def html_handle(self, data, table_data):
         """
         convert function to html by pyecharts

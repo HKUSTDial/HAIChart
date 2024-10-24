@@ -119,7 +119,7 @@
 				font-weight: 500;
 				color: #211d1d;
 				padding: 4px 5px 8px 5px; /* 添加一些内边距 */
-				/* border-radius: 10px; /* 圆角边框 */ */
+				/* border-radius: 10px; /* 圆角边框 */ 
 			    text-align: center;
 				display: inline-block; /* 确保可以应用文本对齐 */
 				/* box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.175); 阴影效果 */
@@ -402,7 +402,7 @@
 			</div>
 
 			
-			<!-- 数据集详情模态框 -->
+			<!-- 数据集详情模态框 [待更新为动态的]-->
 			<div class="modal fade" id="datasetDetailsModal" tabindex="-1" style="display: none; padding-right: 17px;" aria-labelledby="datasetDetailsModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content" style="width: fit-content;">
@@ -701,10 +701,6 @@
 						visualizationIframe.src = data.visualization; // 更新iframe的src属性以指向生成的HTML文件
 						
 						updateRecommendations(data.recommendations); // 更新Next-Action Recommendation列表
-
-
-						
-
 
 						hideLoadingIndicator(); // 处理完毕后，隐藏加载指示器
 					})
