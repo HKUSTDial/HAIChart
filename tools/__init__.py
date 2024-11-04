@@ -409,6 +409,8 @@ class haichart(object):
 
     def learning_to_rank(self):
         """
+        Preprocessing step to improve search speed and avoid redundant operations.
+        
         use Learn_to_rank method to rank the charts
 
         Args:
