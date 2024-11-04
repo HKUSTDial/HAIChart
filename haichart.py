@@ -399,7 +399,8 @@ def upload_dataset():
 
 
     haichart.from_csv(file_path)
-    print(file_path)
+    # print(file_path)
+    # Preprocessing step to improve search speed and avoid redundant operations
     haichart.learning_to_rank()
     haichart.eh_view = haichart.output_list("list")
     curr_filename = filename
